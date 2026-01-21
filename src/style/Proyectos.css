@@ -1,0 +1,186 @@
+.proyectos-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.titulo-proyectos {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 40px;
+}
+
+/* --- GRID LAYOUT --- */
+.grid-proyectos {
+    display: grid;
+    grid-template-columns: 1fr; /* Celular: 1 columna */
+    gap: 40px; /* Más espacio entre tarjetas para que respiren mejor */
+}
+
+/* Tablet y PC: Grid Inteligente */
+@media (min-width: 768px) {
+    .grid-proyectos {
+        /* Ajuste automático: Mínimo 350px de ancho por tarjeta. En PC se verán 2 columnas robustas. */
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+/* --- ESTILOS DE LA TARJETA (CARD) --- */
+.card-proyecto {
+    background-color: var(--header-bg);
+    border-radius: 15px;
+    padding: 0;
+    box-shadow: 0 4px 20px var(--card-shadow);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card-proyecto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px var(--card-shadow);
+    border-top: 3px solid var(--accent-color);
+}
+
+.proyecto-imagen {
+    width: 100%;
+    height: 230px; /* Altura ajustada para una proporción más panorámica y elegante */
+    object-fit: cover;
+    object-position: top; /* CLAVE: Asegura que siempre se vea el header/navbar del sitio */
+    border-bottom: 1px solid var(--card-shadow);
+    transition: transform 0.5s ease; /* Prepara la imagen para el efecto zoom */
+}
+
+.card-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.card-proyecto h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.card-proyecto p {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tech-category {
+    margin-bottom: 15px;
+}
+
+.tech-category h4 {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.tech-category .tags {
+    margin-bottom: 0;
+}
+
+.tag {
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo oscuro translúcido en modo oscuro */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil para definición */
+    color: var(--text-color);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Ajuste para Modo Claro: Fondo gris más oscuro para que resalte sobre la tarjeta blanca */
+body.light-mode .tag {
+    background-color: #b0b3b8;
+    border-color: #808080;
+    color: #000000;
+}
+
+.tech-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.card-footer {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: auto;
+}
+
+.btn-repo {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-repo:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    transform: translateY(-2px);
+}
+
+.btn-demo {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: 2px solid var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-demo:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--card-shadow);
+}
+
+/* Invertir el color del ícono de GitHub en el botón cuando esté en modo claro */
+body.light-mode .btn-repo .tech-icon {
+    filter: invert(1);
+}
+
+/* Corrección: Si hacemos hover en modo claro, el fondo se vuelve negro, así que el ícono debe volver a ser blanco (sin filtro) */
+body.light-mode .btn-repo:hover .tech-icon {
+    filter: none;
+}
+
+/* Efecto Zoom suave en la imagen al pasar el mouse sobre la tarjeta */
+.card-proyecto:hover .proyecto-imagen {
+    transform: scale(1.05);
+}
