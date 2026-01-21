@@ -9,8 +9,7 @@ const Contactame = () =>{
                 <div className="contacto-info">
                     <h2 className='contactame-titulo'>Contáctame</h2>
                     <p className="contacto-texto">
-                        ¿Tienes algún proyecto en mente o simplemente quieres saludar? 
-                        ¡Escríbeme! Estoy disponible para nuevas oportunidades y colaboraciones.
+                        Puedes contactarme a través del siguiente formulario o mediante mis redes sociales:
                     </p>
                     <div className="redes-sociales-contacto">
                         <a href="https://www.linkedin.com/in/eduardo-ezequiel-ortiz-7815a526b" target="_blank" rel="noopener noreferrer">
