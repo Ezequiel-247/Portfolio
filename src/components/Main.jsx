@@ -21,10 +21,10 @@ const Main = () =>{
                 </div>
                 <div className="info-container">
                     <h1 className="nombre">Eduardo Ezequiel Ortiz</h1>
-                    <h2 className="puesto">Desarrollador Back-end</h2>
+                    <h2 className="puesto">Desarrollador Full-Stack</h2>
                     
                     <div className="botones-container">
-                        <a href="Ezequiel-Ortiz-Curriculum-2025.pdf" download className="btn btn-primary" title='Descargar Curriculum'>Descargar CV</a>
+                        <a href="Ezequiel Ortiz Cv.pdf" download="Ezequiel Ortiz Cv.pdf" className="btn btn-primary" title='Descargar Curriculum'>Descargar CV</a>
                     </div>
 
                     <div className="sobre-mi" id="sobre-mi">

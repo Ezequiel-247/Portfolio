@@ -6,6 +6,9 @@ const Proyectos = () => {
     return (
         <section className="proyectos-container" id="proyectos">
             <h2 className="titulo-proyectos">Mis Proyectos</h2>
+            <p className="descripcion-seccion">
+                A continuación presento una selección de proyectos que demuestran mis habilidades técnicas y mi experiencia en el desarrollo de soluciones web completas, aplicando buenas prácticas y tecnologías modernas.
+            </p>
             <div className="grid-proyectos">
                 {listaProyectos.map((proyecto, index) => (
                     <div 
