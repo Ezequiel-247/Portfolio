@@ -28,6 +28,8 @@ const Header = () => {
             </button>
 
             <a href="#inicio" onClick={() => setMenuOpen(false)}>Sobre Mi</a>
+            <a href="#educacion" onClick={() => setMenuOpen(false)}>Educación</a>
+            <a href="#habilidades" onClick={() => setMenuOpen(false)}>Stack Tecnológico</a>
             <a href="#proyectos" onClick={() => setMenuOpen(false)}>Mis Proyectos</a>
             <a href="#contacto" onClick={() => setMenuOpen(false)}>Contáctame</a>
             <button className="theme-btn" onClick={toggleTheme} title={darkMode ? "Cambiar a Modo Claro" : "Cambiar a Modo Oscuro"}>

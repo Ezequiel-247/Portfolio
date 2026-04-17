@@ -74,6 +74,7 @@ const Contactame = () =>{
                 setEstado({ enviando: false, enviado: false, error: "Hubo un error al enviar el mensaje." });
             }
         } catch (error) {
+            console.error("Error al enviar el formulario:", error);
             setEstado({ enviando: false, enviado: false, error: "Error de conexión. Inténtalo más tarde." });
         }
     };

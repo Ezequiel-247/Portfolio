@@ -1,7 +1,7 @@
 // Importamos las imágenes aquí para mantener el orden
 import homeNetflixImg from '../img/home_netflix.png';
 import unaHurImg from '../img/Anti-Social.png';
-import intaImg from '../img/Logo_INTA.png';
+import intaImg from '../img/INTA.jpg';
 
 // Diccionario de íconos (URLs de Devicon)
 export const iconos = {
@@ -22,10 +22,12 @@ export const listaProyectos = [
     {
        titulo: "INTA - Desarrollo Backend",
         imagen: intaImg,
+        esFoto: true,
         descripcion: 
-            "Durante mi experiencia en el INTA, desarrollé un producto de software Backend diseñada para la " +
+            "Durante mi experiencia en el INTA, desarrollé un producto de software Backend diseñado para la " +
             "gestión, procesamiento y visualización de datos provenientes de freatígrafos y limnígrafos. " +
-            "Implementé MongoDB para estructurar y filtrar datos no relacionales de manera eficiente, " +
+            "Implementé una arquitectura estructurada con Flask y Python y, a pedido del cliente, utilicé la " +
+            "base de datos no relacional MongoDB para organizar y filtrar la información de manera eficiente, " +
             "permitiendo el manejo de grandes volúmenes de información capturada por medidores de aguas subterráneas. " +
             "Asimismo, diseñé módulos de exportación (PDF/Excel) y herramientas de graficación, optimizando el " +
             "análisis técnico realizado por los ingenieros del Instituto de Clima y Agua. Para completar el ecosistema, " +

@@ -64,6 +64,19 @@
     transition: transform 0.5s ease; /* Prepara la imagen para el efecto zoom */
 }
 
+/* --- ESTILOS ALTERNATIVOS PARA LOGOS --- */
+.proyecto-imagen.imagen-logo {
+    object-fit: contain;      /* Asegura que todo el logo se vea sin recortarse */
+    object-position: center;  /* Centra el logo en su contenedor */
+    padding: 20px;            /* Agrega espacio alrededor para que respire y no toque los bordes */
+    background-color: transparent; /* Adapta el fondo automáticamente al modo claro u oscuro de la tarjeta */
+}
+
+/* Estilo para fotografías (centra la imagen en lugar de alinearla arriba) */
+.proyecto-imagen.imagen-foto {
+    object-position: center;
+}
+
 .card-content {
     padding: 25px;
     display: flex;

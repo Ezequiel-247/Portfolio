@@ -4,7 +4,6 @@ import githubIcon from '../img/github.svg';
 import { listaProyectos, iconos } from "../data/proyectos";
 
 const Proyectos = () => {
-    // Estado para saber qué proyectos están expandidos
     const [expandidos, setExpandidos] = useState({});
 
     const toggleLeerMas = (index) => {
@@ -30,7 +29,12 @@ const Proyectos = () => {
                         className="card-proyecto" 
                         key={index} 
                     >
-                        <img src={proyecto.imagen} alt={proyecto.titulo} className="proyecto-imagen" loading="lazy" />
+                        <img 
+                            src={proyecto.imagen} 
+                            alt={proyecto.titulo} 
+                            className={`proyecto-imagen ${proyecto.esLogo ? 'imagen-logo' : ''} ${proyecto.esFoto ? 'imagen-foto' : ''}`} 
+                            loading="lazy" 
+                        />
                         <div className="card-content">
                             <div className="card-header">
                                 <h3>{proyecto.titulo}</h3>

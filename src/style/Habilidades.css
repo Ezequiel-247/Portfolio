@@ -1,0 +1,51 @@
+.habilidades-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 40px;
+}
+
+.habilidades-grid {
+    display: grid;
+    /* Crea una grilla flexible donde las tarjetas miden mínimo 120px */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.habilidad-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: var(--header-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.habilidad-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--card-shadow);
+}
+
+.habilidad-icono {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.habilidad-card span {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+}

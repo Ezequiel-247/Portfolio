@@ -1,0 +1,89 @@
+.educacion-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px solid var(--accent-color);
+    margin-top: 40px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -39px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    border: 3px solid var(--accent-color);
+    transition: background-color 0.3s;
+}
+
+.timeline-item:hover .timeline-dot {
+    background-color: var(--accent-color);
+}
+
+.timeline-content {
+    background-color: var(--header-bg);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px var(--card-shadow);
+    transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateX(5px);
+    border-left: 3px solid var(--accent-color);
+}
+
+.timeline-content h3 {
+    color: var(--accent-color);
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.institucion-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.institucion-logo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    background-color: #fff; /* Asegura contraste en modo oscuro */
+    border-radius: 6px;
+    padding: 4px;
+}
+
+.timeline-content h4 {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.timeline-content .estado {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.timeline-content p {
+    color: var(--text-color);
+    line-height: 1.6;
+    opacity: 0.9;
+}
