@@ -84,6 +84,22 @@
     line-height: 1.5;
 }
 
+.btn-leer-mas {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 8px;
+    font-size: 0.95rem;
+    display: block; /* Esto obliga al botón a saltar a la siguiente línea */
+}
+
+.btn-leer-mas:hover {
+    text-decoration: underline;
+}
+
 .tags {
     display: flex;
     flex-wrap: wrap;

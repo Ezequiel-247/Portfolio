@@ -1,16 +1,31 @@
+import { useState } from "react";
 import "../style/Proyectos.css";
 import githubIcon from '../img/github.svg';
 import { listaProyectos, iconos } from "../data/proyectos";
 
 const Proyectos = () => {
+    // Estado para saber qué proyectos están expandidos
+    const [expandidos, setExpandidos] = useState({});
+
+    const toggleLeerMas = (index) => {
+        setExpandidos(prev => ({ ...prev, [index]: !prev[index] }));
+    };
+
     return (
         <section className="proyectos-container" id="proyectos">
             <h2 className="titulo-proyectos">Mis Proyectos</h2>
             <p className="descripcion-seccion">
-                A continuación presento una selección de proyectos que demuestran mis habilidades técnicas y mi experiencia en el desarrollo de soluciones web completas, aplicando buenas prácticas y tecnologías modernas.
+                A continuación presento una selección de mis proyectos y mi experiencia laboral. 
+                Estos trabajos demuestran mis habilidades técnicas en el desarrollo de soluciones web 
+                completas, aplicando buenas prácticas y tecnologías modernas.
             </p>
             <div className="grid-proyectos">
-                {listaProyectos.map((proyecto, index) => (
+                {listaProyectos.map((proyecto, index) => {
+                    const limiteCaracteres = 180; // Aprox. 4 a 5 líneas de texto
+                    const esTextoLargo = proyecto.descripcion.length > limiteCaracteres;
+                    const mostrarTodo = expandidos[index];
+
+                    return (
                     <div 
                         className="card-proyecto" 
                         key={index} 
@@ -21,34 +36,50 @@ const Proyectos = () => {
                                 <h3>{proyecto.titulo}</h3>
                             </div>
                             <div className="card-body">
-                                <p>{proyecto.descripcion}</p>
-                                <div className="tech-category">
-                                    <h4>Frontend</h4>
-                                    <div className="tags">
-                                        {proyecto.tecnologias.frontend.map((tech, i) => (
-                                            <span key={i} className="tag">
-                                                {iconos[tech] && <img src={iconos[tech]} alt={tech} className="tech-icon" />}
-                                                {tech}
-                                            </span>
-                                        ))}
+                                <p>
+                                    {esTextoLargo && !mostrarTodo 
+                                        ? proyecto.descripcion.substring(0, limiteCaracteres) + "..." 
+                                        : proyecto.descripcion
+                                    }
+                                    {esTextoLargo && (
+                                        <button className="btn-leer-mas" onClick={() => toggleLeerMas(index)}>
+                                            {mostrarTodo ? "Ver menos" : "Ver más"}
+                                        </button>
+                                    )}
+                                </p>
+                                {proyecto.tecnologias.frontend && proyecto.tecnologias.frontend.length > 0 && (
+                                    <div className="tech-category">
+                                        <h4>Frontend</h4>
+                                        <div className="tags">
+                                            {proyecto.tecnologias.frontend.map((tech, i) => (
+                                                <span key={i} className="tag">
+                                                    {iconos[tech] && <img src={iconos[tech]} alt={tech} className="tech-icon" />}
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="tech-category">
-                                    <h4>Backend</h4>
-                                    <div className="tags">
-                                        {proyecto.tecnologias.backend.map((tech, i) => (
-                                            <span key={i} className="tag">
-                                                {iconos[tech] && <img src={iconos[tech]} alt={tech} className="tech-icon" />}
-                                                {tech}
-                                            </span>
-                                        ))}
+                                )}
+                                {proyecto.tecnologias.backend && proyecto.tecnologias.backend.length > 0 && (
+                                    <div className="tech-category">
+                                        <h4>Backend</h4>
+                                        <div className="tags">
+                                            {proyecto.tecnologias.backend.map((tech, i) => (
+                                                <span key={i} className="tag">
+                                                    {iconos[tech] && <img src={iconos[tech]} alt={tech} className="tech-icon" />}
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
+                                )}
                             </div>
                             <div className="card-footer">
-                                <a href={proyecto.repo} target="_blank" rel="noopener noreferrer" className="btn-repo">
-                                    Ver Código <img src={githubIcon} alt="GitHub" className="tech-icon" />
-                                </a>
+                                {proyecto.repo && (
+                                    <a href={proyecto.repo} target="_blank" rel="noopener noreferrer" className="btn-repo">
+                                        Ver Código <img src={githubIcon} alt="GitHub" className="tech-icon" />
+                                    </a>
+                                )}
                                 {proyecto.demo && (
                                     <a href={proyecto.demo} target="_blank" rel="noopener noreferrer" className="btn-demo">
                                         Ver App
@@ -59,7 +90,8 @@ const Proyectos = () => {
                             </div>
                         </div>
                     </div>
-                ))}
+                );
+                })}
             </div>
         </section>
     );
