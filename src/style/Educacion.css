@@ -1,7 +1,13 @@
+.educacion-seccion {
+    width: 100%;
+    background-color: var(--header-bg);
+    padding: 60px 0;
+}
+
 .educacion-container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 0 20px;
 }
 
 .timeline {
@@ -78,8 +84,22 @@
 }
 
 .timeline-content .estado {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
     margin-bottom: 15px;
+}
+
+.badge-graduado { 
+    background-color: rgba(40, 167, 69, 0.15); 
+    color: #28a745; 
+}
+.badge-en-curso { 
+    background-color: rgba(23, 162, 184, 0.15); 
+    color: #17a2b8; 
 }
 
 .timeline-content p {

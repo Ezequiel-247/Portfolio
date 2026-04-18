@@ -120,6 +120,7 @@ const Contactame = () =>{
                     {/* Campo de Verificación Anti-Robot */}
                     <div className="campo">
                         <label htmlFor="captcha">Responder ¿Cuánto es {captcha.num1} + {captcha.num2}?</label>
+                        <span className="captcha-context">🛡️ Verificación anti-spam (sin Google reCAPTCHA)</span>
                         <input 
                             type="number" 
                             id="captcha" 

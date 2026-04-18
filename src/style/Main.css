@@ -63,6 +63,18 @@
     margin-bottom: 20px;
     font-weight: 500;
 }
+
+.eyebrow {
+    display: inline-block;
+    background-color: rgba(40, 167, 69, 0.15);
+    color: #28a745;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
 .icono{
     width: 30px;
     height: 30px;
@@ -114,6 +126,22 @@ body.light-mode .icono {
 .btn-secondary:hover {
     background-color: var(--accent-color);
     color: var(--bg-color);
+}
+
+.sobre-mi {
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 25px;
+    background-color: var(--header-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.24);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+body.light-mode .sobre-mi {
+    border-color: rgba(0, 0, 0, 0.13);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 20);
+    background-color: #ffffff8c;
 }
 
 .sobre-mi h3 {

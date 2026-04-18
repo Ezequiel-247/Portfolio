@@ -1,7 +1,13 @@
+.proyectos-seccion {
+    width: 100%;
+    background-color: var(--header-bg);
+    padding: 60px 0;
+}
+
 .proyectos-container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 0 20px;
 }
 
 .titulo-proyectos {
@@ -26,6 +32,7 @@
     display: grid;
     grid-template-columns: 1fr; /* Celular: 1 columna */
     gap: 40px; /* Más espacio entre tarjetas para que respiren mejor */
+    align-items: start; /* Evita que las tarjetas de la misma fila se estiren juntas */
 }
 
 /* Tablet y PC: Grid Inteligente */
@@ -45,14 +52,14 @@
     transition: transform 0.5s ease, box-shadow 0.5s ease;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: max-content; /* Permite que cada tarjeta tenga su propia altura independiente */
+    border-left: 4px solid var(--accent-color);
     overflow: hidden;
 }
 
 .card-proyecto:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px var(--card-shadow);
-    border-top: 3px solid var(--accent-color);
+    box-shadow: 0 8px 30px var(--hover-shadow);
 }
 
 .proyecto-imagen {
@@ -85,6 +92,17 @@
     flex-grow: 1;
 }
 
+.badge-laboral {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 .card-proyecto h3 {
     color: var(--accent-color);
     margin-bottom: 15px;
@@ -98,19 +116,24 @@
 }
 
 .btn-leer-mas {
-    background: none;
-    border: none;
-    color: var(--accent-color);
-    font-weight: bold;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: 2px solid var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
-    padding: 0;
-    margin-top: 8px;
-    font-size: 0.95rem;
-    display: block; /* Esto obliga al botón a saltar a la siguiente línea */
+    margin-top: 12px;
+    font-size: 0.9rem;
+    display: block; /* Obliga al botón a hacer un salto de línea */
+    width: fit-content; /* Mantiene el tamaño del botón ajustado a su contenido */
+    transition: all 0.3s ease;
 }
 
 .btn-leer-mas:hover {
-    text-decoration: underline;
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--hover-shadow);
 }
 
 .tags {
@@ -206,7 +229,7 @@ body.light-mode .tag {
 .btn-demo:hover {
     opacity: 0.9;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px var(--card-shadow);
+    box-shadow: 0 4px 15px var(--hover-shadow);
 }
 
 /* Invertir el color del ícono de GitHub en el botón cuando esté en modo claro */

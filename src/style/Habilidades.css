@@ -1,7 +1,22 @@
+.habilidades-seccion {
+    width: 100%;
+    padding: 60px 0;
+}
+
 .habilidades-container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 40px 30px;
+    background-color: var(--header-bg);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-mode .habilidades-container {
+    border-color: rgba(0, 0, 0, 0.12);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.16);
 }
 
 .titulo-seccion {
@@ -11,41 +26,90 @@
     margin-bottom: 40px;
 }
 
-.habilidades-grid {
+.habilidades-categorias {
     display: grid;
-    /* Crea una grilla flexible donde las tarjetas miden mínimo 120px */
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 20px;
-    justify-items: center;
+    grid-template-columns: 1fr;
+    gap: 30px;
 }
 
-.habilidad-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 20px;
+@media (min-width: 768px) {
+    .habilidades-categorias {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.categoria-card {
     background-color: var(--header-bg);
     border-radius: 15px;
+    padding: 30px;
     box-shadow: 0 4px 15px var(--card-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
 }
 
-.habilidad-card:hover {
+body.light-mode .categoria-card {
+    background-color: var(--bg-color); /* Fondo gris-azulado para separarlo del contenedor blanco */
+    border: 1px solid rgba(0, 0, 0, 0.06); /* Borde sutil que enmarca la tarjeta */
+}
+
+.categoria-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px var(--card-shadow);
+    box-shadow: 0 10px 30px var(--hover-shadow);
 }
 
-.habilidad-icono {
-    width: 50px;
-    height: 50px;
-    transition: transform 0.3s ease;
+.categoria-titulo {
+    color: var(--accent-color);
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--card-shadow);
+    padding-bottom: 10px;
 }
 
-.habilidad-card span {
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skill-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-info:hover {
+    background-color: var(--bg-color); /* Efecto de fondo sutil al pasar el mouse */
+    transform: translateX(5px); /* Se desliza un poco hacia la derecha */
+    box-shadow: 0 4px 12px var(--hover-shadow);
+}
+
+body.light-mode .skill-info:hover {
+    background-color: rgba(80, 79, 79, 0.404); /* Efecto de oscurecimiento sutil idéntico al modo oscuro */
+    box-shadow: 0 4px 12px var(--hover-shadow);
+}
+
+.skill-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.skill-name {
     color: var(--text-color);
     font-weight: 600;
-    font-size: 0.95rem;
-    text-align: center;
+    flex-grow: 1;
+}
+
+.skill-tag {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+body.light-mode .skill-tag {
+    background-color: rgba(0, 0, 0, 0.05);
 }

@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../style/Header.css';
 
 const Header = () => {
-    const [darkMode, setDarkMode] = useState(true);
+    const [darkMode, setDarkMode] = useState(() => {
+        return localStorage.getItem('theme') !== 'light';
+    });
     const [menuOpen, setMenuOpen] = useState(false);
 
+    useEffect(() => {
+        if (!darkMode) {
+            document.body.classList.add('light-mode');
+        }
+    }, []);
+
     const toggleTheme = () => {
-        setDarkMode(!darkMode);
-        document.body.classList.toggle('light-mode');
+        const newMode = !darkMode;
+        setDarkMode(newMode);
+        localStorage.setItem('theme', newMode ? 'dark' : 'light');
+        
+        if (newMode) document.body.classList.remove('light-mode');
+        else document.body.classList.add('light-mode');
     };
 
     return (

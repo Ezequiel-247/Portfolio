@@ -14,13 +14,34 @@ export const iconos = {
     "Sequelize": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg",
     "Sqlite": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",
     "PostgreSQL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    "HTML5": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
     "CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-    "Jinja": "https://cdn.simpleicons.org/jinja/B41717"
+    "Jinja": "https://cdn.simpleicons.org/jinja/B41717",
+    "Docker": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+};
+
+export const habilidadesNiveles = {
+    "Backend & Base de Datos": [
+        { nombre: "Python", etiqueta: "Producción — INTA" },
+        { nombre: "Flask", etiqueta: "Producción — INTA" },
+        { nombre: "MongoDB", etiqueta: "Producción — INTA" },
+        { nombre: "Node.js", etiqueta: "Proyectos full stack" },
+        { nombre: "PostgreSQL", etiqueta: "Proyectos full stack" },
+        { nombre: "Docker", etiqueta: "Nivel principiante" }
+    ],
+    "Frontend & Diseño": [
+        { nombre: "React", etiqueta: "Proyectos full stack" },
+        { nombre: "JavaScript", etiqueta: "Frontend y backend" },
+        { nombre: "HTML5", etiqueta: "Estructura web" },
+        { nombre: "CSS", etiqueta: "Layouts responsive" },
+        { nombre: "Jinja", etiqueta: "Producción — INTA" }
+    ]
 };
 
 export const listaProyectos = [
     {
-       titulo: "INTA - Desarrollo Backend",
+       titulo: "Sistema de gestión hídrica — INTA",
+        tipo: "laboral",
         imagen: intaImg,
         esFoto: true,
         descripcion: 
@@ -39,7 +60,7 @@ export const listaProyectos = [
         },
     },
     {
-        titulo: "Netflix Clone - Full Stack",
+        titulo: "Plataforma de streaming — Full Stack",
         imagen: homeNetflixImg,
         descripcion: 
             "Este proyecto es una simulación de la experiencia de usuario de Netflix, " +

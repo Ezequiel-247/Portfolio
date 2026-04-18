@@ -7,6 +7,7 @@
   --text-color: #ffffff;
   --header-bg: #070a0e;
   --card-shadow: #131212;
+  --hover-shadow: #080808; /* Sombra más fuerte para los efectos de hover en oscuro */
   --accent-color: #62c0f7;
   --btn-bg: #a8adb1;
   --btn-hover: #488db6;
@@ -14,13 +15,14 @@
 
 /* Variables para el Modo Claro */
 body.light-mode {
-  --bg-color: #f4f4f4;
+  --bg-color: #f0f6fa; /* Un gris-azulado muy suave y fresco que conecta con el tema oscuro y tu color de acento */
   --text-color: #1a1a1a;
-  --header-bg: #ffffff;
-  --card-shadow: #131212d7;
-  --accent-color: #000000;
-  --btn-bg: #e4e6eb;
-  --btn-hover: #515152;
+  --header-bg: #ffffff; /* Blanco puro para tarjetas y secciones */
+  --card-shadow: rgba(0, 0, 0, 0.06); /* Sombra súper suave para que las tarjetas resalten elegantemente */
+  --hover-shadow: rgba(0, 0, 0, 0.18); /* Sombra intensa en modo claro para que el efecto de flotar se note */
+  --accent-color: #030f14; /* Azul vibrante y moderno, más claro pero con excelente lectura sobre blanco */
+  --btn-bg: #e5e7eb;
+  --btn-hover: #d1d5db;
 }
 
 html {
@@ -45,4 +47,14 @@ body {
 
 h1, h2, h3, h4, h5, h6, a, button {
   font-family: 'Poppins', sans-serif;
+}
+
+/* --- CORRECCIÓN PARA ÍCONOS OSCUROS --- */
+/* El ícono de Flask de Devicon es negro por defecto. Lo invertimos a blanco en modo oscuro. */
+img[alt="Flask"] {
+  filter: invert(1);
+}
+
+body.light-mode img[alt="Flask"] {
+  filter: none;
 }

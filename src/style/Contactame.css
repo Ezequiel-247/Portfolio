@@ -1,14 +1,7 @@
 /* --- SECCIÓN DE CONTACTO (FOOTER) --- */
 .contacto-seccion {
     padding: 60px 20px 20px;
-    background-color: var(--header-bg);
-    margin-top: 60px;
-    border-top: 1px solid var(--card-shadow);
-}
-
-/* En modo claro, oscurecemos un poco el fondo para diferenciarlo del resto y crear profundidad */
-body.light-mode .contacto-seccion {
-    background-color: #c9c7c7;
+    background-color: var(--bg-color);
 }
 
 .contacto-container {
@@ -17,6 +10,14 @@ body.light-mode .contacto-seccion {
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
+    padding: 30px;
+    background-color: var(--header-bg);
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+body.light-mode .contacto-container {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
 }
 
 /* Tablet y PC: 2 columnas */
@@ -37,13 +38,13 @@ body.light-mode .contacto-seccion {
 
 .contactame-titulo {
     font-size: 2.5rem;
-    color: var(--accent-color);
+    color: var(--accent-color); /* Dinámico: Celeste en oscuro, Azul en claro */
     margin-bottom: 10px;
 }
 
 .contacto-texto {
     font-size: 1.1rem;
-    color: var(--text-color);
+    color: var(--text-color); /* Dinámico: Blanco en oscuro, Oscuro en claro */
     line-height: 1.6;
     opacity: 0.9;
 }
@@ -65,20 +66,26 @@ body.light-mode .contacto-seccion {
     transform: translateY(-3px);
 }
 
-/* Invertir color en modo claro si es necesario (igual que en Main) */
-body.light-mode .redes-sociales-contacto .icono {
-    filter: invert(1);
-}
-
 /* --- FORMULARIO (DERECHA) --- */
 .formulario-contacto {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: var(--bg-color);
+    background-color: var(--header-bg); /* El formulario es una tarjeta blanca */
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 4px 20px var(--card-shadow);
+    border: 1px solid var(--text-color);
+    box-shadow: 0 30px 25px rgba(0, 0, 0, 0.55);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+body.light-mode .formulario-contacto {
+    border-color: rgba(19, 18, 18, 0.705);
+    box-shadow: 0px 30px 35px var(--hover-shadow);
+}
+
+.formulario-contacto:hover {
+    transform: translateY(-5px);
 }
 
 .campo {
@@ -89,25 +96,44 @@ body.light-mode .redes-sociales-contacto .icono {
 
 .campo label {
     font-weight: 600;
+    color: var(--accent-color);
+}
+
+.captcha-context {
+    font-size: 0.85rem;
     color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 4px;
 }
 
 .campo input,
 .campo textarea {
     padding: 12px;
     border-radius: 8px;
-    border: 1px solid var(--card-shadow);
-    background-color: var(--header-bg);
+    border: 1px solid var(--text-color);
+    background-color: var(--bg-color); /* Los inputs se hunden sutilmente */
     color: var(--text-color);
     font-family: inherit;
     outline: none;
-    transition: border-color 0.3s;
+    box-shadow: inset 0 0 0 20px rgba(255, 255, 255, 0);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+body.light-mode .campo input,
+body.light-mode .campo textarea {
+    border-color: rgba(0, 0, 0, 0.37);
+    box-shadow: inset 0 0 0 10px rgba(0, 0, 0, 0.10);
 }
 
 .campo input:focus,
 .campo textarea:focus {
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px var(--card-shadow); /* Mejora accesibilidad */
+    box-shadow: 0 0 0 3px rgba(98, 192, 247, 0.15); /* Sombra luminosa en modo oscuro */
+}
+
+body.light-mode .campo input:focus,
+body.light-mode .campo textarea:focus {
+    box-shadow: 0 0 0 3px rgba(12, 63, 88, 0.15); /* Sombra elegante azul en modo claro */
 }
 
 .btn-enviar {
@@ -126,6 +152,7 @@ body.light-mode .redes-sociales-contacto .icono {
 .btn-enviar:hover {
     opacity: 0.9;
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--hover-shadow); /* Sombra estética al pasar el mouse */
 }
 
 .btn-enviar:disabled {
@@ -154,14 +181,8 @@ body.light-mode .redes-sociales-contacto .icono {
     text-align: center;
     margin-top: 50px;
     padding-top: 20px;
-    border-top: 1px solid var(--card-shadow);
-    color: var(--text-color);
+    border-top: 1px solid var(--card-shadow); /* Borde dinámico */
+    color: var(--text-color); /* Texto del copyright dinámico */
     font-size: 0.9rem;
     opacity: 0.7;
-}
-
-/* Asegurar que el copyright sea negro sólido en modo claro */
-body.light-mode .footer-bottom {
-    color: #000000;
-    opacity: 1;
 }

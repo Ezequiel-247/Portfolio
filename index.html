@@ -1,12 +1,25 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./src/img/LOGO_EZEQUIEL.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO y Open Graph (Para previsualizaciones en LinkedIn, WhatsApp, etc.) -->
+    <meta name="description" content="Portafolio de Eduardo Ezequiel Ortiz, Desarrollador Full-Stack especializado en Backend con experiencia en Node.js, Python, Flask y bases de datos." />
+    <meta property="og:title" content="Ezequiel Ortiz | Desarrollador Full-Stack" />
+    <meta property="og:description" content="Desarrollador de software con experiencia en el INTA creando soluciones Backend robustas." />
+    <!-- Reemplaza la URL de abajo con el link real de tu imagen cuando subas tu página -->
+    <meta property="og:image" content="./src/img/LOGO_EZEQUIEL.png" />
+    
     <title>Ezequiel Ortiz | Desarrollador Full Stack</title>
   </head>
   <body>
+    <script>
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+      }
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

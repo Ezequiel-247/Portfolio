@@ -1,18 +1,30 @@
 import React from 'react';
-import { iconos } from '../data/proyectos';
+import { iconos, habilidadesNiveles } from '../data/proyectos';
 import '../style/Habilidades.css';
 
 const Habilidades = () => {
     return (
-        <section className="habilidades-container" id="habilidades">
-            <h2 className="titulo-seccion">Stack Tecnológico</h2>
-            <div className="habilidades-grid">
-                {Object.entries(iconos).map(([nombre, url]) => (
-                    <div key={nombre} className="habilidad-card">
-                        <img src={url} alt={nombre} className="habilidad-icono" loading="lazy" />
-                        <span>{nombre}</span>
-                    </div>
-                ))}
+        <section className="habilidades-seccion" id="habilidades">
+            <div className="habilidades-container">
+                <h2 className="titulo-seccion">Stack Tecnológico</h2>
+                <div className="habilidades-categorias">
+                    {Object.entries(habilidadesNiveles).map(([categoria, skills]) => (
+                        <div key={categoria} className="categoria-card">
+                            <h3 className="categoria-titulo">{categoria}</h3>
+                            <div className="skills-list">
+                                {skills.map((skill) => (
+                                    <div key={skill.nombre} className="skill-item">
+                                        <div className="skill-info">
+                                            {iconos[skill.nombre] && <img src={iconos[skill.nombre]} alt={skill.nombre} className="skill-icon" loading="lazy" />}
+                                            <span className="skill-name">{skill.nombre}</span>
+                                            <span className="skill-tag">{skill.etiqueta}</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );

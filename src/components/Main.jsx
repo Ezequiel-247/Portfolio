@@ -21,11 +21,13 @@ const Main = () =>{
                     </div>
                 </div>
                 <div className="info-container">
-                    <h1 className="nombre">Eduardo Ezequiel Ortiz</h1>
-                    <h2 className="puesto">Desarrollador Full-Stack</h2>
+                    <span className="eyebrow">🟢 Disponible para nuevos proyectos</span>
+                    <h1 className="nombre">Ezequiel Ortiz — Backend Developer</h1>
+                    <h2 className="puesto">Desarrollé software de gestión hídrica para el INTA con Python, Flask y MongoDB. Busco mi próximo desafío técnico.</h2>
                     
                     <div className="botones-container">
                         <a href="Ezequiel Ortiz Cv.pdf" download="Ezequiel Ortiz Cv.pdf" className="btn btn-primary" title='Descargar Curriculum'>Descargar CV</a>
+                        <a href="#contacto" className="btn btn-secondary">Contáctame</a>
                     </div>
 
                     <div className="sobre-mi" id="sobre-mi">

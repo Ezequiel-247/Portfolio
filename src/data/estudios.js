@@ -6,7 +6,7 @@ export const estudios = [
             institucion: "Universidad Nacional de Hurlingham (UNAHUR)",
             logo: unahurLogo,
             estado: "Graduado",
-            promedio: "Promedio: 7.94",
+            promedio: "Promedio: 7.94 | Titulo: En trámite",
             descripcion: "Durante mi formación adquirí sólidos conocimientos en programación, diseño de algoritmos,"+
             " gestión de bases de datos (relacionales y no relacionales), programación orientada a objetos, estructuras de datos"+
             " y arquitectura de sistemas."
