@@ -45,15 +45,23 @@ export const listaProyectos = [
         imagen: intaImg,
         esFoto: true,
         descripcion: 
-            "Durante mi experiencia en el INTA, desarrollé un producto de software Backend diseñado para la " +
+            "Durante mi experiencia en INTA, desarrollé un producto de software Backend diseñado para la " +
             "gestión, procesamiento y visualización de datos provenientes de freatígrafos y limnígrafos. " +
-            "Implementé una arquitectura estructurada con Flask y Python y, a pedido del cliente, utilicé la " +
-            "base de datos no relacional MongoDB para organizar y filtrar la información de manera eficiente, " +
+            "Implementé una arquitectura estructurada con el siguiente starck tecnológico a pedido del cliente:  Flask, Python, " +
+            "JavaScript, Jinja2 (HTML5 que viene por defecto con Flask) y utilizamos MongoDb como base de datos no relacional " +
+            "para organizar y filtrar la información de manera eficiente, " +
             "permitiendo el manejo de grandes volúmenes de información capturada por medidores de aguas subterráneas. " +
             "Asimismo, diseñé módulos de exportación (PDF/Excel) y herramientas de graficación, optimizando el " +
             "análisis técnico realizado por los ingenieros del Instituto de Clima y Agua. Para completar el ecosistema, " +
             "desarrollé una interfaz de consulta mediante una tabla dinámica que permitía la visualización y descarga " +
-            "de registros en tiempo real, interactuando directamente con el Backend a través de peticiones optimizadas.",
+            "de registros en tiempo real, interactuando directamente con el Backend a través de peticiones optimizadas. " +
+            "Por terminos de contratos y confidencialidad no puedo compartir el código ni el repositorio de este proyecto, " +
+            "pero estoy disponible para discutir los detalles técnicos y la arquitectura implementada en entrevistas o reuniones técnicas.",
+        referencia:{
+            Nombre: "Sofía Havrylenko",
+            Puesto: "Ingeniera en INTA",
+            Contacto: "+5491169528278"
+        },
         tecnologias: {
             frontend: ["Jinja", "CSS"],
             backend: ["JavaScript","Node.js", "Python", "Flask", "MongoDB"]

@@ -27,7 +27,6 @@ const Main = () =>{
                     
                     <div className="botones-container">
                         <a href="Ezequiel Ortiz Cv.pdf" download="Ezequiel Ortiz Cv.pdf" className="btn btn-primary" title='Descargar Curriculum'>Descargar CV</a>
-                        <a href="#contacto" className="btn btn-secondary">Contáctame</a>
                     </div>
 
                     <div className="sobre-mi" id="sobre-mi">
