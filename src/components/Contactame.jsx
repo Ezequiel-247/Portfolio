@@ -1,91 +1,24 @@
-import { useState, useEffect } from 'react';
 import '../style/Contactame.css';
 import linkedinIcon from '../img/linkedin.svg';
 import githubIcon from '../img/github.svg';
+import { useLanguage } from '../context/LanguageContext.jsx';
+import { useContactForm } from '../hooks/useContactForm.js';
 
 const Contactame = () =>{
-    const [estado, setEstado] = useState({
-        enviando: false,
-        enviado: false,
-        error: null
-    });
-
-    // Estado para el Captcha Matemático
-    const [captcha, setCaptcha] = useState({ num1: 0, num2: 0, respuesta: '' });
-
-    // Generar números aleatorios al cargar la página
-    useEffect(() => {
-        generarCaptcha();
-    }, []);
-
-    const generarCaptcha = () => {
-        setCaptcha({
-            num1: Math.floor(Math.random() * 10) + 1, // Número entre 1 y 10
-            num2: Math.floor(Math.random() * 10) + 1,
-            respuesta: ''
-        });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setEstado({ ...estado, enviando: true, error: null });
-
-        const form = e.target;
-        const data = new FormData(form);
-        const email = data.get('email');
-
-        // 1. Validación de formato (Regex estricto)
-        // Exige: texto + @ + texto + . + extensión de 2 a 6 letras
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        
-        if (!emailRegex.test(email)) {
-            setEstado({ enviando: false, enviado: false, error: "Por favor, ingresa un email válido." });
-            return;
-        }
-
-        // 2. Validación extra: Evitar correos sospechosamente cortos (ej: a@hotmail.com)
-        if (email.split('@')[0].length < 3) {
-            setEstado({ enviando: false, enviado: false, error: "El nombre de usuario del correo es muy corto." });
-            return;
-        }
-
-        // 3. Validación de Seguridad (Captcha)
-        if (parseInt(captcha.respuesta) !== captcha.num1 + captcha.num2) {
-            setEstado({ enviando: false, enviado: false, error: "Respuesta incorrecta. Inténtalo de nuevo." });
-            return;
-        }
-
-        try {
-            const response = await fetch("https://formspree.io/f/xlgggbbn", {
-                method: "POST",
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                form.reset();
-                setEstado({ enviando: false, enviado: true, error: null });
-                generarCaptcha(); // Generar nueva suma para el próximo mensaje
-                // Ocultar mensaje de éxito después de 5 segundos
-                setTimeout(() => setEstado(prev => ({ ...prev, enviado: false })), 5000);
-            } else {
-                setEstado({ enviando: false, enviado: false, error: "Hubo un error al enviar el mensaje." });
-            }
-        } catch (error) {
-            console.error("Error al enviar el formulario:", error);
-            setEstado({ enviando: false, enviado: false, error: "Error de conexión. Inténtalo más tarde." });
-        }
-    };
+    const { language } = useLanguage();
+    
+    // Consumimos la lógica desde nuestro Custom Hook
+    const { estado, captcha, setCaptcha, handleSubmit } = useContactForm();
 
     return(
         <footer id="contacto" className="contacto-seccion">
             <div className="contacto-container">
                 <div className="contacto-info">
-                    <h2 className='contactame-titulo'>Contáctame</h2>
+                    <h2 className='contactame-titulo'>{language === 'es' ? 'Contáctame' : 'Contact Me'}</h2>
                     <p className="contacto-texto">
-                        Puedes contactarme a través del siguiente formulario o mediante mis redes sociales:
+                        {language === 'es' 
+                            ? 'Puedes contactarme a través del siguiente formulario o mediante mis redes sociales:' 
+                            : 'You can contact me through the following form or via my social networks:'}
                     </p>
                     <div className="redes-sociales-contacto">
                         <a href="https://www.linkedin.com/in/eduardo-ezequiel-ortiz-7815a526b" target="_blank" rel="noopener noreferrer">
@@ -105,42 +38,44 @@ const Contactame = () =>{
                     <input type="hidden" name="_subject" value="Nuevo contacto desde tu Portafolio Web" />
 
                     <div className="campo">
-                        <label htmlFor="nombre">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" />
+                        <label htmlFor="nombre">{language === 'es' ? 'Nombre' : 'Name'}</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder={language === 'es' ? 'Tu nombre' : 'Your name'} />
                     </div>
                     <div className="campo">
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="tu@email.com" />
+                        <input type="email" id="email" name="email" required placeholder={language === 'es' ? 'tu@email.com' : 'your@email.com'} />
                     </div>
                     <div className="campo">
-                        <label htmlFor="mensaje">Mensaje</label>
-                        <textarea id="mensaje" name="mensaje" rows="5" required minLength="10" placeholder="Escribe tu mensaje aquí..."></textarea>
+                        <label htmlFor="mensaje">{language === 'es' ? 'Mensaje' : 'Message'}</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" required minLength="10" placeholder={language === 'es' ? 'Escribe tu mensaje aquí...' : 'Write your message here...'}></textarea>
                     </div>
 
                     {/* Campo de Verificación Anti-Robot */}
                     <div className="campo">
-                        <label htmlFor="captcha">Responder ¿Cuánto es {captcha.num1} + {captcha.num2}?</label>
-                        <span className="captcha-context">🛡️ Verificación anti-spam (sin Google reCAPTCHA)</span>
+                        <label htmlFor="captcha">{language === 'es' ? 'Responder ¿Cuánto es' : 'Answer: How much is'} {captcha.num1} + {captcha.num2}?</label>
+                        <span className="captcha-context">🛡️ {language === 'es' ? 'Verificación anti-spam' : 'Anti-spam verification'}</span>
                         <input 
                             type="number" 
                             id="captcha" 
                             value={captcha.respuesta}
                             onChange={(e) => setCaptcha({ ...captcha, respuesta: e.target.value })}
-                            placeholder="Escribe el resultado..." 
+                            placeholder={language === 'es' ? 'Escribe el resultado...' : 'Write the result...'} 
                             required 
                         />
                     </div>
 
                     {estado.error && <p className="mensaje-error">{estado.error}</p>}
-                    {estado.enviado && <p className="mensaje-exito">¡Mensaje enviado con éxito!</p>}
+                    {estado.enviado && <p className="mensaje-exito">{language === 'es' ? '¡Mensaje enviado con éxito!' : 'Message sent successfully!'}</p>}
 
                     <button type="submit" className="btn-enviar" disabled={estado.enviando}>
-                        {estado.enviando ? 'Enviando...' : 'Enviar Mensaje'}
+                        {estado.enviando 
+                            ? (language === 'es' ? 'Enviando...' : 'Sending...') 
+                            : (language === 'es' ? 'Enviar Mensaje' : 'Send Message')}
                     </button>
                 </form>
             </div>
             <div className="footer-bottom">
-                <p>&copy; {new Date().getFullYear()} Eduardo Ezequiel Ortiz. Todos los derechos reservados.</p>
+                <p>&copy; {new Date().getFullYear()} Eduardo Ezequiel Ortiz. {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
             </div>
         </footer>
     )

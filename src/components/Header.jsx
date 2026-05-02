@@ -1,26 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import '../style/Header.css';
+import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../hooks/useTheme';
 
 const Header = () => {
-    const [darkMode, setDarkMode] = useState(() => {
-        return localStorage.getItem('theme') !== 'light';
-    });
     const [menuOpen, setMenuOpen] = useState(false);
 
-    useEffect(() => {
-        if (!darkMode) {
-            document.body.classList.add('light-mode');
-        }
-    }, []);
-
-    const toggleTheme = () => {
-        const newMode = !darkMode;
-        setDarkMode(newMode);
-        localStorage.setItem('theme', newMode ? 'dark' : 'light');
-        
-        if (newMode) document.body.classList.remove('light-mode');
-        else document.body.classList.add('light-mode');
-    };
+    // Obtenemos el idioma y la función para cambiarlo desde nuestro Contexto
+    const { language, toggleLanguage } = useLanguage();
+    
+    // Obtenemos la lógica del tema desde nuestro Custom Hook
+    const { darkMode, toggleTheme } = useTheme();
 
     return (
     <header className="encabezado">
@@ -39,12 +29,18 @@ const Header = () => {
                 </svg>
             </button>
 
-            <a href="#inicio" onClick={() => setMenuOpen(false)}>Sobre Mi</a>
-            <a href="#educacion" onClick={() => setMenuOpen(false)}>Educación</a>
-            <a href="#habilidades" onClick={() => setMenuOpen(false)}>Stack Tecnológico</a>
-            <a href="#proyectos" onClick={() => setMenuOpen(false)}>Mis Proyectos</a>
-            <a href="#contacto" onClick={() => setMenuOpen(false)}>Contáctame</a>
-            <button className="theme-btn" onClick={toggleTheme} title={darkMode ? "Cambiar a Modo Claro" : "Cambiar a Modo Oscuro"}>
+            <a href="#inicio" onClick={() => setMenuOpen(false)}>{language === 'es' ? 'Sobre Mi' : 'About Me'}</a>
+            <a href="#educacion" onClick={() => setMenuOpen(false)}>{language === 'es' ? 'Educación' : 'Education'}</a>
+            <a href="#habilidades" onClick={() => setMenuOpen(false)}>{language === 'es' ? 'Stack Tecnológico' : 'Tech Stack'}</a>
+            <a href="#proyectos" onClick={() => setMenuOpen(false)}>{language === 'es' ? 'Mis Proyectos' : 'My Projects'}</a>
+            <a href="#contacto" onClick={() => setMenuOpen(false)}>{language === 'es' ? 'Contáctame' : 'Contact Me'}</a>
+            
+            {/* Botón para cambiar de idioma */}
+            <button className="lang-btn" onClick={toggleLanguage} title="Cambiar Idioma / Change Language">
+                {language.toUpperCase()}
+            </button>
+
+            <button className="theme-btn" onClick={toggleTheme} title={darkMode ? (language === 'es' ? "Cambiar a Modo Claro" : "Switch to Light Mode") : (language === 'es' ? "Cambiar a Modo Oscuro" : "Switch to Dark Mode")}>
                 {darkMode ? (
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>

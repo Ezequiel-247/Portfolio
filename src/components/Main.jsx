@@ -3,14 +3,19 @@ import linkedinIcon from '../img/linkedin.svg';
 import githubIcon from '../img/github.svg';
 import { textoSobreMi } from '../data/sobreMi';
 import '../style/Main.css';
+import { useLanguage } from '../context/LanguageContext';
 
 const Main = () =>{
+    const { language } = useLanguage();
+    
+    const textosActuales = textoSobreMi[language];
+
     return (
         <main className="main-container" id="inicio">
             <section className="perfil-seccion">
                 <div className="imagen-container">
                     <img className="perfil-img" src={perfilImg} alt="Eduardo Ezequiel Ortiz" />
-                    <h3>Mis Redes Sociales</h3>
+                    <h3>{language === 'es' ? 'Mis Redes Sociales' : 'My Social Networks'}</h3>
                     <div className="redes-sociales">
                         <a href="https://www.linkedin.com/in/eduardo-ezequiel-ortiz-7815a526b" target="_blank" rel="noopener noreferrer">
                             <img className='icono' src={linkedinIcon} alt="LinkedIn" title='Mi Linkedin'/>
@@ -21,21 +26,21 @@ const Main = () =>{
                     </div>
                 </div>
                 <div className="info-container">
-                    <span className="eyebrow">🟢 Disponible para nuevos proyectos</span>
-                    <h1 className="nombre">Ezequiel Ortiz — Backend Developer</h1>
-                    <h2 className="puesto">Desarrollé software de gestión hídrica para el INTA con Python, Flask y MongoDB. Busco mi próximo desafío técnico.</h2>
-                    
+                    <span className="eyebrow">
+                        {language === 'es' ? '🟢 Disponible para nuevos proyectos' : '🟢 Available for new projects'}
+                    </span>
+                    <h1 className="nombre">Ezequiel Ortiz — Fullstack Developer</h1>
                     <div className="botones-container">
-                        <a href="Ezequiel Ortiz Cv.pdf" download="Ezequiel Ortiz Cv.pdf" className="btn btn-primary" title='Descargar Curriculum'>Descargar CV</a>
+                        <a href="Ezequiel Ortiz Cv.pdf" download="Ezequiel Ortiz Cv.pdf" className="btn btn-primary" title='Descargar Curriculum'>{language === 'es' ? 'Descargar CV' : 'Download CV'}</a>
                     </div>
 
                     <div className="sobre-mi" id="sobre-mi">
-                        <h3>Sobre Mí</h3>
+                        <h3>{language === 'es' ? 'Sobre Mí' : 'About Me'}</h3>
                         <p>
-                            {textoSobreMi.map((parrafo, index) => (
+                            {textosActuales.map((parrafo, index) => (
                                 <span key={index}>
                                     {parrafo}
-                                    {index < textoSobreMi.length - 1 && <><br /><br /></>}
+                                    {index < textosActuales.length - 1 && <><br /><br /></>}
                                 </span>
                             ))}
                         </p>

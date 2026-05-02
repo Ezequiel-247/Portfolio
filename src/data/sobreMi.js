@@ -1,10 +1,18 @@
-export const textoSobreMi = [
-    "Hola soy Eduardo Ezequiel Ortiz, vivo en Buenos Aires, Argentina. "+
-    "Recientemente me gradué como Técnico Universitario en Programación en la Universidad Nacional de Hurlingham (UNAHUR)" +
-    ", actualmente estoy cursando la Licenciatura en Informatica (UNAHUR)."+
-    " Constantemente estoy practicando, puliendo e investigando sobre habilidades de programación y desarrollo de software"+
-    " para poder aplicarlas en mis proyectos personales y particulares"+
-    " aportando código limpio, eficiente y enfocado en el impacto real."+
-    " Muchas gracias por visitar mi portfolio, espero que te guste lo que ves y no dudes en contactarme"+
-    " para cualquier consulta o proyecto en el que pueda colaborar."
-];
+export const textoSobreMi = {
+    es: [
+        "• Vivo en Buenos Aires, Argentina.",
+        "• Técnico Universitario en Programación graduado de la Universidad Nacional de Hurlingham (UNAHUR).",
+        "• Actualmente cursando la Licenciatura en Informática en la Universidad Nacional de Hurlingham (UNAHUR).",
+        "• Apasionado por desarrollar software con código limpio, eficiente y de impacto real.",
+        "• En constante aprendizaje, aplicando nuevas tecnologías en proyectos reales.",
+        "• ¡Siempre abierto a nuevas oportunidades y proyectos colaborativos!"
+    ],
+    en: [
+        "• Based in Buenos Aires, Argentina.",
+        "• University Technician in Programming graduated from Universidad Nacional de Hurlingham (UNAHUR).",
+        "• Currently studying for a Bachelor's Degree in Computer Science at UNAHUR.",
+        "• Passionate about developing software with clean, efficient code and real-world impact.",
+        "• Constantly learning and applying new technologies in real-world projects.",
+        "• Always open to new opportunities and collaborative projects!"
+    ]
+};

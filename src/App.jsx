@@ -4,17 +4,18 @@ import Proyectos from './components/Proyectos';
 import Contactame from './components/Contactame';
 import Habilidades from './components/Habilidades';
 import Educacion from './components/Educacion';
+import { LanguageProvider } from './context/LanguageContext.jsx';
 
 function App() {
     return (
-        <>
-        <Header />
-        <Main />
-        <Educacion />
-        <Habilidades />
-        <Proyectos />
-        <Contactame />
-        </>
+        <LanguageProvider>
+            <Header />
+            <Main />
+            <Educacion />
+            <Habilidades />
+            <Proyectos />
+            <Contactame />
+        </LanguageProvider>
     );
 }
 
