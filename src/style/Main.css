@@ -1,190 +1,237 @@
+/* ============================================================
+   MAIN / HERO — Kinetic Noir
+   ============================================================ */
+
 .main-container {
-    max-width: 1200px; /* Ampliamos el contenedor para que la foto tenga margen para ir más a la izquierda */
-    margin: 0 auto;
-    padding: 40px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 120px 24px 80px; /* compensa la pill nav */
 }
 
+/* ── LAYOUT HERO ───────────────────────────────────────────── */
 .perfil-seccion {
-    display: flex;
-    flex-direction: column; /* Móvil: Vertical (uno arriba del otro) */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 80px; /* Espacio hasta la sección de educación */
+}
+
+@media (min-width: 768px) {
+  .perfil-seccion {
+    grid-template-columns: 1fr 2fr; /* Columna izquierda más pequeña */
+    gap: 64px;
     align-items: center;
-    gap: 30px;
-    margin-bottom: 60px;
+  }
 }
 
+/* Columna izquierda (Foto y redes) */
+.perfil-col-izquierda {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* ── FOTO ──────────────────────────────────────────────────── */
 .imagen-container {
-    flex-shrink: 0;
-    text-align: center; /* Centra la foto, el título y los íconos */
+  position: relative;
+  text-align: center;
 }
 
-.imagen-container h3 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    color: var(--text-color);
-    font-weight: 500;
-    opacity: 0.9;
+/* Glow detrás de la foto */
+.imagen-container::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(ellipse, var(--accent-glow-md), transparent 70%); /* Adjusted gradient spread */
+  border-radius: 50%;
+  filter: blur(24px); /* Slightly less blur */
+  z-index: 0;
+  opacity: 0.5; /* Default opacity */
+  transition: opacity 0.4s ease-in-out;
 }
 
-.redes-sociales {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+.imagen-container:hover::before {
+  opacity: 0.75; /* Hover effect for glow */
 }
 
 .perfil-img {
-    width: 260px; /* Un poquito más grande también en móvil */
-    height: 260px;
-    max-width: 100%;
-    object-fit: cover; /* Evita que la foto se deforme */
-    border-radius: 50%; /* Hace la foto circular (muy moderno) */
-    border: 4px solid var(--accent-color);
-    box-shadow: 0 0 30px var(--card-shadow);
-    transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1.5px solid var(--card-border);
+  box-shadow:
+    0 0 0 8px var(--accent-glow), /* Glow dinámico adaptado a cada modo */
+    0 20px 60px rgba(0,0,0,0.5);
+  filter: saturate(60%); /* Color desaturado por defecto */
+  transition: filter 0.7s ease, transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
 .perfil-img:hover {
-    transform: scale(1.05);
+  filter: saturate(100%); /* Color y brillo original al pasar el cursor */
+  transform: scale(1.03);
+  border-color: var(--accent-color); /* Accent border on hover */
+  box-shadow: 0 0 0 8px var(--accent-glow-md), 0 0 40px var(--accent-glow-md), 0 24px 70px rgba(0,0,0,0.6);
 }
 
-.info-container {
-    text-align: center; /* Móvil: Texto centrado */
+/* Contenedor de redes y su título */
+.redes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
-.nombre {
-    font-size: 2.5rem;
-    color: var(--accent-color);
-    margin-bottom: 10px;
+.redes-titulo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
 }
 
-.puesto {
-    font-size: 1.5rem;
-    color: var(--text-color);
-    margin-bottom: 20px;
-    font-weight: 500;
+/* Redes sociales */
+/* Moved social media to info-container */
+.redes-sociales-hero {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
 }
 
-.eyebrow {
-    display: inline-block;
-    background-color: rgba(40, 167, 69, 0.15);
-    color: #28a745;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-}
-
-.icono{
-    width: 30px;
-    height: 30px;
-    transition: transform 0.2s;
+.icono {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.25s, opacity 0.25s;
+  opacity: 0.7;
 }
 
 .icono:hover {
-    transform: scale(1.1);
+  transform: translateY(-3px) scale(1.1);
+  opacity: 1;
 }
 
 body.light-mode .icono {
-    filter: invert(1);
+  filter: brightness(0); /* Aplica el mismo arreglo para las redes del inicio */
 }
 
-/* --- Botones de Acción (CV y Contacto) --- */
+/* ── TEXTO HERO ────────────────────────────────────────────── */
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Espacio entre título, párrafo y botón */
+  text-align: center; /* Centrado en móvil */
+}
+
+@media (min-width: 768px) {
+  .info-container {
+    text-align: left;
+  }
+}
+
+/* Nombre — tipografía grande editorial */
+.nombre {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem); /* Tamaño reducido como se solicitó */
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--text-color);
+  margin: 0;
+
+  /* Gradient sutil en el nombre */
+  background: linear-gradient(135deg, var(--text-color) 60%, var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Tagline */
+.puesto {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  font-weight: 400;
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+
+/* ── BOTONES ───────────────────────────────────────────────── */
 .botones-container {
-    display: flex;
-    gap: 15px;
-    justify-content: center; /* Centrado en móvil */
-    margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px; /* Espacio sobre el botón */
+}
+
+@media (min-width: 768px) {
+  .botones-container { justify-content: flex-start; }
 }
 
 .btn {
-    padding: 10px 25px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    font-size: 1rem;
+  padding: 12px 32px; /* Slightly larger padding */
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .btn-primary {
-    background-color: var(--accent-color);
-    color: var(--bg-color); /* Texto oscuro sobre fondo brillante para contraste */
-    border: 2px solid var(--accent-color);
+  background: var(--accent-color);
+  color: #020407;
+  border: 1.5px solid var(--accent-color);
+  box-shadow: 0 0 20px var(--accent-glow);
 }
 
 .btn-primary:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
+  box-shadow: 0 0 30px var(--accent-glow-md), 0 4px 16px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
-    background-color: transparent;
-    color: var(--text-color);
-    border: 2px solid var(--accent-color);
+  background: transparent;
+  color: var(--text-color);
+  border: 1.5px solid var(--card-border);
 }
 
 .btn-secondary:hover {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  box-shadow: 0 0 16px var(--accent-glow);
+  transform: translateY(-2px);
 }
 
+/* ── SOBRE MÍ ──────────────────────────────────────────────── */
 .sobre-mi {
-    margin-top: 30px;
-    padding: 30px 30px 30px 20px; 
-    border-radius: 25px;
-    background-color: var(--header-bg);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.24);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-}
-
-body.light-mode .sobre-mi {
-    border-color: rgba(0, 0, 0, 0.13);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 20);
-    background-color: #ffffff8c;
-}
-
-.sobre-mi h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: var(--text-color);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.8;
+  /* Ya no necesita estilos propios, el contenedor es .info-container */
 }
 
 .sobre-mi p {
-    color: var(--text-color);
-    line-height: 1.6;
+  font-size: 1rem; /* Slightly larger */
+  color: var(--text-color);
+  line-height: 1.7; /* Adjusted line-height */
+  max-width: 65ch; /* Ancho ideal para lectura */
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em; /* Espacio entre párrafos (spans) */
 }
 
-/* --- Diseño para PC (Pantallas mayores a 768px) --- */
+.sobre-mi-parrafo {
+  display: block;
+}
+
 @media (min-width: 768px) {
-    .perfil-seccion {
-        flex-direction: row; /* Lado a lado */
-        align-items: center; /* Centrados verticalmente */
-        justify-content: flex-start; /* Aseguramos que se pegue bien a la izquierda */
-        text-align: left;    /* Texto alineado a la izquierda */
-        gap: 80px; /* Aumentamos un poco más la separación */
-    }
-
-    .perfil-img {
-        width: 360px; /* Aún más grande para que gane mucho más protagonismo */
-        height: 360px;
-    }
-
-    .info-container {
-        text-align: left;
-        flex: 1; /* Obliga al texto a expandirse hacia la derecha, forzando a la foto a anclarse totalmente a la izquierda */
-    }
-
-    .botones-container {
-        justify-content: flex-start; /* Alineado a la izquierda en PC */
-    }
-
-    /* Mueve físicamente la tarjeta Sobre Mí hacia la izquierda en PC */
-    .sobre-mi {
-        margin-left: -20px; /* Hazlo más negativo (-30px o -40px) si quieres desplazarla aún más */
-        margin-right: 20px; /* Compensa el margen para que no se deforme a la derecha */
-    }
+  .sobre-mi p {
+    margin: 0; /* Remove centering on desktop */
+  }
 }

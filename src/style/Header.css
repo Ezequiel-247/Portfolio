@@ -1,145 +1,195 @@
-/* --- ESTILOS GENERALES DEL HEADER --- */
+/* ============================================================
+   HEADER — Barra de navegación Kinetic Noir
+   ============================================================ */
+
 .encabezado {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Deja todo preparado por si algún día agregas un Logo a la izquierda */
-    padding: 10px 20px;
-    background-color: var(--header-bg);
-    color: var(--text-color);
-    box-shadow: var(--accent-color) 0px 0px 10px;
-    height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra el <nav> en desktop */
+  padding: 0 28px;
+  height: 64px;
+
+  /* Estilo glassmorphism */
+  background: var(--header-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 0; /* Sin bordes redondeados */
+  border-bottom: 1px solid var(--card-border);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+
+  transition: box-shadow 0.3s, background 0.3s;
 }
 
-/* Navegación Desktop */
+/* Efecto glow suave al hacer scroll (añadido via JS si querés, o siempre activo) */
+.encabezado:hover {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2), 0 0 20px var(--accent-glow);
+}
+
+/* ── NAV LINKS ─────────────────────────────────────────────── */
 .nav {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    flex-grow: 1; /* Permite que la barra ocupe todo el ancho disponible */
+  display: flex;
+  align-items: center;
+  gap: 28px;
 }
 
 .nav a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-    font-size: 1rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: color 0.25s;
+  position: relative;
 }
 
 .nav a:hover {
-    color: var(--accent-color);
+  color: var(--text-color);
 }
 
-/* Botón de Tema */
-.theme-btn {
+/* Enlaces de color negro en el modo claro */
+body.light-mode .nav a {
+  color: var(--text-color); 
+}
+
+body.light-mode .nav a:hover {
+  color: var(--accent-color);
+}
+
+/* Underline animado en hover */
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-color);
+  transition: width 0.25s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* ── THEME & LANG BUTTONS ──────────────────────────────────── */
+.theme-btn,
+.lang-btn {
+  background: var(--btn-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, color 0.25s;
+}
+
+/* Estilo específico para el texto del botón de idioma */
+.lang-btn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.theme-btn:hover,
+.lang-btn:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  box-shadow: 0 0 12px var(--accent-glow-md);
+}
+
+/* ── HAMBURGUESA MÓVIL ─────────────────────────────────────── */
+.menu-toggle,
+.close-menu,
+.overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .encabezado {
+    justify-content: flex-start; /* Alinea el botón de hamburguesa a la izquierda */
+    height: 60px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: none;
     border: none;
     color: var(--text-color);
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    border-radius: 50%;
-    transition: background-color 0.3s;
-}
+    z-index: 1001;
+  }
 
-.theme-btn:hover {
-    background-color: var(--btn-bg);
-}
+  .nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 75%;
+    max-width: 300px;
+    height: 100vh;
+    background: rgba(8, 13, 20, 0.97);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    flex-direction: column;
+    justify-content: center;
+    gap: 36px;
+    border-right: 1px solid var(--card-border);
+    transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 1005;
+  }
 
-/* Botón de Idioma */
-.lang-btn {
-    background-color: transparent;
-    border: 2px solid var(--accent-color);
+  body.light-mode .nav {
+    background: rgba(255, 255, 255, 0.95); /* El color más claro de la paleta para el menú */
+  }
+
+  .nav.active { left: 0; }
+
+  .nav a {
+    font-size: 1.4rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+  }
+
+  .close-menu {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
     color: var(--text-color);
-    border-radius: 20px;
-    padding: 4px 12px;
-    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.85rem;
-    margin-left: auto; /* ✨ TRUCO: Empuja mágicamente este botón y el de tema hacia el extremo derecho */
-}
+  }
 
-.lang-btn:hover {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-}
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    animation: fadeIn 0.3s ease;
+  }
 
-/* Ocultar elementos móviles en Desktop */
-.menu-toggle, .close-menu, .overlay {
-    display: none;
-}
-
-/* --- ESTILOS MÓVILES (Menú Hamburguesa) --- */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        color: var(--text-color);
-        cursor: pointer;
-        z-index: 1001; /* Menor que el nav para que quede oculto al abrir */
-    }
-
-    .nav {
-        position: fixed;
-        top: 0;
-        left: -100%; /* Oculto fuera de la pantalla a la izquierda */
-        width: 70%;
-        max-width: 300px;
-        height: 100vh;
-        background-color: var(--header-bg);
-        flex-direction: column;
-        justify-content: center;
-        gap: 40px;
-        transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-        z-index: 1005; /* Mayor que el botón hamburguesa para cubrirlo */
-        box-shadow: 5px 0 15px rgba(0,0,0,0.5); /* Sombra hacia la derecha */
-    }
-
-    .nav.active {
-        left: 0;
-    }
-
-    .nav a {
-        font-size: 1.5rem;
-    }
-
-    .close-menu {
-        display: block;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: none;
-        border: none;
-        color: var(--text-color);
-        cursor: pointer;
-    }
-
-    .lang-btn {
-        margin-left: 0; /* Resetea el margen en el celular para que quede centrado en el menú móvil */
-    }
-
-    /* Fondo oscuro al abrir menú */
-    .overlay {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6);
-        z-index: 1000;
-        backdrop-filter: blur(3px);
-        animation: fadeIn 0.3s ease;
-    }
+  body.light-mode .overlay {
+    background: rgba(51, 77, 56, 0.4); /* El color más oscuro de la paleta para oscurecer el fondo */
+  }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

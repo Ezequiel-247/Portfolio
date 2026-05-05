@@ -1,16 +1,16 @@
 import { useState } from "react";
 import "../style/Proyectos.css";
 import githubIcon from '../img/github.svg';
-import { listaProyectos, iconos, descripcionProyectos } from "../data/proyectos";
+import { listaProyectos, iconos, notaTecnica } from "../data/proyectos";
 import { useLanguage } from '../context/LanguageContext';
 
 const Proyectos = () => {
     const [expandidos, setExpandidos] = useState({});
     const { language } = useLanguage();
     
-    // Obtenemos los proyectos y la descripción dependiendo del idioma
+    // Obtenemos los proyectos dependiendo del idioma
     const proyectosActuales = listaProyectos[language];
-    const textosSeccion = descripcionProyectos[language];
+    const textoNota = notaTecnica[language];
 
     const toggleLeerMas = (index) => {
         setExpandidos(prev => ({ ...prev, [index]: !prev[index] }));
@@ -21,11 +21,8 @@ const Proyectos = () => {
             <div className="proyectos-container">
                 <h2 className="titulo-proyectos">{language === 'es' ? 'Mis Proyectos' : 'My Projects'}</h2>
                 <div className="descripcion-seccion">
-                    <p>{textosSeccion.intro}</p>
-                    
                     <div className="nota-tecnica">
-                        <span className="icono-nota" aria-label="Información">ℹ️</span>
-                        <p>{textosSeccion.nota}</p>
+                        <p>{textoNota}</p>
                     </div>
                 </div>
                 <div className="grid-proyectos">
@@ -70,12 +67,20 @@ const Proyectos = () => {
                                         <div className="tech-category">
                                             <h4>Frontend</h4>
                                             <div className="tags">
-                                                {proyecto.tecnologias.frontend.map((tech, i) => (
-                                                    <span key={i} className="tag">
-                                                        {iconos[tech] && <img src={iconos[tech]} alt={tech} className="tech-icon" />}
-                                                        {tech}
-                                                    </span>
-                                                ))}
+                                                {proyecto.tecnologias.frontend.map((tech, i) => {
+                                                    const iconoValor = iconos[tech];
+                                                    const esImagen = iconoValor && iconoValor.startsWith('http');
+                                                    return (
+                                                        <span key={i} className="tag">
+                                                            {esImagen ? (
+                                                                <img src={iconoValor} alt="" className="tech-icon-img" aria-hidden="true" />
+                                                            ) : iconoValor ? (
+                                                                <span className="material-symbols-outlined tech-icon" aria-hidden="true">{iconoValor}</span>
+                                                            ) : null}
+                                                            {tech}
+                                                        </span>
+                                                    );
+                                                })}
                                             </div>
                                         </div>
                                     )}
@@ -83,12 +88,20 @@ const Proyectos = () => {
                                         <div className="tech-category">
                                             <h4>Backend</h4>
                                             <div className="tags">
-                                                {proyecto.tecnologias.backend.map((tech, i) => (
-                                                    <span key={i} className="tag">
-                                                        {iconos[tech] && <img src={iconos[tech]} alt={tech} className="tech-icon" />}
-                                                        {tech}
-                                                    </span>
-                                                ))}
+                                                {proyecto.tecnologias.backend.map((tech, i) => {
+                                                    const iconoValor = iconos[tech];
+                                                    const esImagen = iconoValor && iconoValor.startsWith('http');
+                                                    return (
+                                                        <span key={i} className="tag">
+                                                            {esImagen ? (
+                                                                <img src={iconoValor} alt="" className="tech-icon-img" aria-hidden="true" />
+                                                            ) : iconoValor ? (
+                                                                <span className="material-symbols-outlined tech-icon" aria-hidden="true">{iconoValor}</span>
+                                                            ) : null}
+                                                            {tech}
+                                                        </span>
+                                                    );
+                                                })}
                                             </div>
                                         </div>
                                     )}

@@ -1,61 +1,212 @@
-/* Importamos las fuentes desde Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap');
+/* ============================================================
+   KINETIC NOIR — index.css
+   Fuente display: Space Grotesk (Moderna y tecnológica)
+   Fuente body: Inter (Máxima legibilidad)
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
-/* Definición de variables para el tema (Por defecto Oscuro) */
+/* ── TEMA OSCURO (default) ─────────────────────────────────── */
 :root {
-  --bg-color: #030405;
-  --text-color: #ffffff;
-  --header-bg: #070a0e;
-  --card-shadow: #131212;
-  --hover-shadow: #080808; /* Sombra más fuerte para los efectos de hover en oscuro */
-  --accent-color: #62c0f7;
-  --btn-bg: #a8adb1;
-  --btn-hover: #488db6;
+  --bg-color:        #020407;
+  --bg-secondary:    #080d14;
+  --text-color:      #ffffff;
+  --text-muted:      #f4f7fa; /* Blanco aún más puro para que resalte mucho más el texto de los párrafos */
+  --header-bg:       rgba(8, 13, 20, 0.7);
+  --card-bg:         rgba(12, 18, 30, 0.55);
+  --card-border:     rgba(255, 255, 255, 0.07);
+  --card-shadow:     rgba(0, 0, 0, 0.5);
+  --accent-color:    #62c0f7;
+  --accent-glow:     rgba(98, 192, 247, 0.15);
+  --accent-glow-md:  rgba(98, 192, 247, 0.25);
+  --btn-bg:          rgba(98, 192, 247, 0.12);
+  /* Colores específicos para las tarjetas de tecnología */
+  --tech-green:      #4CAF71;
+  --tech-purple:     #9C27B0;
+  --tech-cyan:       #00BCD4;
+  --tech-orange:     #FF9800;
 }
 
-/* Variables para el Modo Claro */
+/* ── TEMA CLARO ────────────────────────────────────────────── */
 body.light-mode {
-  --bg-color: #f0f6fa; /* Un gris-azulado muy suave y fresco que conecta con el tema oscuro y tu color de acento */
-  --text-color: #1a1a1a;
-  --header-bg: #ffffff; /* Blanco puro para tarjetas y secciones */
-  --card-shadow: rgba(0, 0, 0, 0.06); /* Sombra súper suave para que las tarjetas resalten elegantemente */
-  --hover-shadow: rgba(0, 0, 0, 0.18); /* Sombra intensa en modo claro para que el efecto de flotar se note */
-  --accent-color: #030f14; /* Azul vibrante y moderno, más claro pero con excelente lectura sobre blanco */
-  --btn-bg: #e5e7eb;
-  --btn-hover: #d1d5db;
+  --bg-color:        #eef2f6; /* Fondo apenas más grisáceo para que el blanco de las cards resalte más */
+  --bg-secondary:    #e4e8f0; /* Surface-container para contrastes leves */
+  --text-color:      #0a0a0a; /* Negro profundo para párrafos y descripciones */
+  --text-muted:      #424842; /* Gris verdoso oscuro para etiquetas y subtítulos */
+  --header-bg:       rgba(74, 101, 78, 0.18); /* Fondo verde salvia oscuro translúcido */
+  --card-bg:         #ffffff; /* Blanco sólido absoluto para garantizar el máximo contraste */
+  --card-border:     rgba(74, 101, 78, 0.4); /* Borde salvia más marcado para enmarcar bien cada tarjeta */
+  --card-shadow:     rgba(51, 77, 56, 0.3); /* Verde muy oscuro (#334d38) para la sombra, dando mucha profundidad */
+  --accent-color:    #4a654e; /* Primary (Sage Green / Verde Salvia oscuro) */
+  --accent-glow:     rgba(74, 101, 78, 0.15);
+  --accent-glow-md:  rgba(74, 101, 78, 0.25);
+  --btn-bg:          rgba(139, 168, 142, 0.2);
+  /* Colores adaptados a la estética natural/minimalista */
+  --tech-green:      #334d38;
+  --tech-purple:     #536256;
+  --tech-cyan:       #4a654e;
+  --tech-orange:     #645e4b;
 }
 
+/* ── BASE ──────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Compensa la altura del header para que no tape el contenido */
+  scroll-padding-top: 90px;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif; 
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
   min-height: 100vh;
-  transition: background-color 0.3s, color 0.3s; 
+  transition: background-color 0.4s, color 0.4s;
+  background-image: radial-gradient(circle at top left, rgba(98, 192, 247, 0.08) 0%, transparent 40%); /* Brillo sutil para modo oscuro */
+  background-attachment: fixed;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-
-h1, h2, h3, h4, h5, h6, a, button {
-  font-family: 'Poppins', sans-serif;
+/* Gradient blobs de fondo — el "alma" del Kinetic Noir */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.4s;
 }
 
-
-img[alt="Flask"], img[src*="github-original"], img[alt="IA & Prompting"] {
-  filter: invert(1);
+/* Añadimos el degradado de blanco a verde salvia en el modo claro */
+body.light-mode {
+  background-image: 
+    radial-gradient(circle at top left, rgba(74, 101, 78, 0.18) 0%, transparent 40%),
+    linear-gradient(135deg, #ffffff 0%, #eef2f6 40%, #c3d1c6 100%);
+  background-attachment: fixed;
 }
 
-body.light-mode img[alt="Flask"],
-body.light-mode img[src*="github-original"],
-body.light-mode img[alt="IA & Prompting"] {
-  filter: none;
+body::before {
+  width: 700px;
+  height: 700px;
+  top: -15%;
+  right: -10%;
+  background: radial-gradient(ellipse, var(--accent-glow), transparent 70%);
+  filter: blur(80px);
+}
+
+body::after {
+  width: 500px;
+  height: 500px;
+  bottom: 10%;
+  left: -8%;
+  background: radial-gradient(ellipse, rgba(62, 100, 180, 0.08), transparent 70%);
+  filter: blur(100px);
+}
+
+/* Intensificamos los orbes de luz en el modo claro para que aporten más color */
+body.light-mode::before {
+  background: radial-gradient(ellipse, rgba(74, 101, 78, 0.15), transparent 70%);
+}
+
+body.light-mode::after {
+  background: radial-gradient(ellipse, rgba(74, 101, 78, 0.25), transparent 70%);
+}
+
+/* Todo el contenido va por encima de los blobs */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── TIPOGRAFÍA ────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+a, button {
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── SCROLLBAR custom ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-color); }
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 2px;
+  opacity: 0.4;
+}
+
+/* ── SELECCIÓN de texto ────────────────────────────────────── */
+::selection {
+  background: var(--accent-glow-md);
+  color: var(--accent-color);
+}
+
+/* Selección de texto adaptada para el modo claro */
+body.light-mode ::selection {
+  background-color: rgba(81, 102, 83, 0.822); /* Verde salvia suave estilo "resaltador pastel" */
+  color: #0a0a0a; /* Mantenemos el texto oscuro puro para que la lectura sea perfecta */
+}
+
+/* ── BOTÓN SCROLL TO TOP ───────────────────────────────────── */
+.btn-scroll-top {
+  position: fixed;
+  top: 50%;
+  right: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 4px 20px var(--card-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(calc(-50% + 20px));
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-scroll-top svg {
+  width: 24px; 
+  height: 24px;
+}
+
+.btn-scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%);
+}
+
+.btn-scroll-top:hover {
+  background: var(--accent-color);
+  color: #020407;
+  box-shadow: 0 0 20px var(--accent-glow);
+  transform: translateY(calc(-50% - 5px));
+}
+
+body.light-mode .btn-scroll-top:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .btn-scroll-top {
+    display: none; /* Ocultamos el botón flotante en móviles porque molesta al hacer scroll */
+  }
 }

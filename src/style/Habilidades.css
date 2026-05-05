@@ -1,115 +1,224 @@
+/* ============================================================
+   HABILIDADES / STACK — Kinetic Noir
+   ============================================================ */
+
 .habilidades-seccion {
-    width: 100%;
-    padding: 60px 0;
+  width: 100%;
+  padding: 80px 0; /* Padding vertical */
+  /* Fondo con gradiente sutil para diferenciar la sección */
+  background: linear-gradient(180deg, transparent, rgba(8,13,20,0.4) 30%, rgba(8,13,20,0.4) 70%, transparent);
+}
+
+body.light-mode .habilidades-seccion {
+  background: linear-gradient(180deg, transparent, rgba(235, 238, 243, 0.8) 30%, rgba(235, 238, 243, 0.8) 70%, transparent);
 }
 
 .habilidades-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 30px;
-    background-color: var(--header-bg);
-    border-radius: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-body.light-mode .habilidades-container {
-    border-color: rgba(0, 0, 0, 0.12);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.16);
-}
-
+/* Título de sección — patrón reutilizable */
 .titulo-seccion {
-    text-align: center;
-    font-size: 2.5rem;
-    color: var(--accent-color);
-    margin-bottom: 40px;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 12px;
 }
 
-.habilidades-categorias {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
+/* LÃ­nea decorativa bajo el tÃ­tulo */
+.titulo-seccion::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent-color);
+  margin: 12px auto 48px;
+  box-shadow: 0 0 8px var(--accent-glow-md);
+}
+
+/* ── GRID DE CATEGORÍAS ────────────────────────────────────── */
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px; /* Espacio entre grupos de categorías */
+  margin-top: 48px;
+  padding: 0;
+  list-style: none;
 }
 
 @media (min-width: 768px) {
-    .habilidades-categorias {
-        grid-template-columns: 1fr 1fr;
-    }
+  .tech-stack-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Grid dinámico y fluido */
+  }
 }
 
-.categoria-card {
-    background-color: var(--header-bg);
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 4px 15px var(--card-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* ── GRUPO DE CATEGORÍA (Frontend, Backend, Tools, etc.) ─────────── */
+.tech-category-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espacio entre el encabezado de categoría y las tarjetas */
 }
 
-body.light-mode .categoria-card {
-    background-color: var(--bg-color); /* Fondo gris-azulado para separarlo del contenedor blanco */
-    border: 1px solid rgba(0, 0, 0, 0.06); /* Borde sutil que enmarca la tarjeta */
+/* Encabezado de categoría */
+.tech-category-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px; /* Espacio debajo del encabezado */
 }
 
-.categoria-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px var(--hover-shadow);
+.tech-category-icon {
+  font-size: 2.2rem; /* Tamaño del ícono de Material Symbols */
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  color: var(--accent-color); /* Color por defecto, se puede sobrescribir */
 }
 
-.categoria-titulo {
-    color: var(--accent-color);
-    margin-bottom: 25px;
-    font-size: 1.4rem;
-    border-bottom: 2px solid var(--card-shadow);
-    padding-bottom: 10px;
+.tech-category-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem; /* Tamaño de fuente para el título de categoría */
+  font-weight: 700;
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.skills-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+/* Contenedor de tarjetas individuales dentro de una categoría */
+.tech-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espacio entre tarjetas individuales */
+  padding: 0;
+  list-style: none;
 }
 
-.skill-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+/* ── TARJETA DE TECNOLOGÍA INDIVIDUAL ──────────────────────── */
+.tech-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center; /* Alineación centrada y compacta */
+  gap: 16px;
+  box-shadow: 0 4px 16px var(--card-shadow);
+  transition: all 0.3s ease;
 }
 
-.skill-info:hover {
-    background-color: var(--bg-color); /* Efecto de fondo sutil al pasar el mouse */
-    transform: translateX(5px); /* Se desliza un poco hacia la derecha */
-    box-shadow: 0 4px 12px var(--hover-shadow);
+.tech-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-color); /* Color por defecto al hacer hover */
+  box-shadow: 0 8px 32px var(--card-shadow), 0 0 20px var(--accent-glow);
 }
 
-body.light-mode .skill-info:hover {
-    background-color: rgba(80, 79, 79, 0.404); /* Efecto de oscurecimiento sutil idéntico al modo oscuro */
-    box-shadow: 0 4px 12px var(--hover-shadow);
+/* Nueva imagen de Logo en tarjeta */
+.tech-card-logo {
+  width: 44px; /* Tamaño del icono */
+  height: 44px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  object-fit: contain;
+}
+.tech-card:hover .tech-card-logo { transform: scale(1.1); }
+
+/* Invertir logos que son negros por defecto para que se vean en modo oscuro */
+.tech-card-logo[src*="flask"],
+.tech-card-logo[src*="github"] {
+  filter: invert(1);
 }
 
-.skill-icon {
-    width: 24px;
-    height: 24px;
+body.light-mode .tech-card-logo[src*="flask"],
+body.light-mode .tech-card-logo[src*="github"],
+body.light-mode .tech-card-logo[src*="jinja"] {
+  filter: brightness(0); /* Forzamos a negro puro en modo claro */
 }
 
-.skill-name {
-    color: var(--text-color);
-    font-weight: 600;
-    flex-grow: 1;
+/* Icono dentro de la tarjeta */
+.tech-card-icon {
+  font-size: 2.5rem; /* Tamaño del ícono de Material Symbols */
+  flex-shrink: 0; /* Evita que el ícono se encoja */
+  transition: transform 0.3s ease;
+  color: var(--accent-color); /* Color por defecto, se sobrescribe por colorClass */
 }
 
-.skill-tag {
-    font-size: 0.85rem;
-    color: var(--text-color);
-    opacity: 0.8;
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 4px 10px;
-    border-radius: 12px;
+.tech-card:hover .tech-card-icon {
+  transform: scale(1.1);
 }
 
-body.light-mode .skill-tag {
-    background-color: rgba(0, 0, 0, 0.05);
+/* Contenido de la tarjeta (nombre, descripción, tags) */
+.tech-card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0; /* Previene el desbordamiento (overflow) en flexbox */
+  word-wrap: break-word; /* Permite que el texto largo se ajuste */
+}
+
+.tech-card-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 4px;
+}
+
+.tech-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.tech-tag-pill {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+body.light-mode .tech-tag-pill {
+  background: #f2f5f3;
+}
+
+
+/* Clases de color para las tarjetas (basadas en el ejemplo de Tailwind) */
+/* Estas variables deben estar definidas en index.css o en el root del tema */
+.tech-card-blue:hover { border-color: var(--accent-color); }
+.tech-card-blue .tech-card-icon { color: var(--accent-color); } /* Usamos accent-color para el azul */
+.tech-card-blue:hover .tech-tag-pill { border-color: var(--accent-color); color: var(--text-color); background: var(--accent-glow); }
+
+.tech-card-green:hover { border-color: var(--tech-green); }
+.tech-card-green .tech-card-icon { color: var(--tech-green); }
+.tech-card-green:hover .tech-tag-pill { border-color: var(--tech-green); color: var(--text-color); background: var(--accent-glow); }
+
+.tech-card-purple:hover { border-color: var(--tech-purple); }
+.tech-card-purple .tech-card-icon { color: var(--tech-purple); }
+.tech-card-purple:hover .tech-tag-pill { border-color: var(--tech-purple); color: var(--text-color); background: var(--accent-glow); }
+
+.tech-card-cyan:hover { border-color: var(--tech-cyan); }
+.tech-card-cyan .tech-card-icon { color: var(--tech-cyan); }
+.tech-card-cyan:hover .tech-tag-pill { border-color: var(--tech-cyan); color: var(--text-color); background: var(--accent-glow); }
+
+.tech-card-orange:hover { border-color: var(--tech-orange); }
+.tech-card-orange .tech-card-icon { color: var(--tech-orange); }
+.tech-card-orange:hover .tech-tag-pill { border-color: var(--tech-orange); color: var(--text-color); background: var(--accent-glow); }
+
+/* Layout para tarjetas grandes (ej. PostgreSQL) */
+.tech-card.lg-col-span-2 {
+  /* En pantallas grandes, ocupa 2 columnas */
+  grid-column: span 2; 
 }

@@ -1,303 +1,350 @@
+/* ============================================================
+   PROYECTOS — Kinetic Noir
+   ============================================================ */
+
 .proyectos-seccion {
-    width: 100%;
-    background-color: var(--header-bg);
-    padding: 60px 0;
+  width: 100%;
+  padding: 80px 0;
+  background: transparent;
 }
 
 .proyectos-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .titulo-proyectos {
-    text-align: center;
-    font-size: 2.5rem;
-    color: var(--accent-color);
-    margin-bottom: 15px;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 12px;
 }
 
+.titulo-proyectos::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent-color);
+  margin: 12px auto 0;
+  box-shadow: 0 0 8px var(--accent-glow-md);
+}
+
+/* ── NOTA TÉCNICA ────────────────────────────────────────── */
 .descripcion-seccion {
-    text-align: center;
-    max-width: 750px;
-    margin: 0 auto 50px;
-    color: var(--text-color);
-    font-size: 1.2rem;
-    line-height: 1.8;
-    opacity: 0.9;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-/* --- NOTA TÉCNICA --- */
 .nota-tecnica {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background-color: rgba(98, 192, 247, 0.1); /* var(--accent-color) con opacidad en modo oscuro */
-    border-left: 4px solid var(--accent-color);
-    padding: 15px 20px;
-    margin-top: 25px;
-    border-radius: 8px;
-    text-align: left;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 32px auto 0;
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* Estilo específico de la nota técnica para el modo claro (Fondo salvia y texto oscuro) */
+body.light-mode .nota-tecnica {
+  background: rgba(74, 101, 78, 0.18); /* Fondo verde salvia más oscuro y notorio */
+  border-color: rgba(74, 101, 78, 0.5); /* Borde más definido */
 }
 
 .nota-tecnica p {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--text-color);
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
 }
 
-.icono-nota {
-    font-size: 1.5rem;
-}
-
-body.light-mode .nota-tecnica {
-    background-color: rgba(87, 90, 92, 0.904); /* Fondo gris oscuro para la alerta en modo claro */
-    border-left-color: #242627; /* Borde oscuro */
-}
-
-body.light-mode .nota-tecnica p {
-    color: #ffffff;
-}
-
-/* --- GRID LAYOUT --- */
+/* ── GRID ──────────────────────────────────────────────────── */
 .grid-proyectos {
-    display: grid;
-    grid-template-columns: 1fr; /* Celular: 1 columna */
-    gap: 40px; /* Más espacio entre tarjetas para que respiren mejor */
-    align-items: start; /* Evita que las tarjetas de la misma fila se estiren juntas */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-top: 48px;
+  align-items: start;
 }
 
-/* Tablet y PC: Grid Inteligente */
 @media (min-width: 768px) {
-    .grid-proyectos {
-        /* Ajuste automático: Mínimo 350px de ancho por tarjeta. En PC se verán 2 columnas robustas. */
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    }
+  .grid-proyectos {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  }
 }
 
-/* --- ESTILOS DE LA TARJETA (CARD) --- */
+/* ── CARD ──────────────────────────────────────────────────── */
 .card-proyecto {
-    background-color: var(--header-bg);
-    border-radius: 15px;
-    padding: 0;
-    box-shadow: 0 4px 20px var(--card-shadow);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    display: flex;
-    flex-direction: column;
-    height: max-content; /* Permite que cada tarjeta tenga su propia altura independiente */
-    border-left: 4px solid var(--accent-color);
-    overflow: hidden;
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  position: relative;
+
+  /* Sin border-left — el hover lo maneja con glow */
+  box-shadow: 0 4px 24px var(--card-shadow);
+  transition: transform 0.4s ease, border-color 0.4s, box-shadow 0.4s;
 }
 
 .card-proyecto:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px var(--hover-shadow);
+  transform: translateY(-6px);
+  border-color: var(--accent-color);
+  box-shadow:
+    0 12px 48px var(--card-shadow),
+    0 0 30px var(--accent-glow);
 }
 
+/* ── IMAGEN ────────────────────────────────────────────────── */
 .proyecto-imagen {
-    width: 100%;
-    height: 230px; /* Altura ajustada para una proporción más panorámica y elegante */
-    object-fit: cover;
-    object-position: top; /* CLAVE: Asegura que siempre se vea el header/navbar del sitio */
-    border-bottom: 1px solid var(--card-shadow);
-    transition: transform 0.5s ease; /* Prepara la imagen para el efecto zoom */
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  object-position: top;
+  filter: grayscale(15%) brightness(0.9);
+  transition: filter 0.5s ease, transform 0.5s ease;
 }
 
-/* --- ESTILOS ALTERNATIVOS PARA LOGOS --- */
+.card-proyecto:hover .proyecto-imagen {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.04);
+}
+
 .proyecto-imagen.imagen-logo {
-    object-fit: contain;      /* Asegura que todo el logo se vea sin recortarse */
-    object-position: center;  /* Centra el logo en su contenedor */
-    padding: 20px;            /* Agrega espacio alrededor para que respire y no toque los bordes */
-    background-color: transparent; /* Adapta el fondo automáticamente al modo claro u oscuro de la tarjeta */
+  object-fit: contain;
+  object-position: center;
+  padding: 24px;
+  background: var(--bg-secondary);
 }
 
-/* Estilo para fotografías (centra la imagen en lugar de alinearla arriba) */
 .proyecto-imagen.imagen-foto {
-    object-position: center;
+  object-position: center;
 }
 
+/* ── CONTENIDO ─────────────────────────────────────────────── */
 .card-content {
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0;
 }
 
+.card-header {
+  margin-bottom: 12px;
+  min-height: 88px; /* Asegura espacio para la etiqueta dorada + 2 líneas de título */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Si no hay etiqueta, alinea el título hacia abajo con los demás */
+  align-items: flex-start;
+}
+
+/* Badge laboral — dorado */
 .badge-laboral {
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(180, 117, 23, 0.1);
+  color: #c49030;
+  border: 1px solid rgba(180, 117, 23, 0.25);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
 }
 
 .card-proyecto h3 {
-    color: var(--accent-color);
-    margin-bottom: 15px;
-    font-size: 1.4rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0;
+  transition: color 0.25s;
+}
+
+.card-proyecto:hover h3 {
+  color: var(--accent-color);
+}
+
+/* Cuerpo */
+.card-body {
+  flex-grow: 1;
+  margin-bottom: 20px;
 }
 
 .card-proyecto p {
-    color: var(--text-color);
-    margin-bottom: 20px;
-    line-height: 1.5;
+  font-size: 0.98rem;
+  color: var(--text-color);
+  line-height: 1.7;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  min-height: 110px; /* Normaliza la altura para unas 4 líneas de texto colapsado */
 }
 
 .btn-leer-mas {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    border: 2px solid var(--accent-color);
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 12px;
-    font-size: 0.9rem;
-    display: block; /* Obliga al botón a hacer un salto de línea */
-    width: fit-content; /* Mantiene el tamaño del botón ajustado a su contenido */
-    transition: all 0.3s ease;
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  display: block;
+  margin-top: 6px;
+  transition: opacity 0.2s;
 }
 
-.btn-leer-mas:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px var(--hover-shadow);
+.btn-leer-mas:hover { opacity: 0.75; text-decoration: underline; }
+
+/* Tech categories */
+.tech-category { margin-bottom: 14px; }
+
+.tech-category h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
 }
 
 .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.tech-category {
-    margin-bottom: 15px;
-}
-
-.tech-category h4 {
-    font-size: 0.9rem;
-    color: var(--accent-color);
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-.tech-category .tags {
-    margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 0;
+  min-height: 64px; /* Reserva espacio fijo para 1 o 2 filas de tecnologías (tags) */
+  align-content: flex-start;
 }
 
 .tag {
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo oscuro translúcido en modo oscuro */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil para definición */
-    color: var(--text-color);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: background-color 0.3s, border-color 0.3s;
+  background: rgba(255, 255, 255, 0.08); /* Background un poco más notorio para modo oscuro */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Borde más definido */
+  color: var(--text-color); /* Texto en color principal para que resalte */
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 
-/* Ajuste para Modo Claro: Fondo gris más oscuro para que resalte sobre la tarjeta blanca */
+.tag:hover {
+  border-color: var(--accent-color);
+  color: var(--text-color);
+  background: var(--accent-glow);
+}
+
 body.light-mode .tag {
-    background-color: #b0b3b8;
-    border-color: #808080;
-    color: #000000;
+  background: rgba(74, 101, 78, 0.15); /* Mini background verde salvia para modo claro */
+  border-color: rgba(74, 101, 78, 0.4);
+  color: var(--text-color);
+  font-weight: 600;
 }
 
-.tech-icon {
-    width: 20px;
-    height: 20px;
+.tech-icon { width: 16px; height: 16px; }
+
+.tech-icon-img { 
+  width: 16px; 
+  height: 16px; 
+  object-fit: contain; 
 }
 
+/* Invertir logos que son negros por defecto para que se vean en modo oscuro */
+.tech-icon-img[src*="flask"],
+.tech-icon-img[src*="github"] {
+  filter: invert(1);
+}
+
+body.light-mode .tech-icon-img[src*="flask"],
+body.light-mode .tech-icon-img[src*="github"],
+body.light-mode .tech-icon-img[src*="jinja"] {
+  filter: brightness(0); /* Forzamos a negro puro en modo claro */
+}
+
+/* Garantizamos que el ícono dentro del botón "Ver Código" también se vea perfecto */
+body.light-mode .btn-repo .tech-icon {
+  filter: brightness(0);
+}
+
+/* ── FOOTER CARD ───────────────────────────────────────────── */
 .card-footer {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    margin-top: auto;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--card-border);
 }
 
 .btn-repo {
-    background-color: transparent;
-    color: var(--text-color);
-    border: 2px solid var(--accent-color);
-    padding: 8px 16px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--card-border);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.3s;
+}
+
+/* Le damos un fondo sutil al botón en modo claro para que destaque más */
+body.light-mode .btn-repo {
+  background: var(--bg-secondary);
 }
 
 .btn-repo:hover {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    transform: translateY(-2px);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  box-shadow: 0 0 14px var(--accent-glow);
 }
 
 .btn-demo {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    border: 2px solid var(--accent-color);
-    padding: 8px 16px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
+  background: var(--accent-color);
+  color: #020407;
+  border: 1px solid var(--accent-color);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.3s;
+  box-shadow: 0 0 16px var(--accent-glow);
 }
 
 .btn-demo:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px var(--hover-shadow);
+  box-shadow: 0 0 28px var(--accent-glow-md);
+  transform: translateY(-2px);
 }
 
-/* --- BOTÓN PRÓXIMAMENTE (En Desarrollo) --- */
-.btn-proximamente {
-    background-color: transparent;
-    color: var(--text-color);
-    border: 2px dashed var(--btn-bg);
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    cursor: not-allowed;
-    opacity: 0.7;
-    user-select: none;
-}
-
-/* Invertir el color del ícono de GitHub en el botón cuando esté en modo claro */
-body.light-mode .btn-repo .tech-icon {
-    filter: invert(1);
-}
-
-/* Corrección: Si hacemos hover en modo claro, el fondo se vuelve negro, así que el ícono debe volver a ser blanco (sin filtro) */
-body.light-mode .btn-repo:hover .tech-icon {
-    filter: none;
-}
-
-/* Modo claro para botón próximamente */
-body.light-mode .btn-proximamente {
-    border-color: #808080;
-}
-
-/* Efecto Zoom suave en la imagen al pasar el mouse sobre la tarjeta */
-.card-proyecto:hover .proyecto-imagen {
-    transform: scale(1.05);
+/* GitHub icon hover fix */
+.btn-repo:hover .tech-icon {
+  filter: brightness(0) saturate(100%) invert(67%) sepia(78%) saturate(400%) hue-rotate(173deg);
 }

@@ -22,10 +22,21 @@ const Contactame = () =>{
                     </p>
                     <div className="redes-sociales-contacto">
                         <a href="https://www.linkedin.com/in/eduardo-ezequiel-ortiz-7815a526b" target="_blank" rel="noopener noreferrer">
-                            <img className='icono' src={linkedinIcon} alt="LinkedIn" title='Mi Linkedin'/>
+                            <img className='icono' src={linkedinIcon} alt="LinkedIn" title={language === 'es' ? 'Mi LinkedIn' : 'My LinkedIn'}/>
                         </a>
                         <a href="https://github.com/Ezequiel-247" target="_blank" rel="noopener noreferrer">
-                            <img className='icono' src={githubIcon} alt="GitHub" title='Mi Git-Hub'/>
+                            <img className='icono' src={githubIcon} alt="GitHub" title={language === 'es' ? 'Mi GitHub' : 'My GitHub'}/>
+                        </a>
+                    </div>
+                    <div className="contacto-cv">
+                        <a 
+                            href={language === 'es' ? 'Ezequiel Ortiz Cv.pdf' : 'Ezequiel Ortiz Resume.pdf'} 
+                            download={language === 'es' ? 'Ezequiel Ortiz Cv.pdf' : 'Ezequiel Ortiz Resume.pdf'} 
+                            className="btn-descargar-cv-contacto"
+                            title={language === 'es' ? 'Descargar Curriculum' : 'Download Resume'}
+                        >
+                            <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '1.2rem' }}></span>
+                            {language === 'es' ? 'Descargar mi CV' : 'Download my CV'}
                         </a>
                     </div>
                 </div>
@@ -74,8 +85,9 @@ const Contactame = () =>{
                     </button>
                 </form>
             </div>
+            {/* La parte inferior del footer con el logo, copyright y enlaces sociales */}
             <div className="footer-bottom">
-                <p>&copy; {new Date().getFullYear()} Eduardo Ezequiel Ortiz. {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
+                <p className="footer-copyright">&copy; {new Date().getFullYear()} Eduardo Ezequiel Ortiz. {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
             </div>
         </footer>
     )

@@ -1,109 +1,163 @@
+/* ============================================================
+   EDUCACIÃ“N â€” Kinetic Noir
+   ============================================================ */
+
 .educacion-seccion {
-    width: 100%;
-    background-color: var(--header-bg);
-    padding: 60px 0;
+  width: 100%;
+  padding: 80px 0;
+  background: transparent;
 }
 
 .educacion-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-.timeline {
-    position: relative;
-    padding-left: 30px;
-    border-left: 2px solid var(--accent-color);
-    margin-top: 40px;
+/* TÃ­tulo de secciÃ³n â€” patrÃ³n reutilizable */
+.titulo-seccion {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 12px;
 }
 
-.timeline-item {
-    position: relative;
-    margin-bottom: 40px;
+/* LÃ­nea decorativa bajo el tÃ­tulo */
+.titulo-seccion::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent-color);
+  margin: 12px auto 48px;
+  box-shadow: 0 0 8px var(--accent-glow-md);
 }
 
-.timeline-item:last-child {
-    margin-bottom: 0;
+/* Grid de tarjetas de educación */
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px; /* Un poco más de espacio en móviles */
 }
 
-.timeline-dot {
-    position: absolute;
-    left: -39px;
-    top: 5px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: var(--bg-color);
-    border: 3px solid var(--accent-color);
-    transition: background-color 0.3s;
+@media (min-width: 768px) {
+  .education-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px; /* Mucho más espacio entre tarjetas en escritorio */
+  }
 }
 
-.timeline-item:hover .timeline-dot {
-    background-color: var(--accent-color);
+/* Card */
+.education-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  padding: 36px; /* Aumentamos el espacio interno para hacerlas más grandes */
+  border-radius: 16px;
+  box-shadow: 0 4px 24px var(--card-shadow);
+  transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.timeline-content {
-    background-color: var(--header-bg);
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px var(--card-shadow);
-    transition: transform 0.3s ease;
+.education-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 32px var(--card-shadow), 0 0 20px var(--accent-glow);
 }
 
-.timeline-content:hover {
-    transform: translateX(5px);
-    border-left: 3px solid var(--accent-color);
-}
-
-.timeline-content h3 {
-    color: var(--accent-color);
-    font-size: 1.3rem;
-    margin-bottom: 5px;
+.education-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem; /* Título un poco más grande */
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 8px;
 }
 
 .institucion-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
 .institucion-logo {
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
-    background-color: #fff; /* Asegura contraste en modo oscuro */
-    border-radius: 6px;
-    padding: 4px;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 6px;
+  padding: 3px;
+  border: 1px solid var(--card-border); /* Marco sutil para que destaque sobre la card blanca */
 }
 
-.timeline-content h4 {
-    color: var(--text-color);
-    font-size: 1.1rem;
-    font-weight: 500;
+.education-card h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem; /* Institución un poco más visible */
+  font-weight: 500;
+  color: var(--accent-color);
 }
 
-.timeline-content .estado {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 15px;
+/* Badges de estado */
+.education-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
 }
 
-.badge-graduado { 
-    background-color: rgba(40, 167, 69, 0.15); 
-    color: #28a745; 
-}
-.badge-en-curso { 
-    background-color: rgba(23, 162, 184, 0.15); 
-    color: #17a2b8; 
+.estado {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  color: var(--text-muted);
 }
 
-.timeline-content p {
-    color: var(--text-color);
-    line-height: 1.6;
-    opacity: 0.9;
+body.light-mode .estado {
+  background: var(--bg-secondary);
+  border-color: var(--card-border);
+  color: var(--text-color);
+}
+
+.badge-graduado {
+  background: rgba(40, 167, 69, 0.1);
+  color: #4caf71;
+  border: 1px solid rgba(40, 167, 69, 0.25);
+}
+
+body.light-mode .badge-graduado {
+  background: rgba(74, 101, 78, 0.15);
+  color: var(--accent-color); /* Verde salvia elegante */
+  border-color: var(--card-border);
+}
+
+.badge-en-curso {
+  background: rgba(98, 192, 247, 0.1);
+  color: var(--accent-color);
+  border: 1px solid rgba(98, 192, 247, 0.25);
+}
+
+body.light-mode .badge-en-curso {
+  background: rgba(100, 94, 75, 0.15);
+  color: var(--tech-orange); /* Tono cálido de la paleta */
+  border-color: var(--card-border);
+}
+
+.education-card-description {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  line-height: 1.7;
+  flex-grow: 1;
+  font-weight: 600;
 }
