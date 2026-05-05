@@ -1,7 +1,3 @@
-/* ============================================================
-   MAIN / HERO — Kinetic Noir
-   ============================================================ */
-
 .main-container {
   max-width: 1100px;
   margin: 0 auto;
@@ -211,9 +207,6 @@ body.light-mode .icono {
 }
 
 /* ── SOBRE MÍ ──────────────────────────────────────────────── */
-.sobre-mi {
-  /* Ya no necesita estilos propios, el contenedor es .info-container */
-}
 
 .sobre-mi p {
   font-size: 1rem; /* Slightly larger */
@@ -234,4 +227,139 @@ body.light-mode .icono {
   .sobre-mi p {
     margin: 0; /* Remove centering on desktop */
   }
+}
+
+/* ── CONTENEDOR Y BOTÓN CHATBOT ────────────────────────────── */
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px; /* Movido a la derecha */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Asegura que la ventana/globo crezcan hacia la izquierda */
+}
+
+.chatbot-toggle-btn {
+  border-radius: 50%;
+  width: 60px; /* Tamaño compacto para celular */
+  height: 60px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+}
+
+/* ── CHATBOT ───────────────────────────────────────────────── */
+.chatbot-window {
+  width: 90vw;
+  max-width: 340px;
+  height: 460px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 32px var(--card-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: width 0.3s ease, height 0.3s ease, max-width 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .chatbot-container {
+    right: auto; /* Anula la alineación a la derecha del celular */
+    left: 20px; /* Lo mueve a la izquierda en PC */
+    align-items: flex-start; /* Hace que la ventana crezca hacia la derecha */
+  }
+  .chatbot-window {
+    width: 460px;
+    max-width: none;
+    height: 650px;
+  }
+  .chatbot-toggle-btn {
+    width: 85px; /* Vuelve al tamaño grande en escritorio */
+    height: 85px;
+    font-size: 2.5rem;
+  }
+}
+
+/* ── TOOLTIP DEL CHATBOT ───────────────────────────────────── */
+.chatbot-tooltip {
+  position: absolute;
+  bottom: 75px; /* Ajustado al botón de celular */
+  right: 0; /* Pegado a la derecha */
+  background: var(--accent-color);
+  color: #020407; /* Texto oscuro para contrastar con el accent */
+  padding: 10px 16px; /* Relleno compacto */
+  border-radius: 14px;
+  font-size: 1rem; /* Texto de celular */
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px var(--accent-glow);
+  animation: float-tooltip 3s ease-in-out infinite;
+  pointer-events: none; /* Para que no interfiera si el usuario hace clic cerca */
+}
+
+/* El triangulito que apunta hacia el botón */
+.chatbot-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 22px; /* Centrado hacia el botón móvil (60px) */
+  width: 18px; /* Pico del diálogo agrandado */
+  height: 18px;
+  background: var(--accent-color);
+  transform: rotate(45deg);
+  border-bottom-right-radius: 3px;
+}
+
+/* Animación de flotación suave */
+@keyframes float-tooltip {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Tooltip responsivo para escritorio */
+@media (min-width: 768px) {
+  .chatbot-tooltip {
+    bottom: 100px;
+    right: auto;
+    left: 0;
+    padding: 14px 24px;
+    border-radius: 16px;
+    font-size: 1.4rem;
+  }
+  .chatbot-tooltip::after {
+    right: auto;
+    left: 34px; /* Centrado hacia el botón izquierdo de escritorio (85px) */
+  }
+}
+
+/* ── CHATBOT OPCIONES ──────────────────────────────────────── */
+.chatbot-option-btn {
+  background: var(--bg-color);
+  border: 1px solid var(--card-border);
+  color: var(--text-color);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.chatbot-option-btn:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent-color);
+}
+
+body.light-mode .chatbot-option-btn {
+  background: var(--btn-bg); /* Un verde salvia claro de tu paleta (rgba(139, 168, 142, 0.2)) */
+}
+
+body.light-mode .chatbot-option-btn:hover {
+  background: rgba(139, 168, 142, 0.849); /* Un verde apenas más intenso al pasar el mouse */
+  border-color: var(--accent-color);
 }

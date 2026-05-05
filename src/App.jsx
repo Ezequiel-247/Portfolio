@@ -5,6 +5,7 @@ import Contactame from './components/Contactame';
 import Habilidades from './components/Habilidades';
 import { LanguageProvider } from './context/LanguageContext.jsx';
 import ScrollToTop from './components/ScrollToTop';
+import Chatbot from './components/Chatbot.jsx';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
             <Proyectos />
             <Contactame />
             <ScrollToTop />
+            <Chatbot />
         </LanguageProvider>
     );
 }

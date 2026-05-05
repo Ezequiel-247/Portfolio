@@ -36,7 +36,7 @@ const Contactame = () =>{
                             title={language === 'es' ? 'Descargar Curriculum' : 'Download Resume'}
                         >
                             <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '1.2rem' }}></span>
-                            {language === 'es' ? 'Descargar mi CV' : 'Download my CV'}
+                            {language === 'es' ? 'Descargar CV' : 'Download CV'}
                         </a>
                     </div>
                 </div>
