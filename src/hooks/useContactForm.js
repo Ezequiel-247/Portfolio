@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
 
 export const useContactForm = () => {
@@ -9,22 +9,6 @@ export const useContactForm = () => {
         enviado: false,
         error: null
     });
-
-    // Estado para el Captcha Matemático
-    const [captcha, setCaptcha] = useState({ num1: 0, num2: 0, respuesta: '' });
-
-    // Generar números aleatorios al cargar
-    useEffect(() => {
-        generarCaptcha();
-    }, []);
-
-    const generarCaptcha = () => {
-        setCaptcha({
-            num1: Math.floor(Math.random() * 10) + 1,
-            num2: Math.floor(Math.random() * 10) + 1,
-            respuesta: ''
-        });
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -47,9 +31,9 @@ export const useContactForm = () => {
             return;
         }
 
-        // 3. Validación de Captcha
-        if (parseInt(captcha.respuesta) !== captcha.num1 + captcha.num2) {
-            setEstado({ enviando: false, enviado: false, error: language === 'es' ? "Respuesta incorrecta. Inténtalo de nuevo." : "Incorrect answer. Try again." });
+        // 3. Validación de reCAPTCHA (el token viaja dentro del propio form como g-recaptcha-response)
+        if (!window.grecaptcha || !window.grecaptcha.getResponse()) {
+            setEstado({ enviando: false, enviado: false, error: language === 'es' ? "Por favor, completa la verificación reCAPTCHA." : "Please complete the reCAPTCHA verification." });
             return;
         }
 
@@ -62,17 +46,19 @@ export const useContactForm = () => {
 
             if (response.ok) {
                 form.reset();
+                window.grecaptcha.reset();
                 setEstado({ enviando: false, enviado: true, error: null });
-                generarCaptcha();
                 setTimeout(() => setEstado(prev => ({ ...prev, enviado: false })), 5000);
             } else {
+                window.grecaptcha.reset();
                 setEstado({ enviando: false, enviado: false, error: language === 'es' ? "Hubo un error al enviar el mensaje." : "There was an error sending the message." });
             }
         } catch (error) {
             console.error("Error al enviar el formulario:", error);
+            window.grecaptcha?.reset();
             setEstado({ enviando: false, enviado: false, error: language === 'es' ? "Error de conexión. Inténtalo más tarde." : "Connection error. Try again later." });
         }
     };
 
-    return { estado, captcha, setCaptcha, handleSubmit };
+    return { estado, handleSubmit };
 };

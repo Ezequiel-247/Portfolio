@@ -1,12 +1,42 @@
-# React + Vite
+# Portfolio - Ezequiel Ortiz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio personal de Eduardo Ezequiel Ortiz, Desarrollador Full-Stack especializado en Backend.
 
-Currently, two official plugins are available:
+Sitio en vivo: https://portfolio-ezequiel-qzz0.onrender.com/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## Expanding the ESLint configuration
+- [React 19](https://react.dev/) + [Vite 7](https://vitejs.dev/)
+- CSS plano por componente, con variables CSS para el tema claro/oscuro
+- Context API para idioma (ES/EN) y tema
+- [Formspree](https://formspree.io/) para el formulario de contacto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Funcionalidades
+
+- Soporte bilingüe (español / inglés)
+- Tema claro / oscuro persistido en `localStorage`
+- Secciones: Inicio, Educación, Habilidades, Proyectos, Contacto
+- Chatbot flotante basado en reglas (sin dependencias externas)
+- Formulario de contacto con validaciones, captcha matemático y honeypot anti-spam
+
+## Desarrollo
+
+```bash
+npm install
+npm run dev      # servidor de desarrollo
+npm run build    # build de producción
+npm run preview  # preview del build
+npm run lint     # ESLint
+```
+
+## Estructura
+
+```
+src/
+  components/   # componentes de UI
+  hooks/        # lógica reutilizable (useChatbot, useContactForm, useTheme)
+  context/      # LanguageContext
+  data/         # contenido (proyectos, estudios, textos) separado de la UI
+  style/        # un .css por componente
+  img/          # assets
+```

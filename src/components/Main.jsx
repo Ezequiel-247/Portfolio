@@ -47,13 +47,20 @@ const Main = () =>{
                         </p>
                     </div>
                     <div className="botones-container">
-                        <a 
-                            href={language === 'es' ? 'Ezequiel Ortiz Cv.pdf' : 'Ezequiel Ortiz Resume.pdf'} 
-                            download={language === 'es' ? 'Ezequiel Ortiz Cv.pdf' : 'Ezequiel Ortiz Resume.pdf'} 
-                            className="btn btn-primary" 
+                        <a
+                            href={language === 'es' ? 'Ezequiel Ortiz Cv.pdf' : 'Ezequiel Ortiz Resume.pdf'}
+                            download={language === 'es' ? 'Ezequiel Ortiz Cv.pdf' : 'Ezequiel Ortiz Resume.pdf'}
+                            className="btn btn-primary"
                             title={language === 'es' ? 'Descargar Curriculum' : 'Download Resume'}
                         >
                             {language === 'es' ? 'Descargar CV' : 'Download CV'}
+                        </a>
+                        <a
+                            href="#proyectos"
+                            className="btn btn-secondary"
+                            title={language === 'es' ? 'Ver mis proyectos' : 'View my projects'}
+                        >
+                            {language === 'es' ? 'Ver Proyectos' : 'View Projects'}
                         </a>
                     </div>
                 </div>

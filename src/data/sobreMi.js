@@ -5,9 +5,8 @@ export const textoSobreMi = {
             "• Vivo en Buenos Aires, Argentina.",
             "• Técnico Universitario en Programación graduado de la Universidad Nacional de Hurlingham (UNAHUR).",
             "• Actualmente cursando la Licenciatura en Informática en la Universidad Nacional de Hurlingham (UNAHUR).",
-            "• Apasionado por desarrollar software con código limpio, eficiente y de impacto real.",
-            "• En constante aprendizaje, aplicando nuevas tecnologías en proyectos reales.",
-            "• ¡Siempre abierto a nuevas oportunidades y proyectos colaborativos!",
+            "• Especializado en Backend con Node.js, Python y PostgreSQL, con experiencia real desarrollando soluciones para el INTA.",
+            "• Abierto a nuevas oportunidades laborales y proyectos colaborativos.",
         ]
     },
     en: {
@@ -16,9 +15,8 @@ export const textoSobreMi = {
             "• Based in Buenos Aires, Argentina.",
             "• University Technician in Programming graduated from Universidad Nacional de Hurlingham (UNAHUR).",
             "• Currently studying for a Bachelor's Degree in Computer Science at UNAHUR.",
-            "• Passionate about developing software with clean, efficient code and real-world impact.",
-            "• Constantly learning and applying new technologies in real-world projects.",
-            "• Always open to new opportunities and collaborative projects!",
+            "• Backend-focused, working with Node.js, Python and PostgreSQL, with real experience building solutions for INTA.",
+            "• Open to new job opportunities and collaborative projects.",
         ]
     }
 };

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import '../style/Main.css'; // Usando tus estilos globales o puedes crear Chatbot.css
+import '../style/Chatbot.css';
 import { useChatbot } from '../hooks/useChatbot';
 
 const Chatbot = () => {
@@ -41,49 +41,30 @@ const Chatbot = () => {
                 </>
             ) : (
                 <div className="chatbot-window">
-                    <div style={{ padding: '16px 20px', borderBottom: '1px solid var(--card-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                            <span className="material-symbols-outlined" style={{ color: 'var(--accent-color)', fontSize: '2.2rem' }}>
+                    <div className="chatbot-header">
+                        <div className="chatbot-header-left">
+                            <span className="material-symbols-outlined chatbot-header-icon">
                                 smart_toy
                             </span>
-                            <h4 style={{ margin: 0, color: 'var(--accent-color)', fontFamily: 'Syne, sans-serif', fontSize: '1.2rem' }}>Asistente Virtual</h4>
+                            <h4 className="chatbot-header-title">Asistente Virtual</h4>
                         </div>
-                        <button onClick={() => setIsOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--text-color)', cursor: 'pointer', fontSize: '1.5rem' }}>✖</button>
+                        <button onClick={() => setIsOpen(false)} className="chatbot-close-btn">✖</button>
                     </div>
-                    
-                    <div style={{ flex: 1, padding: '20px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+
+                    <div className="chatbot-messages">
                         {messages.map((msg, idx) => (
-                            <div key={idx} style={{ 
-                                alignSelf: msg.sender === 'user' ? 'flex-end' : 'flex-start',
-                                background: msg.sender === 'user' ? 'var(--accent-color)' : 'var(--bg-secondary)',
-                                color: msg.sender === 'user' ? '#000' : 'var(--text-color)',
-                                padding: '12px 16px',
-                                borderRadius: '14px',
-                                fontSize: '0.95rem',
-                                lineHeight: '1.5',
-                                maxWidth: '85%',
-                                whiteSpace: 'pre-wrap'
-                            }}>
+                            <div
+                                key={idx}
+                                className={`chatbot-message ${msg.sender === 'user' ? 'chatbot-message--user' : 'chatbot-message--bot'}`}
+                            >
                                 {msg.text}
                                 {msg.actionUrl && (
-                                    <a 
-                                        href={msg.actionUrl} 
+                                    <a
+                                        href={msg.actionUrl}
                                         // Si el link tiene ".pdf", le indicamos al navegador que lo descargue en lugar de redireccionar
                                         download={msg.actionUrl.includes('.pdf') ? true : undefined}
                                         onClick={() => setIsOpen(false)}
-                                        style={{
-                                            display: 'block',
-                                            marginTop: '12px',
-                                            padding: '10px',
-                                            background: 'var(--bg-secondary)',
-                                            color: 'var(--accent-color)',
-                                            textDecoration: 'none',
-                                            borderRadius: '8px',
-                                            border: '1px solid var(--accent-color)',
-                                            textAlign: 'center',
-                                            fontWeight: 'bold',
-                                            fontSize: '0.95rem'
-                                        }}
+                                        className="chatbot-message-action"
                                     >
                                         {msg.actionText}
                                     </a>
@@ -94,7 +75,7 @@ const Chatbot = () => {
                         <div ref={messagesEndRef} />
                     </div>
 
-                    <div style={{ padding: '15px', borderTop: '1px solid var(--card-border)', display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    <div className="chatbot-options">
                         {opciones.map((opt, idx) => (
                             <button 
                                 key={idx}

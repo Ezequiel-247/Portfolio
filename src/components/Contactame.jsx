@@ -8,7 +8,7 @@ const Contactame = () =>{
     const { language } = useLanguage();
     
     // Consumimos la lógica desde nuestro Custom Hook
-    const { estado, captcha, setCaptcha, handleSubmit } = useContactForm();
+    const { estado, handleSubmit } = useContactForm();
 
     return(
         <footer id="contacto" className="contacto-seccion">
@@ -61,19 +61,8 @@ const Contactame = () =>{
                         <textarea id="mensaje" name="mensaje" rows="5" required minLength="10" placeholder={language === 'es' ? 'Escribe tu mensaje aquí...' : 'Write your message here...'}></textarea>
                     </div>
 
-                    {/* Campo de Verificación Anti-Robot */}
-                    <div className="campo">
-                        <label htmlFor="captcha">{language === 'es' ? 'Responder ¿Cuánto es' : 'Answer: How much is'} {captcha.num1} + {captcha.num2}?</label>
-                        <span className="captcha-context">🛡️ {language === 'es' ? 'Verificación anti-spam' : 'Anti-spam verification'}</span>
-                        <input 
-                            type="number" 
-                            id="captcha" 
-                            value={captcha.respuesta}
-                            onChange={(e) => setCaptcha({ ...captcha, respuesta: e.target.value })}
-                            placeholder={language === 'es' ? 'Escribe el resultado...' : 'Write the result...'} 
-                            required 
-                        />
-                    </div>
+                    {/* Verificación Anti-Robot: Google reCAPTCHA (validado por Formspree del lado del servidor) */}
+                    <div className="g-recaptcha" data-sitekey="6LdnikEtAAAAAPTI05U-5NLBOYgESy9Ezosd6lQk"></div>
 
                     {estado.error && <p className="mensaje-error">{estado.error}</p>}
                     {estado.enviado && <p className="mensaje-exito">{language === 'es' ? '¡Mensaje enviado con éxito!' : 'Message sent successfully!'}</p>}

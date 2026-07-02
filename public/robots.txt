@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-ezequiel-qzz0.onrender.com/sitemap.xml
