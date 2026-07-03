@@ -1,14 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+
+const saludoInicial = (language) => ({
+    sender: 'bot',
+    text: language === 'es'
+        ? '¡Hola! Soy el asistente virtual de Ezequiel. ¿En qué te puedo ayudar?'
+        : 'Hi! I am Ezequiel\'s virtual assistant. How can I help you?'
+});
 
 export const useChatbot = () => {
     const { language } = useLanguage();
     const [isOpen, setIsOpen] = useState(false);
     const [hasOpened, setHasOpened] = useState(false);
-    
-    const [messages, setMessages] = useState([
-        { sender: 'bot', text: language === 'es' ? '¡Hola! Soy el asistente virtual de Ezequiel. ¿En qué te puedo ayudar?' : 'Hi! I am Ezequiel\'s virtual assistant. How can I help you?' }
-    ]);
+
+    const [messages, setMessages] = useState([saludoInicial(language)]);
+
+    // El saludo inicial se congelaba en el idioma activo al montar el componente
+    // (Chatbot está siempre montado en App.jsx). Reiniciamos la conversación al
+    // cambiar de idioma para evitar mezclar mensajes en español con botones en inglés.
+    useEffect(() => {
+        setMessages([saludoInicial(language)]);
+    }, [language]);
 
     const handleOptionClick = (option) => {
         setMessages(prev => [...prev, { sender: 'user', text: option.text }]);
@@ -47,11 +59,21 @@ export const useChatbot = () => {
                    '• Herramientas de análisis y exportación (PDF/Excel).\n' +
                    '• Interfaz interactiva en tiempo real con JavaScript, Jinja2 y Css.' 
         },
-        { 
-            text: 'Quiero descargar el CV de Ezequiel', 
-            reply: '¡Claro! Puedes descargarlo directamente haciendo clic en el botón de abajo.', 
-            actionUrl: 'Ezequiel Ortiz Cv.pdf', 
-            actionText: 'Descargar CV' 
+        {
+            text: '¿Qué proyectos hizo?',
+            reply: 'Además de su trabajo en INTA, Ezequiel desarrolló varios proyectos Full Stack:\n\n' +
+                   '• Plataforma de streaming estilo Netflix, con perfiles de usuario y trailers reales vía API de YouTube.\n' +
+                   '• "UnaHur Anti Social", una red social con posteos, comentarios y reacciones.\n' +
+                   '• Sistema de Acompañamiento de Alumnos Universitarios, su proyecto integrador final (en desarrollo).\n\n' +
+                   '¡Puedes ver el código y las demos en vivo en la sección de Proyectos!',
+            actionUrl: '#proyectos',
+            actionText: 'Ver Proyectos'
+        },
+        {
+            text: 'Quiero descargar el CV de Ezequiel',
+            reply: '¡Claro! Puedes descargarlo directamente haciendo clic en el botón de abajo.',
+            actionUrl: 'Ezequiel Ortiz Cv.pdf',
+            actionText: 'Descargar CV'
         },
         { 
             text: '¿Ezequiel esta buscando empleo?', 
@@ -87,11 +109,21 @@ export const useChatbot = () => {
                    '• Analysis and export tools (PDF/Excel).\n' +
                    '• Real-time interactive interface with JavaScript, Jinja2 and Css.' 
         },
-        { 
-            text: "I want to download Ezequiel's CV", 
-            reply: 'Sure! You can download it directly by clicking the button below.', 
-            actionUrl: 'Ezequiel Ortiz Resume.pdf', 
-            actionText: 'Download CV' 
+        {
+            text: 'What projects has he worked on?',
+            reply: 'Besides his work at INTA, Ezequiel built several Full Stack projects:\n\n' +
+                   '• A Netflix-style streaming platform, with user profiles and real trailers via the YouTube API.\n' +
+                   '• "UnaHur Anti Social", a social network with posts, comments, and reactions.\n' +
+                   '• A University Student Support System, his final integrative project (in development).\n\n' +
+                   'You can check out the code and live demos in the Projects section!',
+            actionUrl: '#proyectos',
+            actionText: 'View Projects'
+        },
+        {
+            text: "I want to download Ezequiel's CV",
+            reply: 'Sure! You can download it directly by clicking the button below.',
+            actionUrl: 'Ezequiel Ortiz Resume.pdf',
+            actionText: 'Download CV'
         },
         { 
             text: 'Is Ezequiel looking for a job?', 
