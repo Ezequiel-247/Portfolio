@@ -249,6 +249,7 @@ body.light-mode .nota-tecnica {
   margin-top: 10px;
   margin-bottom: 16px;
   min-height: 110px; /* Normaliza la altura para unas 4 líneas de texto colapsado */
+  white-space: pre-wrap; /* Respeta los \n y viñetas de descripciones como la de INTA */
 }
 
 /* Nota de referencia laboral: más específico para no heredar el min-height de arriba */

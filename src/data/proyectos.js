@@ -318,19 +318,13 @@ export const listaProyectos = {
         tipo: "laboral",
         imagen: intaImg,
         esFoto: true,
-        descripcion: 
+        descripcion:
             "Durante mi experiencia en INTA, desarrollé un producto de software Backend diseñado para la " +
-            "gestión, procesamiento y visualización de datos provenientes de freatígrafos y limnígrafos. " +
-            "Implementé una arquitectura estructurada con el siguiente starck tecnológico a pedido del cliente:  Flask, Python, " +
-            "JavaScript, Jinja2 (HTML5 que viene por defecto con Flask) y utilizamos MongoDb como base de datos no relacional " +
-            "para organizar y filtrar la información de manera eficiente, " +
-            "permitiendo el manejo de grandes volúmenes de información capturada por medidores de aguas subterráneas. " +
-            "Asimismo, diseñé módulos de exportación (PDF/Excel) y herramientas de graficación, optimizando el " +
-            "análisis técnico realizado por los ingenieros del Instituto de Clima y Agua. Para completar el ecosistema, " +
-            "desarrollé una interfaz de consulta mediante una tabla dinámica que permitía la visualización y descarga " +
-            "de registros en tiempo real, interactuando directamente con el Backend a través de peticiones optimizadas. " +
-            "Por terminos de contratos y confidencialidad no puedo compartir el código ni el repositorio de este proyecto, " +
-            "pero estoy disponible para discutir los detalles técnicos y la arquitectura implementada en entrevistas o reuniones técnicas.",
+            "gestión, procesamiento y visualización de datos provenientes de freatígrafos y limnígrafos.\n\n" +
+            "• Stack a pedido del cliente: Flask, Python, JavaScript y Jinja2, con MongoDB como base no relacional para organizar grandes volúmenes de datos de medidores de aguas subterráneas.\n" +
+            "• Módulos de exportación (PDF/Excel) y herramientas de graficación para optimizar el análisis técnico de los ingenieros del Instituto de Clima y Agua.\n" +
+            "• Interfaz de consulta con tabla dinámica para visualizar y descargar registros en tiempo real.\n\n" +
+            "Por términos de contrato y confidencialidad no puedo compartir el código, pero puedo discutir la arquitectura en una entrevista técnica.",
         referencia:{
             Nombre: "Sofía Havrylenko",
             Puesto: "Ingeniera en INTA",
@@ -393,19 +387,13 @@ export const listaProyectos = {
             tipo: "laboral",
             imagen: intaImg,
             esFoto: true,
-            descripcion: 
-                "During my experience at INTA, I developed a Backend software product designed for the " +
-                "management, processing, and visualization of data from phreatigraphs and limnigraphs. " +
-                "I implemented a structured architecture with the following tech stack at the client's request: Flask, Python, " +
-                "JavaScript, Jinja2 (default HTML5 with Flask), and we used MongoDB as a non-relational database " +
-                "to organize and filter information efficiently, " +
-                "allowing the handling of large volumes of information captured by groundwater meters. " +
-                "Additionally, I designed export modules (PDF/Excel) and graphing tools, optimizing the " +
-                "technical analysis performed by the engineers of the Institute of Climate and Water. To complete the ecosystem, " +
-                "I developed a query interface using a dynamic table that allowed the visualization and download " +
-                "of records in real time, interacting directly with the Backend through optimized requests. " +
-                "Due to contract terms and confidentiality, I cannot share the code or repository for this project, " +
-                "but I am available to discuss the technical details and architecture implemented in interviews or technical meetings.",
+            descripcion:
+                "During my time at INTA, I developed a Backend software product designed for the " +
+                "management, processing, and visualization of data from phreatigraphs and limnigraphs.\n\n" +
+                "• Stack requested by the client: Flask, Python, JavaScript and Jinja2, with MongoDB as a non-relational database to organize large volumes of groundwater meter data.\n" +
+                "• Export modules (PDF/Excel) and graphing tools to optimize the technical analysis done by the Institute of Climate and Water engineers.\n" +
+                "• Query interface with a dynamic table to view and download records in real time.\n\n" +
+                "Due to contract terms and confidentiality, I can't share the code, but I'm happy to discuss the architecture in a technical interview.",
             referencia:{
                 Nombre: "Sofía Havrylenko",
                 Puesto: "Engineer at INTA",
