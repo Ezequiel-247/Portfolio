@@ -37,6 +37,20 @@
   transition: width 0.3s ease, height 0.3s ease, max-width 0.3s ease;
 }
 
+/* En mobile el chat ocupa toda la pantalla: con los mensajes + las 5 opciones
+   siempre visibles, una ventana chica de 460px desbordaba y se veía apretado. */
+@media (max-width: 767px) {
+  .chatbot-window {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    max-width: none;
+    border-radius: 0;
+  }
+}
+
 @media (min-width: 768px) {
   .chatbot-container {
     right: auto; /* Anula la alineación a la derecha del celular */
