@@ -1,14 +1,42 @@
+import { useEffect, useRef } from 'react';
 import '../style/Contactame.css';
 import linkedinIcon from '../img/linkedin.svg';
 import githubIcon from '../img/github.svg';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import { useContactForm } from '../hooks/useContactForm.js';
 
+const RECAPTCHA_SITE_KEY = '6LdnikEtAAAAAPTI05U-5NLBOYgESy9Ezosd6lQk';
+
 const Contactame = () =>{
     const { language } = useLanguage();
-    
+
     // Consumimos la lógica desde nuestro Custom Hook
     const { estado, handleSubmit } = useContactForm();
+
+    // Renderizamos el widget a mano en vez de confiar en el escaneo automático de Google:
+    // ese escaneo corre una sola vez apenas carga el script, y si el div todavía no está
+    // montado en ese instante (carrera con React), el captcha nunca aparece.
+    const recaptchaRef = useRef(null);
+
+    useEffect(() => {
+        let intervalId;
+
+        const renderRecaptcha = () => {
+            if (window.grecaptcha?.render && recaptchaRef.current && recaptchaRef.current.childElementCount === 0) {
+                window.grecaptcha.render(recaptchaRef.current, { sitekey: RECAPTCHA_SITE_KEY });
+                return true;
+            }
+            return false;
+        };
+
+        if (!renderRecaptcha()) {
+            intervalId = setInterval(() => {
+                if (renderRecaptcha()) clearInterval(intervalId);
+            }, 200);
+        }
+
+        return () => clearInterval(intervalId);
+    }, []);
 
     return(
         <footer id="contacto" className="contacto-seccion">
@@ -62,7 +90,7 @@ const Contactame = () =>{
                     </div>
 
                     {/* Verificación Anti-Robot: Google reCAPTCHA (validado por Formspree del lado del servidor) */}
-                    <div className="g-recaptcha" data-sitekey="6LdnikEtAAAAAPTI05U-5NLBOYgESy9Ezosd6lQk"></div>
+                    <div ref={recaptchaRef}></div>
 
                     {estado.error && <p className="mensaje-error">{estado.error}</p>}
                     {estado.enviado && <p className="mensaje-exito">{language === 'es' ? '¡Mensaje enviado con éxito!' : 'Message sent successfully!'}</p>}
