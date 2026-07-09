@@ -111,7 +111,8 @@ body.light-mode .nav a:hover {
 /* ── HAMBURGUESA MÓVIL ─────────────────────────────────────── */
 .menu-toggle,
 .close-menu,
-.overlay {
+.overlay,
+.redes-header {
   display: none;
 }
 
@@ -130,6 +131,40 @@ body.light-mode .nav a:hover {
     color: var(--text-color);
     cursor: pointer;
     z-index: 1001;
+  }
+
+  /* Accesos directos a LinkedIn/GitHub, siempre visibles junto a la hamburguesa */
+  .redes-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: auto;
+  }
+
+  .redes-header a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+  }
+
+  .redes-header .icono {
+    width: 28px;
+    height: 28px;
+  }
+
+  .redes-header span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  body.light-mode .redes-header span {
+    color: var(--text-color);
   }
 
   .nav {

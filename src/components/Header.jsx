@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import '../style/Header.css';
+import linkedinIcon from '../img/linkedin.svg';
+import githubIcon from '../img/github.svg';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../hooks/useTheme';
 
@@ -20,6 +22,18 @@ const Header = () => {
                 <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
             </svg>
         </button>
+
+        {/* Accesos directos a redes, visibles en mobile sin necesidad de abrir el menú */}
+        <div className="redes-header">
+            <a href="https://www.linkedin.com/in/eduardo-ezequiel-ortiz-7815a526b" target="_blank" rel="noopener noreferrer" title={language === 'es' ? 'Mi LinkedIn' : 'My LinkedIn'}>
+                <img className="icono" src={linkedinIcon} alt="" />
+                <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/Ezequiel-247" target="_blank" rel="noopener noreferrer" title={language === 'es' ? 'Mi GitHub' : 'My GitHub'}>
+                <img className="icono" src={githubIcon} alt="" />
+                <span>GitHub</span>
+            </a>
+        </div>
 
         <nav className={`nav ${menuOpen ? 'active' : ''}`}>
             {/* Botón Cerrar (Visible solo dentro del menú móvil) */}

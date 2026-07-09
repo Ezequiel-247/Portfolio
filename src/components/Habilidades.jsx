@@ -9,7 +9,9 @@ const Habilidades = () => {
     // Agrupamos las habilidades por categoría para crear las columnas
     const skillsByCategory = useMemo(() => {
         const categories = {};
-        const categoryOrder = ["Frontend", "Backend", "Tools"]; // Reducido a 3 pilares
+        // "Tools" (la categoría más corta) va en el medio, flanqueada por Frontend y Backend
+        // (las más largas y de altura más pareja) para que el desnivel entre columnas se note menos.
+        const categoryOrder = ["Frontend", "Tools", "Backend"];
         
         categoryOrder.forEach(cat => {
             const skills = allSkills.filter(skill => skill.category === cat);

@@ -75,11 +75,18 @@
 }
 
 /* Contenedor de redes y su título */
+/* Oculto en mobile: el header ya muestra LinkedIn/GitHub siempre visibles ahí (ver .redes-header en Header.css) */
 .redes-container {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .redes-container {
+    display: flex;
+  }
 }
 
 .redes-titulo {
