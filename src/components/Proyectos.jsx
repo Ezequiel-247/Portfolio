@@ -106,6 +106,12 @@ const Proyectos = () => {
                                             </div>
                                         </div>
                                     )}
+                                    {proyecto.referencia && (
+                                        <p className="card-referencia">
+                                            {language === 'es' ? 'Referencia laboral: ' : 'Work reference: '}
+                                            <strong>{proyecto.referencia.Nombre}</strong> — {proyecto.referencia.Puesto}
+                                        </p>
+                                    )}
                                 </div>
                                 <div className="card-footer">
                                     {proyecto.repo && (

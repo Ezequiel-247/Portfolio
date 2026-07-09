@@ -251,6 +251,16 @@ body.light-mode .nota-tecnica {
   min-height: 110px; /* Normaliza la altura para unas 4 líneas de texto colapsado */
 }
 
+/* Nota de referencia laboral: más específico para no heredar el min-height de arriba */
+.card-proyecto p.card-referencia {
+  min-height: 0;
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
 .btn-leer-mas {
   background: none;
   border: none;
