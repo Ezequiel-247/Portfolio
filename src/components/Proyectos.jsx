@@ -106,6 +106,27 @@ const Proyectos = () => {
                                             </div>
                                         </div>
                                     )}
+                                    {proyecto.tecnologias.herramientas && proyecto.tecnologias.herramientas.length > 0 && (
+                                        <div className="tech-category">
+                                            <h4>{language === 'es' ? 'Herramientas' : 'Tools'}</h4>
+                                            <div className="tags">
+                                                {proyecto.tecnologias.herramientas.map((tech, i) => {
+                                                    const iconoValor = iconos[tech];
+                                                    const esImagen = iconoValor && iconoValor.startsWith('http');
+                                                    return (
+                                                        <span key={i} className="tag">
+                                                            {esImagen ? (
+                                                                <img src={iconoValor} alt="" className="tech-icon-img" aria-hidden="true" />
+                                                            ) : iconoValor ? (
+                                                                <span className="material-symbols-outlined tech-icon" aria-hidden="true">{iconoValor}</span>
+                                                            ) : null}
+                                                            {tech}
+                                                        </span>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    )}
                                     {proyecto.referencia && (
                                         <p className="card-referencia">
                                             {language === 'es' ? 'Referencia laboral: ' : 'Work reference: '}

@@ -336,9 +336,26 @@ export const listaProyectos = {
         },
     },
     {
+        titulo: "Sistema de Acompañamiento de Alumnos Universitarios",
+        imagen: desarrolloAppImg,
+        descripcion:
+            "Proyecto integrador final para la materia Desarrollo de Aplicaciones en la UNAHUR. " +
+            "Consiste en el diseño e implementación de una solución web Full Stack escalable, " +
+            "aplicando metodologías ágiles (Scrum) con gestión de tareas en Trello, control de " +
+            "versiones colaborativo en GitHub y buenas prácticas de arquitectura de software, " +
+            "con foco en un backend robusto y una interfaz intuitiva.",
+        tecnologias: {
+            frontend: ["React", "TypeScript", "CSS", "Tailwind CSS"],
+            backend: ["Node.js", "PostgreSQL", "Docker", "Git"],
+            herramientas: ["Trello", "Postman"]
+        },
+        repo: "https://github.com/Ezequiel-247/DessApp",
+        demo: "https://desapp-frontend.onrender.com/"
+    },
+    {
         titulo: "Plataforma de streaming — Full Stack",
         imagen: homeNetflixImg,
-        descripcion: 
+        descripcion:
             "Este proyecto es una simulación de la experiencia de usuario de Netflix, " +
             "desarrollada como una aplicación Full Stack. La plataforma permite el registro " +
             "de usuarios, la gestión de múltiples perfiles (hasta 3) y la exploración de un " +
@@ -354,7 +371,7 @@ export const listaProyectos = {
     {
         titulo: "UnaHur - Anti Social",
         imagen: unaHurImg,
-        descripcion: 
+        descripcion:
             "Plataforma interactiva desarrollada para la UNAHUR que permite a los usuarios " +
             "compartir contenido, comentar y reaccionar. Implementa una arquitectura robusta " +
             "con validaciones de seguridad y persistencia de datos.",
@@ -364,21 +381,6 @@ export const listaProyectos = {
         },
         repo: "https://github.com/Ezequiel-247/Red-Anti-Social-Unahur",
         demo: "https://red-anti-social-front.onrender.com/"
-    },
-    {
-        titulo: "Sistema de Acompañamiento de Alumnos Universitarios",
-        imagen: desarrolloAppImg,
-        descripcion: 
-            "Proyecto integrador final para la materia Desarrollo de Aplicaciones en la UNAHUR. " +
-            "Consiste en el diseño e implementación de una solución web Full Stack escalable. " +
-            "Durante su ciclo de vida se aplican metodologías ágiles (Scrum), control de versiones " +
-            "colaborativo y buenas prácticas de arquitectura de software. Actualmente se encuentra " +
-            "en fase de desarrollo, enfocándonos en un backend robusto y una interfaz intuitiva.",
-        tecnologias: {
-            frontend: ["React", "TypeScript", "CSS", "Tailwind CSS"],
-            backend: ["Node.js", "PostgreSQL", "Docker", "Git"]
-        },
-        enDesarrollo: true
     }
     ],
     en: [
@@ -405,9 +407,26 @@ export const listaProyectos = {
             },
         },
         {
+            titulo: "University Student Support System",
+            imagen: desarrolloAppImg,
+            descripcion:
+                "Final integrative project for the Application Development subject at UNAHUR. " +
+                "It consists of the design and implementation of a scalable Full Stack web solution, " +
+                "applying agile methodologies (Scrum) with task management in Trello, collaborative " +
+                "version control on GitHub, and software architecture best practices, focusing on a " +
+                "robust backend and an intuitive interface.",
+            tecnologias: {
+                frontend: ["React", "TypeScript", "CSS", "Tailwind CSS"],
+                backend: ["Node.js", "PostgreSQL", "Docker", "Git"],
+                herramientas: ["Trello", "Postman"]
+            },
+            repo: "https://github.com/Ezequiel-247/DessApp",
+            demo: "https://desapp-frontend.onrender.com/"
+        },
+        {
             titulo: "Streaming Platform — Full Stack",
             imagen: homeNetflixImg,
-            descripcion: 
+            descripcion:
                 "This project is a simulation of the Netflix user experience, " +
                 "developed as a Full Stack application. The platform allows user registration, " +
                 "management of multiple profiles (up to 3), and exploration of a " +
@@ -423,7 +442,7 @@ export const listaProyectos = {
         {
             titulo: "UnaHur - Anti Social",
             imagen: unaHurImg,
-            descripcion: 
+            descripcion:
                 "Interactive platform developed for UNAHUR that allows users " +
                 "to share content, comment, and react. It implements a robust architecture " +
                 "with security validations and data persistence.",
@@ -433,21 +452,6 @@ export const listaProyectos = {
             },
             repo: "https://github.com/Ezequiel-247/Red-Anti-Social-Unahur",
             demo: "https://red-anti-social-front.onrender.com/"
-        },
-        {
-            titulo: "University Student Support System",
-            imagen: desarrolloAppImg,
-            descripcion: 
-                "Final integrative project for the Application Development subject at UNAHUR. " +
-                "It consists of the design and implementation of a scalable Full Stack web solution. " +
-                "Throughout its lifecycle, agile methodologies (Scrum), collaborative version control, " +
-                "and software architecture best practices are applied. It is currently " +
-                "in the development phase, focusing on a robust backend and an intuitive interface.",
-            tecnologias: {
-                frontend: ["React", "TypeScript", "CSS", "Tailwind CSS"],
-                backend: ["Node.js", "PostgreSQL", "Docker", "Git"]
-            },
-            enDesarrollo: true
         }
     ]
 };

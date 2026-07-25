@@ -128,12 +128,13 @@ body.light-mode .nota-tecnica {
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     overflow-x: visible;
     scroll-snap-type: none;
-    align-items: start;
+    align-items: stretch;
   }
 
   .grid-proyectos .card-proyecto {
     flex: unset;
     max-width: none;
+    height: auto;
   }
 }
 

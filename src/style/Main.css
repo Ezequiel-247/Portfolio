@@ -216,6 +216,11 @@ body.light-mode .icono {
 
 /* ── SOBRE MÍ ──────────────────────────────────────────────── */
 
+.sobre-mi {
+  text-align: left; /* Las viñetas no deben centrarse, ni en mobile */
+  align-self: stretch;
+}
+
 .sobre-mi p {
   font-size: 1rem; /* Slightly larger */
   color: var(--text-color);
