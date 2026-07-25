@@ -344,7 +344,7 @@ export const listaProyectos = {
             "aplicando metodologías ágiles (Scrum) con gestión de tareas en Trello, control de " +
             "versiones colaborativo en GitHub y buenas prácticas de arquitectura de software, " +
             "con foco en un backend robusto y una interfaz intuitiva.\n\n" +
-            "Podés probar la demo con el usuario: usuario7 / contraseña: password",
+            "Podés probar la demo con el usuario: student7@example.com / contraseña: password",
         tecnologias: {
             frontend: ["React", "TypeScript", "CSS", "Tailwind CSS"],
             backend: ["Node.js", "PostgreSQL", "Docker", "Git"],
