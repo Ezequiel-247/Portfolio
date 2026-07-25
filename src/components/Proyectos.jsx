@@ -6,7 +6,6 @@ import { useLanguage } from '../context/LanguageContext';
 
 const Proyectos = () => {
     const [expandidos, setExpandidos] = useState({});
-    const [huboScroll, setHuboScroll] = useState(false);
     const { language } = useLanguage();
     
     // Obtenemos los proyectos dependiendo del idioma
@@ -26,7 +25,7 @@ const Proyectos = () => {
                         <p>{textoNota}</p>
                     </div>
                 </div>
-                <div className="grid-proyectos" onScroll={() => setHuboScroll(true)}>
+                <div className="grid-proyectos">
                     {proyectosActuales.map((proyecto, index) => {
                         const limiteCaracteres = 180; // Aprox. 4 a 5 líneas de texto
                         const esTextoLargo = proyecto.descripcion.length > limiteCaracteres;
@@ -158,12 +157,10 @@ const Proyectos = () => {
                     );
                     })}
                 </div>
-                {!huboScroll && (
-                    <div className="carousel-hint" aria-hidden="true">
-                        <span>{language === 'es' ? 'Desliza para ver más proyectos' : 'Swipe to see more projects'}</span>
-                        <span className="carousel-hint-icon">👉</span>
-                    </div>
-                )}
+                <div className="carousel-hint" aria-hidden="true">
+                    <span>{language === 'es' ? 'Desliza para ver más proyectos' : 'Swipe to see more projects'}</span>
+                    <span className="carousel-hint-icon">👉</span>
+                </div>
             </div>
         </section>
     );
