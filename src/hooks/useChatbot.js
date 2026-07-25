@@ -64,7 +64,7 @@ export const useChatbot = () => {
             reply: 'Además de su trabajo en INTA, Ezequiel desarrolló varios proyectos Full Stack:\n\n' +
                    '• Plataforma de streaming estilo Netflix, con perfiles de usuario y trailers reales vía API de YouTube.\n' +
                    '• "UnaHur Anti Social", una red social con posteos, comentarios y reacciones.\n' +
-                   '• Sistema de Acompañamiento de Alumnos Universitarios, su proyecto integrador final (en desarrollo).\n\n' +
+                   '• Sistema de Acompañamiento de Alumnos Universitarios, su proyecto integrador final, ya disponible para probar.\n\n' +
                    '¡Puedes ver el código y las demos en vivo en la sección de Proyectos!',
             actionUrl: '#proyectos',
             actionText: 'Ver Proyectos'
@@ -114,7 +114,7 @@ export const useChatbot = () => {
             reply: 'Besides his work at INTA, Ezequiel built several Full Stack projects:\n\n' +
                    '• A Netflix-style streaming platform, with user profiles and real trailers via the YouTube API.\n' +
                    '• "UnaHur Anti Social", a social network with posts, comments, and reactions.\n' +
-                   '• A University Student Support System, his final integrative project (in development).\n\n' +
+                   '• A University Student Support System, his final integrative project, now available to try.\n\n' +
                    'You can check out the code and live demos in the Projects section!',
             actionUrl: '#proyectos',
             actionText: 'View Projects'

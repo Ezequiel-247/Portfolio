@@ -343,7 +343,8 @@ export const listaProyectos = {
             "Consiste en el diseño e implementación de una solución web Full Stack escalable, " +
             "aplicando metodologías ágiles (Scrum) con gestión de tareas en Trello, control de " +
             "versiones colaborativo en GitHub y buenas prácticas de arquitectura de software, " +
-            "con foco en un backend robusto y una interfaz intuitiva.",
+            "con foco en un backend robusto y una interfaz intuitiva.\n\n" +
+            "Podés probar la demo con el usuario: usuario7 / contraseña: password",
         tecnologias: {
             frontend: ["React", "TypeScript", "CSS", "Tailwind CSS"],
             backend: ["Node.js", "PostgreSQL", "Docker", "Git"],
@@ -374,7 +375,9 @@ export const listaProyectos = {
         descripcion:
             "Plataforma interactiva desarrollada para la UNAHUR que permite a los usuarios " +
             "compartir contenido, comentar y reaccionar. Implementa una arquitectura robusta " +
-            "con validaciones de seguridad y persistencia de datos.",
+            "con validaciones de seguridad y persistencia de datos.\n\n" +
+            "Se crearon avatares con bots que, al publicar un usuario, reaccionan y comentan " +
+            "automáticamente, simulando actividad real en la red social.",
         tecnologias: {
             frontend: ["React", "CSS"],
             backend: ["JavaScript","Node.js", "Sequelize", "PostgreSQL"]
@@ -414,7 +417,8 @@ export const listaProyectos = {
                 "It consists of the design and implementation of a scalable Full Stack web solution, " +
                 "applying agile methodologies (Scrum) with task management in Trello, collaborative " +
                 "version control on GitHub, and software architecture best practices, focusing on a " +
-                "robust backend and an intuitive interface.",
+                "robust backend and an intuitive interface.\n\n" +
+                "You can try the demo with the user: usuario7 / password: password",
             tecnologias: {
                 frontend: ["React", "TypeScript", "CSS", "Tailwind CSS"],
                 backend: ["Node.js", "PostgreSQL", "Docker", "Git"],
@@ -445,7 +449,9 @@ export const listaProyectos = {
             descripcion:
                 "Interactive platform developed for UNAHUR that allows users " +
                 "to share content, comment, and react. It implements a robust architecture " +
-                "with security validations and data persistence.",
+                "with security validations and data persistence.\n\n" +
+                "Bot avatars were created that automatically react and comment whenever a user " +
+                "makes a post, simulating real activity on the social network.",
             tecnologias: {
                 frontend: ["React", "CSS"],
                 backend: ["JavaScript","Node.js", "Sequelize", "PostgreSQL"]
