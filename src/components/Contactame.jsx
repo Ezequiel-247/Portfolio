@@ -104,7 +104,16 @@ const Contactame = () =>{
             </div>
             {/* La parte inferior del footer con el logo, copyright y enlaces sociales */}
             <div className="footer-bottom">
-                <p className="footer-copyright">&copy; {new Date().getFullYear()} Eduardo Ezequiel Ortiz. {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
+                <div className="footer-brand-block">
+                    <span className="footer-brand">Eduardo Ezequiel Ortiz</span>
+                    <p className="footer-copyright">&copy; {new Date().getFullYear()} {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
+                </div>
+                <nav className="footer-links" aria-label={language === 'es' ? 'Enlaces del pie de página' : 'Footer links'}>
+                    <a href="#habilidades">{language === 'es' ? 'Stack' : 'Stack'}</a>
+                    <a href="#proyectos">{language === 'es' ? 'Proyectos' : 'Projects'}</a>
+                    <a href="https://github.com/Ezequiel-247" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/eduardo-ezequiel-ortiz-7815a526b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </nav>
             </div>
         </footer>
     )

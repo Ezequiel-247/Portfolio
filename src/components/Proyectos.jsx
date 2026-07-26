@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../style/Proyectos.css";
 import githubIcon from '../img/github.svg';
 import { listaProyectos, iconos, notaTecnica } from "../data/proyectos";
@@ -7,7 +7,8 @@ import { useLanguage } from '../context/LanguageContext';
 const Proyectos = () => {
     const [expandidos, setExpandidos] = useState({});
     const { language } = useLanguage();
-    
+    const gridRef = useRef(null);
+
     // Obtenemos los proyectos dependiendo del idioma
     const proyectosActuales = listaProyectos[language];
     const textoNota = notaTecnica[language];
@@ -15,6 +16,26 @@ const Proyectos = () => {
     const toggleLeerMas = (index) => {
         setExpandidos(prev => ({ ...prev, [index]: !prev[index] }));
     };
+
+    // Revela las cards con un fade + desplazamiento a medida que entran en el viewport
+    useEffect(() => {
+        const contenedor = gridRef.current;
+        if (!contenedor) return;
+
+        const cards = contenedor.querySelectorAll('.card-proyecto');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        cards.forEach((card) => observer.observe(card));
+
+        return () => observer.disconnect();
+    }, [proyectosActuales]);
 
     return (
         <section className="proyectos-seccion" id="proyectos">
@@ -25,7 +46,7 @@ const Proyectos = () => {
                         <p>{textoNota}</p>
                     </div>
                 </div>
-                <div className="grid-proyectos">
+                <div className="grid-proyectos" ref={gridRef}>
                     {proyectosActuales.map((proyecto, index) => {
                         const limiteCaracteres = 180; // Aprox. 4 a 5 líneas de texto
                         const esTextoLargo = proyecto.descripcion.length > limiteCaracteres;
@@ -36,17 +57,19 @@ const Proyectos = () => {
                             className="card-proyecto" 
                             key={index} 
                         >
-                            <img 
-                                src={proyecto.imagen} 
-                                alt={proyecto.titulo} 
-                                className={`proyecto-imagen ${proyecto.esLogo ? 'imagen-logo' : ''} ${proyecto.esFoto ? 'imagen-foto' : ''}`} 
-                                loading="lazy" 
-                            />
+                            <div className="proyecto-imagen-wrapper">
+                                <img
+                                    src={proyecto.imagen}
+                                    alt={proyecto.titulo}
+                                    className={`proyecto-imagen ${proyecto.esLogo ? 'imagen-logo' : ''} ${proyecto.esFoto ? 'imagen-foto' : ''}`}
+                                    loading="lazy"
+                                />
+                                {proyecto.tipo === "laboral" && (
+                                    <span className="badge-laboral">💼 {language === 'es' ? 'Experiencia Laboral' : 'Work Experience'}</span>
+                                )}
+                            </div>
                             <div className="card-content">
                                 <div className="card-header">
-                                    {proyecto.tipo === "laboral" && (
-                                        <span className="badge-laboral">💼 {language === 'es' ? 'Experiencia Laboral' : 'Work Experience'}</span>
-                                    )}
                                     <h3>{proyecto.titulo}</h3>
                                 </div>
                                 <div className="card-body">

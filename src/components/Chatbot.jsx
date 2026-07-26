@@ -17,14 +17,58 @@ const Chatbot = () => {
 
     // Ref para apuntar al final del contenedor de mensajes
     const messagesEndRef = useRef(null);
+    // Ref al contenedor flotante, para poder "empujarlo" hacia arriba cuando el footer aparece
+    const containerRef = useRef(null);
 
     useEffect(() => {
         // Scrollea automáticamente hacia el último mensaje cuando la lista cambia
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        // Con el chat abierto, la ventana en mobile es fullscreen (position: fixed; inset: 0).
+        // Cualquier transform en el contenedor padre la rompe (pasa a posicionarse relativa
+        // al padre en vez de al viewport), así que mientras esté abierto no la tocamos.
+        if (isOpen) {
+            container.style.transform = '';
+            return;
+        }
+
+        let frameId = null;
+
+        const updatePosition = () => {
+            // Apuntamos solo a la franja final del footer (marca + links), no a toda
+            // la sección de Contacto, que arranca mucho antes en la página.
+            const footerBottom = document.querySelector('.footer-bottom');
+            if (!footerBottom) return;
+            const overlap = window.innerHeight - footerBottom.getBoundingClientRect().top;
+            container.style.transform = overlap > 0 ? `translateY(-${overlap}px)` : '';
+        };
+
+        const onScroll = () => {
+            if (frameId) return;
+            frameId = requestAnimationFrame(() => {
+                updatePosition();
+                frameId = null;
+            });
+        };
+
+        updatePosition();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+            window.removeEventListener('resize', onScroll);
+            if (frameId) cancelAnimationFrame(frameId);
+        };
+    }, [isOpen]);
+
     return (
-        <div className="chatbot-container">
+        <div className="chatbot-container" ref={containerRef}>
             {!isOpen ? (
                 <>
                     {!hasOpened && (

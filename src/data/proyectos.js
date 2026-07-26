@@ -347,7 +347,7 @@ export const listaProyectos = {
             "Podés probar la demo con el usuario: student7@example.com / contraseña: password",
         tecnologias: {
             frontend: ["React", "TypeScript", "CSS", "Tailwind CSS"],
-            backend: ["Node.js", "PostgreSQL", "Docker", "Git"],
+            backend: ["JavaScript","Node.js", "PostgreSQL", "Docker", "Git"],
             herramientas: ["Trello", "Postman"]
         },
         repo: "https://github.com/Ezequiel-247/DessApp",

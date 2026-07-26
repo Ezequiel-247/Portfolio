@@ -128,7 +128,7 @@ body.light-mode .nota-tecnica {
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     overflow-x: visible;
     scroll-snap-type: none;
-    align-items: stretch;
+    align-items: start;
   }
 
   .grid-proyectos .card-proyecto {
@@ -153,7 +153,16 @@ body.light-mode .nota-tecnica {
 
   /* Sin border-left — el hover lo maneja con glow */
   box-shadow: 0 4px 24px var(--card-shadow);
-  transition: transform 0.4s ease, border-color 0.4s, box-shadow 0.4s;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, border-color 0.4s, box-shadow 0.4s;
+
+  /* Estado inicial para el reveal por scroll */
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.card-proyecto.reveal {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card-proyecto:hover {
@@ -165,6 +174,11 @@ body.light-mode .nota-tecnica {
 }
 
 /* ── IMAGEN ────────────────────────────────────────────────── */
+.proyecto-imagen-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
 .proyecto-imagen {
   width: 100%;
   height: 210px;
@@ -201,27 +215,32 @@ body.light-mode .nota-tecnica {
 
 .card-header {
   margin-bottom: 12px;
-  min-height: 88px; /* Asegura espacio para la etiqueta dorada + 2 líneas de título */
+  min-height: 56px; /* Asegura espacio para 2 líneas de título */
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Si no hay etiqueta, alinea el título hacia abajo con los demás */
+  justify-content: flex-end;
   align-items: flex-start;
 }
 
-/* Badge laboral — dorado */
+/* Badge laboral — dorado, flotante sobre la imagen */
 .badge-laboral {
+  position: absolute;
+  top: 14px;
+  left: 14px;
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  background: rgba(180, 117, 23, 0.1);
-  color: #c49030;
-  border: 1px solid rgba(180, 117, 23, 0.25);
-  padding: 3px 10px;
+  background: rgba(20, 15, 5, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #e0a33a;
+  border: 1px solid rgba(180, 117, 23, 0.4);
+  padding: 4px 12px;
   border-radius: 9999px;
   font-size: 0.72rem;
   font-weight: 600;
-  margin-bottom: 8px;
   letter-spacing: 0.03em;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
 }
 
 .card-proyecto h3 {
@@ -412,4 +431,12 @@ body.light-mode .btn-repo {
 /* GitHub icon hover fix */
 .btn-repo:hover .tech-icon {
   filter: brightness(0) saturate(100%) invert(67%) sepia(78%) saturate(400%) hue-rotate(173deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-proyecto {
+    opacity: 1;
+    transform: none;
+    transition: border-color 0.4s, box-shadow 0.4s;
+  }
 }

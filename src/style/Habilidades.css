@@ -7,6 +7,8 @@
   padding: 80px 0; /* Padding vertical */
   /* Fondo con gradiente sutil para diferenciar la sección */
   background: linear-gradient(180deg, transparent, rgba(8,13,20,0.4) 30%, rgba(8,13,20,0.4) 70%, transparent);
+  position: relative;
+  overflow: hidden;
 }
 
 body.light-mode .habilidades-seccion {
@@ -62,6 +64,23 @@ body.light-mode .habilidades-seccion {
   display: flex;
   flex-direction: column;
   gap: 16px; /* Espacio entre el encabezado de categoría y las tarjetas */
+  position: relative;
+}
+
+/* Orbe de luz atmosférico detrás de cada grupo — misma identidad visual que el Hero */
+.tech-category-group::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--accent-glow-md), transparent 70%);
+  filter: blur(70px);
+  z-index: -1;
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 /* Encabezado de categoría */
