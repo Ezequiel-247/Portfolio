@@ -1,8 +1,8 @@
 // Importamos las imágenes aquí para mantener el orden
-import homeNetflixImg from '../img/home_netflix.png';
-import unaHurImg from '../img/Anti-Social.png';
-import intaImg from '../img/INTA.jpg';
-import desarrolloAppImg from '../img/Desarrollo_App.png'; // Reemplaza esto con el nombre real de tu imagen
+import homeNetflixImg from '../img/home_netflix.webp';
+import unaHurImg from '../img/Anti-Social.webp';
+import intaImg from '../img/INTA.webp';
+import desarrolloAppImg from '../img/Desarrollo_App.webp';
 
 // Diccionario de íconos (URLs de Devicon)
 export const iconos = {

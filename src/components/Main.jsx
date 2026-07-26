@@ -1,4 +1,4 @@
-import perfilImg from '../img/Perfil_1.png';
+import perfilImg from '../img/Perfil_1.webp';
 import linkedinIcon from '../img/linkedin.svg';
 import githubIcon from '../img/github.svg';
 import '../style/Main.css';

@@ -1,9 +1,11 @@
 /* ============================================================
    KINETIC NOIR — index.css
-   Fuente display: Space Grotesk (Moderna y tecnológica)
+   Fuente display: Syne (Moderna y tecnológica)
    Fuente body: Inter (Máxima legibilidad)
+   Fuente labels/botones: DM Sans
+   Las tres se cargan desde index.html (link + preconnect), no desde acá:
+   un @import en CSS encadena los pedidos en serie en vez de en paralelo.
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ── TEMA OSCURO (default) ─────────────────────────────────── */
 :root {
@@ -128,7 +130,7 @@ body.light-mode::after {
 
 /* ── TIPOGRAFÍA ────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Syne', sans-serif;
   letter-spacing: -0.02em;
   line-height: 1.15;
 }
