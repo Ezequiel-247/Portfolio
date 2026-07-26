@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "../style/Proyectos.css";
 import githubIcon from '../img/github.svg';
-import { listaProyectos, iconos, notaTecnica } from "../data/proyectos";
+import { listaProyectos, iconos, iconosMaterialSymbols, notaTecnica } from "../data/proyectos";
 import { useLanguage } from '../context/LanguageContext';
 
 const Proyectos = () => {
@@ -92,7 +92,7 @@ const Proyectos = () => {
                                             <div className="tags">
                                                 {proyecto.tecnologias.frontend.map((tech, i) => {
                                                     const iconoValor = iconos[tech];
-                                                    const esImagen = iconoValor && iconoValor.startsWith('http');
+                                                    const esImagen = iconoValor && !iconosMaterialSymbols.has(iconoValor);
                                                     return (
                                                         <span key={i} className="tag">
                                                             {esImagen ? (
@@ -113,7 +113,7 @@ const Proyectos = () => {
                                             <div className="tags">
                                                 {proyecto.tecnologias.backend.map((tech, i) => {
                                                     const iconoValor = iconos[tech];
-                                                    const esImagen = iconoValor && iconoValor.startsWith('http');
+                                                    const esImagen = iconoValor && !iconosMaterialSymbols.has(iconoValor);
                                                     return (
                                                         <span key={i} className="tag">
                                                             {esImagen ? (
@@ -134,7 +134,7 @@ const Proyectos = () => {
                                             <div className="tags">
                                                 {proyecto.tecnologias.herramientas.map((tech, i) => {
                                                     const iconoValor = iconos[tech];
-                                                    const esImagen = iconoValor && iconoValor.startsWith('http');
+                                                    const esImagen = iconoValor && !iconosMaterialSymbols.has(iconoValor);
                                                     return (
                                                         <span key={i} className="tag">
                                                             {esImagen ? (

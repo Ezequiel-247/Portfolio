@@ -4,35 +4,66 @@ import unaHurImg from '../img/Anti-Social.webp';
 import intaImg from '../img/INTA.webp';
 import desarrolloAppImg from '../img/Desarrollo_App.webp';
 
-// Diccionario de íconos (URLs de Devicon)
+// Íconos de tecnologías: antes se pedían a una CDN externa (jsdelivr/simpleicons) en cada
+// carga de página. Ahora viven en src/img/icons y Vite los empaqueta con el resto del sitio,
+// así el sitio no depende de que un tercero esté online para mostrarlos.
+import pythonIcon from '../img/icons/python.svg';
+import flaskIcon from '../img/icons/flask.svg';
+import mongodbIcon from '../img/icons/mongodb.svg';
+import javascriptIcon from '../img/icons/javascript.svg';
+import typescriptIcon from '../img/icons/typescript.svg';
+import reactIcon from '../img/icons/react.svg';
+import nodejsIcon from '../img/icons/nodejs.svg';
+import sequelizeIcon from '../img/icons/sequelize.svg';
+import sqliteIcon from '../img/icons/sqlite.svg';
+import postgresqlIcon from '../img/icons/postgresql.svg';
+import html5Icon from '../img/icons/html5.svg';
+import css3Icon from '../img/icons/css3.svg';
+import jinjaIcon from '../img/icons/jinja.svg';
+import dockerIcon from '../img/icons/docker.svg';
+import gitIcon from '../img/icons/git.svg';
+import githubIcon from '../img/icons/github.svg';
+import postmanIcon from '../img/icons/postman.svg';
+import mongooseIcon from '../img/icons/mongoose.svg';
+import tailwindcssIcon from '../img/icons/tailwindcss.svg';
+import trelloIcon from '../img/icons/trello.svg';
+import mysqlIcon from '../img/icons/mysql.svg';
+import bootstrapIcon from '../img/icons/bootstrap.svg';
+
+// Diccionario de íconos
 export const iconos = {
-    "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
-    "Flask": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg",
-    "MongoDB": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
-    "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
-    "TypeScript": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
-    "React": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-    "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
-    "Sequelize": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sequelize/sequelize-original.svg",
-    "Sqlite": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg",
-    "PostgreSQL": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
-    "HTML5": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
-    "CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
-    "Jinja": "https://cdn.simpleicons.org/jinja/white",
-    "Docker": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
-    "Git": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
-    "GitHub": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
-    "Postman": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg",
-    "Mongoose": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongoose/mongoose-original.svg",
-    "Tailwind CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
-    "Trello": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/trello/trello-plain.svg",
-    "MySQL": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
-    "Bootstrap": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg",
+    "Python": pythonIcon,
+    "Flask": flaskIcon,
+    "MongoDB": mongodbIcon,
+    "JavaScript": javascriptIcon,
+    "TypeScript": typescriptIcon,
+    "React": reactIcon,
+    "Node.js": nodejsIcon,
+    "Sequelize": sequelizeIcon,
+    "Sqlite": sqliteIcon,
+    "PostgreSQL": postgresqlIcon,
+    "HTML5": html5Icon,
+    "CSS": css3Icon,
+    "Jinja": jinjaIcon,
+    "Docker": dockerIcon,
+    "Git": gitIcon,
+    "GitHub": githubIcon,
+    "Postman": postmanIcon,
+    "Mongoose": mongooseIcon,
+    "Tailwind CSS": tailwindcssIcon,
+    "Trello": trelloIcon,
+    "MySQL": mysqlIcon,
+    "Bootstrap": bootstrapIcon,
     "bolt": "bolt", // For Query Optimization
     "cloud_sync": "cloud_sync", // Para DevOps
     "hub": "hub", // Para GraphQL
     "security": "security" // For Data Integrity
 };
+
+// Claves de "iconos" que en realidad son nombres de Material Symbols, no imágenes.
+// Se usa para decidir <img> vs <span class="material-symbols-outlined"> sin depender
+// de que el valor "empiece con http" (ya no aplica: los logos ahora son imports locales).
+export const iconosMaterialSymbols = new Set(["bolt", "cloud_sync", "hub", "security", "code"]);
 
 export const habilidadesNiveles = {
     es: {

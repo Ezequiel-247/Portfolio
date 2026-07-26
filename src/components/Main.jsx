@@ -19,7 +19,7 @@ const Main = () =>{
                 {/* Columna Izquierda: Foto y redes */}
                 <div className="perfil-col-izquierda">
                     <div className="imagen-container group">
-                        <img className="perfil-img" src={perfilImg} alt="Ezequiel Ortiz" />
+                        <img className="perfil-img" src={perfilImg} alt="Ezequiel Ortiz" fetchPriority="high" />
                     </div>
                     <div className="redes-container">
                         <p className="redes-titulo">{language === 'es' ? 'Mis redes sociales:' : 'My social networks:'}</p>

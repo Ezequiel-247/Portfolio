@@ -20,8 +20,21 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" />
-    <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
+    <!-- media="print" + el onload que lo cambia a "all" evita que esta hoja bloquee el
+         primer render: el navegador la baja en paralelo sin esperarla para pintar la página.
+         El <noscript> es el respaldo si el usuario tiene JS deshabilitado. -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+      media="print"
+      onload="this.media='all'; this.onload=null;"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" />
+    </noscript>
+    <!-- El script de reCAPTCHA (~1.1MB) se inyecta desde Contactame.jsx recién cuando
+         el usuario se acerca al formulario, no acá: es carga muerta para quien nunca
+         llega hasta el final de la página. -->
     <title>Ezequiel Ortiz | Desarrollador Full Stack</title>
   </head>
   <body>

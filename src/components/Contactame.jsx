@@ -17,8 +17,16 @@ const Contactame = () =>{
     // ese escaneo corre una sola vez apenas carga el script, y si el div todavía no está
     // montado en ese instante (carrera con React), el captcha nunca aparece.
     const recaptchaRef = useRef(null);
+    // Sección completa: la observamos para recién pedir el script de reCAPTCHA cuando
+    // el usuario se está por acercar a Contacto, no en cada carga de página. El script
+    // de Google pesa ~1.1MB y consume >1s de hilo principal — no vale la pena pagarlo
+    // si el visitante nunca llega hasta acá.
+    const footerRef = useRef(null);
 
     useEffect(() => {
+        const footer = footerRef.current;
+        if (!footer) return;
+
         let intervalId;
 
         const renderRecaptcha = () => {
@@ -29,17 +37,49 @@ const Contactame = () =>{
             return false;
         };
 
-        if (!renderRecaptcha()) {
-            intervalId = setInterval(() => {
-                if (renderRecaptcha()) clearInterval(intervalId);
-            }, 200);
-        }
+        const startPolling = () => {
+            if (!renderRecaptcha()) {
+                intervalId = setInterval(() => {
+                    if (renderRecaptcha()) clearInterval(intervalId);
+                }, 200);
+            }
+        };
 
-        return () => clearInterval(intervalId);
+        const loadRecaptchaScript = () => {
+            if (document.getElementById('recaptcha-script')) {
+                startPolling();
+                return;
+            }
+            const script = document.createElement('script');
+            script.id = 'recaptcha-script';
+            script.src = 'https://www.google.com/recaptcha/api.js?render=explicit';
+            script.async = true;
+            script.defer = true;
+            script.onload = startPolling;
+            document.head.appendChild(script);
+        };
+
+        // rootMargin generoso: empieza a pedir el script ~600px antes de que la sección
+        // entre en pantalla, para que ya esté listo cuando el usuario llegue al formulario.
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    loadRecaptchaScript();
+                    observer.disconnect();
+                }
+            },
+            { rootMargin: '600px 0px' }
+        );
+        observer.observe(footer);
+
+        return () => {
+            observer.disconnect();
+            clearInterval(intervalId);
+        };
     }, []);
 
     return(
-        <footer id="contacto" className="contacto-seccion">
+        <footer id="contacto" className="contacto-seccion" ref={footerRef}>
             <div className="contacto-container">
                 <div className="contacto-info">
                     <h2 className='contactame-titulo'>{language === 'es' ? 'Contáctame' : 'Contact Me'}</h2>

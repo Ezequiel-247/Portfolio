@@ -1,5 +1,5 @@
 /* ============================================================
-   EDUCACIÃ“N â€” Kinetic Noir
+   EDUCACIÓN — Kinetic Noir
    ============================================================ */
 
 .educacion-seccion {
@@ -14,7 +14,7 @@
   padding: 0 24px;
 }
 
-/* TÃ­tulo de secciÃ³n â€” patrÃ³n reutilizable */
+/* Título de sección — patrón reutilizable */
 .titulo-seccion {
   font-family: 'Syne', sans-serif;
   font-size: clamp(2rem, 4vw, 2.8rem);
@@ -25,7 +25,7 @@
   margin-bottom: 12px;
 }
 
-/* LÃ­nea decorativa bajo el tÃ­tulo */
+/* Línea decorativa bajo el título */
 .titulo-seccion::after {
   content: '';
   display: block;

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { iconos, allSkills } from '../data/proyectos';
+import { iconos, iconosMaterialSymbols, allSkills } from '../data/proyectos';
 import '../style/Habilidades.css';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -54,7 +54,7 @@ const Habilidades = () => {
                             <ul className="tech-cards-container">
                                 {skills.map((skill, skillIndex) => {
                                     const iconoValor = iconos[skill.name] || 'code';
-                                    const esImagen = iconoValor.startsWith('http');
+                                    const esImagen = !iconosMaterialSymbols.has(iconoValor);
                                     return (
                                         <li key={skillIndex} className={`tech-card ${skill.colorClass}`}>
                                             {esImagen ? (
