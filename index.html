@@ -20,6 +20,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- La app es una SPA sin SSR: el navegador no puede "descubrir" la foto de perfil
+         (LCP) hasta que el JS corre y React la renderiza. Este preload la hace visible
+         desde el HTML inicial, sin esperar a React. -->
+    <link rel="preload" as="image" href="/src/img/Perfil_1.webp" fetchpriority="high" />
     <!-- media="print" + el onload que lo cambia a "all" evita que esta hoja bloquee el
          primer render: el navegador la baja en paralelo sin esperarla para pintar la página.
          El <noscript> es el respaldo si el usuario tiene JS deshabilitado. -->
