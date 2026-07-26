@@ -118,9 +118,9 @@ body.light-mode .habilidades-seccion {
 
 /* ── TARJETA DE TECNOLOGÍA INDIVIDUAL ──────────────────────── */
 .tech-card {
+  /* Sin backdrop-filter a propósito: con ~15-20 cards en esta sección, el blur
+     por card satura la GPU en mobile y provoca cuadros en blanco al scrollear. */
   background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--card-border);
   border-radius: 16px;
   padding: 24px;

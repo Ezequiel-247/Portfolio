@@ -52,9 +52,9 @@
 
 /* Card */
 .education-card {
+  /* Sin backdrop-filter a propósito: ver nota en Habilidades.css sobre el costo
+     de blur en mobile — esta sección arranca muy arriba y el flash se nota rápido. */
   background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--card-border);
   padding: 36px; /* Aumentamos el espacio interno para hacerlas más grandes */
   border-radius: 16px;
