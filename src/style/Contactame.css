@@ -51,6 +51,13 @@ body.light-mode .contacto-seccion {
   line-height: 1.7;
 }
 
+.contacto-nota-spam {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
 .redes-sociales-contacto {
   display: flex;
   gap: 14px;

@@ -84,9 +84,14 @@ const Contactame = () =>{
                 <div className="contacto-info">
                     <h2 className='contactame-titulo'>{language === 'es' ? 'Contáctame' : 'Contact Me'}</h2>
                     <p className="contacto-texto">
-                        {language === 'es' 
-                            ? 'Puedes contactarme a través del siguiente formulario o mediante mis redes sociales:' 
+                        {language === 'es'
+                            ? 'Puedes contactarme a través del siguiente formulario o mediante mis redes sociales:'
                             : 'You can contact me through the following form or via my social networks:'}
+                    </p>
+                    <p className="contacto-nota-spam">
+                        {language === 'es'
+                            ? '📩 Al enviar el formulario vas a recibir una respuesta automática confirmando tu mensaje. Si no la ves en tu bandeja de entrada, revisá spam o correo no deseado.'
+                            : "📩 After submitting the form you'll get an automatic reply confirming your message. If you don't see it in your inbox, check your spam/junk folder."}
                     </p>
                     <div className="redes-sociales-contacto">
                         <a href="https://www.linkedin.com/in/eduardo-ezequiel-ortiz-7815a526b" target="_blank" rel="noopener noreferrer">
