@@ -260,6 +260,8 @@ body.light-mode .nota-tecnica {
 .card-body {
   flex-grow: 1;
   margin-bottom: 20px;
+  /* Permite el scroll si el contenido del cuerpo de la tarjeta excede el espacio disponible */
+  overflow-y: auto;
 }
 
 .card-proyecto p {
@@ -278,6 +280,7 @@ body.light-mode .nota-tecnica {
   margin-top: 8px;
   margin-bottom: 0;
   font-size: 0.85rem;
+  font-weight: 700; /* Hace el texto más prominente */
   font-style: italic;
   color: var(--text-muted);
 }
@@ -396,6 +399,27 @@ body.light-mode .btn-repo .tech-icon {
   transition: all 0.3s;
 }
 
+/* Estilos para el botón de video */
+.btn-video {
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--card-border);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.3s;
+}
+
+body.light-mode .btn-video {
+  background: var(--bg-secondary);
+}
+
+
 /* Le damos un fondo sutil al botón en modo claro para que destaque más */
 body.light-mode .btn-repo {
   background: var(--bg-secondary);
@@ -404,6 +428,12 @@ body.light-mode .btn-repo {
 .btn-repo:hover {
   border-color: var(--accent-color);
   color: var(--accent-color);
+  box-shadow: 0 0 14px var(--accent-glow);
+}
+
+.btn-video:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color); /* Mantener el color del texto consistente con el hover */
   box-shadow: 0 0 14px var(--accent-glow);
 }
 

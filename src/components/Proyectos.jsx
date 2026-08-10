@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "../style/Proyectos.css";
 import githubIcon from '../img/github.svg';
 import { listaProyectos, iconos, iconosMaterialSymbols, notaTecnica } from "../data/proyectos";
+import youtubeIcon from '../img/youtube.svg'; // Asume que tienes un ícono SVG de YouTube en esta ruta
 import { useLanguage } from '../context/LanguageContext';
 
 const Proyectos = () => {
@@ -157,6 +158,13 @@ const Proyectos = () => {
                                     )}
                                 </div>
                                 <div className="card-footer">
+                                    {proyecto.video && (
+                                        <a href={proyecto.video} target="_blank" rel="noopener noreferrer" className="btn-video">
+                                            {language === 'es' ? 'Ver Video Explicativo' : 'Watch Explanatory Video'}
+                                            {/* Puedes usar un ícono de YouTube aquí, similar a cómo usas githubIcon */}
+                                            <img src={youtubeIcon} alt="YouTube" className="tech-icon" />
+                                        </a>
+                                    )}
                                     {proyecto.repo && (
                                         <a href={proyecto.repo} target="_blank" rel="noopener noreferrer" className="btn-repo">
                                             {language === 'es' ? 'Ver Código' : 'View Code'} <img src={githubIcon} alt="GitHub" className="tech-icon" />
