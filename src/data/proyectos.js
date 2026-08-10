@@ -436,6 +436,7 @@ export const listaProyectos = {
                 Puesto: "Engineer at INTA",
                 Contacto: "+5491169528278"
             },
+            video: "https://www.youtube.com/watch?v=bGe9rUW3NF0",
             tecnologias: {
                 frontend: ["Jinja", "CSS"],
                 backend: ["JavaScript","Node.js", "Python", "Flask", "MongoDB"]
