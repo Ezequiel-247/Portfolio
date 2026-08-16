@@ -4,6 +4,7 @@ import linkedinIcon from '../img/linkedin.svg';
 import githubIcon from '../img/github.svg';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import { useContactForm } from '../hooks/useContactForm.js';
+import DescargarCV from './DescargarCV';
 
 const RECAPTCHA_SITE_KEY = '6LdnikEtAAAAAPTI05U-5NLBOYgESy9Ezosd6lQk';
 
@@ -102,15 +103,7 @@ const Contactame = () =>{
                         </a>
                     </div>
                     <div className="contacto-cv">
-                        <a 
-                            href={language === 'es' ? 'Ezequiel Ortiz Cv.pdf' : 'Ezequiel Ortiz Resume.pdf'} 
-                            download={language === 'es' ? 'Ezequiel Ortiz Cv.pdf' : 'Ezequiel Ortiz Resume.pdf'} 
-                            className="btn-descargar-cv-contacto"
-                            title={language === 'es' ? 'Descargar Curriculum' : 'Download Resume'}
-                        >
-                            <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: '1.2rem' }}></span>
-                            {language === 'es' ? 'Descargar CV' : 'Download CV'}
-                        </a>
+                        <DescargarCV />
                     </div>
                 </div>
 

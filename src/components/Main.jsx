@@ -6,6 +6,7 @@ import { textoSobreMi } from '../data/sobreMi';
 import { estudios } from '../data/estudios';
 import { useLanguage } from '../context/LanguageContext';
 import '../style/Educacion.css';
+import DescargarCV from './DescargarCV';
 
 const Main = () =>{
     const { language } = useLanguage();
@@ -47,14 +48,7 @@ const Main = () =>{
                         </p>
                     </div>
                     <div className="botones-container">
-                        <a
-                            href={language === 'es' ? 'Ezequiel Ortiz Cv.pdf' : 'Ezequiel Ortiz Resume.pdf'}
-                            download={language === 'es' ? 'Ezequiel Ortiz Cv.pdf' : 'Ezequiel Ortiz Resume.pdf'}
-                            className="btn btn-primary"
-                            title={language === 'es' ? 'Descargar Curriculum' : 'Download Resume'}
-                        >
-                            {language === 'es' ? 'Descargar CV' : 'Download CV'}
-                        </a>
+                        <DescargarCV />
                         <a
                             href="#proyectos"
                             className="btn btn-secondary"

@@ -10,6 +10,12 @@
   transition: transform 0.15s ease-out; /* Suaviza el corrimiento hacia arriba sobre el footer */
 }
 
+/* When CV modal is open, prevent interacting with the chatbot */
+.cv-modal-open .chatbot-container {
+  pointer-events: none;
+  opacity: 0.85;
+}
+
 .chatbot-toggle-btn {
   border-radius: 50%;
   width: 60px; /* Tamaño compacto para celular */
@@ -44,7 +50,7 @@
   .chatbot-window {
     position: fixed;
     inset: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     height: 100dvh;
     max-width: none;
