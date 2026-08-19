@@ -1,10 +1,12 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { iconos, iconosMaterialSymbols, allSkills } from '../data/proyectos';
 import '../style/Habilidades.css';
 import { useLanguage } from '../context/LanguageContext';
 
 const Habilidades = () => {
     const { language } = useLanguage();
+    const [categoriaActiva, setCategoriaActiva] = useState('all');
+    const [categoriasExpandidas, setCategoriasExpandidas] = useState({});
 
     // Agrupamos las habilidades por categoría para crear las columnas
     const skillsByCategory = useMemo(() => {
@@ -37,13 +39,46 @@ const Habilidades = () => {
         }
     };
 
+    const categoriasFiltro = [
+        { id: 'all', es: 'Todas', en: 'All' },
+        { id: 'Frontend', es: 'Frontend', en: 'Frontend' },
+        { id: 'Backend', es: 'Backend', en: 'Backend' },
+        { id: 'Tools', es: 'Herramientas', en: 'Tools' }
+    ];
+
+    const categoriasVisibles = categoriaActiva === 'all'
+        ? Object.entries(skillsByCategory)
+        : Object.entries(skillsByCategory).filter(([category]) => category === categoriaActiva);
+
+    const toggleCategoria = (category) => {
+        setCategoriasExpandidas(prev => ({ ...prev, [category]: !prev[category] }));
+    };
+
+    useEffect(() => {
+        setCategoriaActiva('all');
+    }, [language]);
+
     return (
         <section className="habilidades-seccion" id="habilidades" aria-labelledby="habilidades-titulo">
             <div className="habilidades-container">
                 <h2 id="habilidades-titulo" className="titulo-seccion">{language === 'es' ? 'Stack Tecnológico' : 'Tech Stack'}</h2>
+
+                <div className="filtros-stack" role="group" aria-label={language === 'es' ? 'Filtrar stack tecnológico' : 'Filter tech stack'}>
+                    {categoriasFiltro.map((filtro) => (
+                        <button
+                            key={filtro.id}
+                            type="button"
+                            className={`filtro-stack ${categoriaActiva === filtro.id ? 'activo' : ''}`}
+                            aria-pressed={categoriaActiva === filtro.id}
+                            onClick={() => setCategoriaActiva(filtro.id)}
+                        >
+                            {language === 'es' ? filtro.es : filtro.en}
+                        </button>
+                    ))}
+                </div>
                 
                 <ul className="tech-stack-grid">
-                    {Object.entries(skillsByCategory).map(([category, skills]) => (
+                    {categoriasVisibles.map(([category, skills]) => (
                         <li key={category} className="tech-category-group">
                             <div className="tech-category-header">
                                 <h3 className="tech-category-title">
@@ -52,7 +87,7 @@ const Habilidades = () => {
                             </div>
                             
                             <ul className="tech-cards-container">
-                                {skills.map((skill, skillIndex) => {
+                                {(categoriasExpandidas[category] ? skills : skills.slice(0, 4)).map((skill, skillIndex) => {
                                     const iconoValor = iconos[skill.name] || 'code';
                                     const esImagen = !iconosMaterialSymbols.has(iconoValor);
                                     return (
@@ -78,6 +113,19 @@ const Habilidades = () => {
                                     );
                                 })}
                             </ul>
+                            {skills.length > 4 && (
+                                <button
+                                    type="button"
+                                    className="toggle-skills-btn"
+                                    onClick={() => toggleCategoria(category)}
+                                    aria-expanded={Boolean(categoriasExpandidas[category])}
+                                >
+                                    {categoriasExpandidas[category]
+                                        ? (language === 'es' ? 'Ver menos' : 'Show less')
+                                        : (language === 'es' ? `Ver más (${skills.length - 4})` : `Show more (${skills.length - 4})`)}
+                                    <span aria-hidden="true">{categoriasExpandidas[category] ? '↑' : '↓'}</span>
+                                </button>
+                            )}
                         </li>
                     ))}
                 </ul>

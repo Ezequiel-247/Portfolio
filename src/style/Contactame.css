@@ -80,6 +80,29 @@ body.light-mode .redes-sociales-contacto .icono {
   transform: translateY(-3px);
 }
 
+.correo-contacto {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  max-width: 100%;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: color 0.25s, transform 0.25s;
+}
+
+.correo-contacto .material-symbols-outlined {
+  color: var(--accent-color);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.correo-contacto:hover {
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
 /* ── BOTON CV CONTACTO ─────────────────────────────────────── */
 .contacto-cv {
   margin-top: 16px;

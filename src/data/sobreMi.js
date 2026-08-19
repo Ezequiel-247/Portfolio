@@ -1,6 +1,6 @@
 export const textoSobreMi = {
     es: {
-        title: "Ezequiel Ortiz — Desarrollador Fullstack",
+        title: "Ezequiel Ortiz — Desarrollador Full Stack",
         paragraphs: [
             "• Vivo en Buenos Aires, Argentina.",
             "• Técnico Universitario en Programación graduado de la Universidad Nacional de Hurlingham (UNAHUR).",
@@ -10,7 +10,7 @@ export const textoSobreMi = {
         ]
     },
     en: {
-        title: "Ezequiel Ortiz — Fullstack Developer",
+        title: "Ezequiel Ortiz — Full Stack Developer",
         paragraphs: [
             "• Based in Buenos Aires, Argentina.",
             "• University Technician in Programming graduated from Universidad Nacional de Hurlingham (UNAHUR).",

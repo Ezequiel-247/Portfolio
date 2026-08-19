@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../style/Header.css';
 import linkedinIcon from '../img/linkedin.svg';
 import githubIcon from '../img/github.svg';
@@ -14,10 +14,28 @@ const Header = () => {
     // Obtenemos la lógica del tema desde nuestro Custom Hook
     const { darkMode, toggleTheme } = useTheme();
 
+    useEffect(() => {
+        if (!menuOpen) return undefined;
+
+        const closeWithEscape = (event) => {
+            if (event.key === 'Escape') setMenuOpen(false);
+        };
+
+        document.body.style.overflow = 'hidden';
+        document.body.classList.add('menu-open');
+        document.addEventListener('keydown', closeWithEscape);
+
+        return () => {
+            document.body.style.overflow = '';
+            document.body.classList.remove('menu-open');
+            document.removeEventListener('keydown', closeWithEscape);
+        };
+    }, [menuOpen]);
+
     return (
     <header className="encabezado">
         {/* Botón Hamburguesa (Visible solo en móvil) */}
-        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={language === 'es' ? 'Abrir menú' : 'Open menu'} title={language === 'es' ? 'Abrir menú' : 'Open menu'}>
+        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label={language === 'es' ? 'Abrir menú' : 'Open menu'} title={language === 'es' ? 'Abrir menú' : 'Open menu'}>
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
                 <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
             </svg>
@@ -70,7 +88,13 @@ const Header = () => {
         </nav>
 
         {/* Overlay oscuro para cerrar al hacer click fuera */}
-        {menuOpen && <div className="overlay" onClick={() => setMenuOpen(false)}></div>}
+        {menuOpen && (
+            <div
+                className="overlay"
+                onClick={() => setMenuOpen(false)}
+                aria-label={language === 'es' ? 'Cerrar menú' : 'Close menu'}
+            ></div>
+        )}
     </header>
     )
 };

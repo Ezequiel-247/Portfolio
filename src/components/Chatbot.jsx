@@ -107,6 +107,8 @@ const Chatbot = () => {
                                         href={msg.actionUrl}
                                         // Si el link tiene ".pdf", le indicamos al navegador que lo descargue en lugar de redireccionar
                                         download={msg.actionUrl.includes('.pdf') ? true : undefined}
+                                        target={msg.actionUrl.startsWith('http') ? '_blank' : undefined}
+                                        rel={msg.actionUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
                                         onClick={() => setIsOpen(false)}
                                         className="chatbot-message-action"
                                     >

@@ -7,15 +7,25 @@ import { useLanguage } from '../context/LanguageContext';
 
 const Proyectos = () => {
     const [expandidos, setExpandidos] = useState({});
+    const [filtroActivo, setFiltroActivo] = useState('todos');
     const { language } = useLanguage();
     const gridRef = useRef(null);
 
     // Obtenemos los proyectos dependiendo del idioma
     const proyectosActuales = listaProyectos[language];
     const textoNota = notaTecnica[language];
+    const proyectosFiltrados = filtroActivo === 'todos'
+        ? proyectosActuales
+        : proyectosActuales.filter((proyecto) => proyecto.tipo === filtroActivo);
 
-    const toggleLeerMas = (index) => {
-        setExpandidos(prev => ({ ...prev, [index]: !prev[index] }));
+    const filtros = [
+        { id: 'todos', es: 'Todos', en: 'All' },
+        { id: 'laboral', es: 'Experiencia laboral', en: 'Work experience' },
+        { id: 'personal', es: 'Proyectos personales', en: 'Personal projects' },
+    ];
+
+    const toggleLeerMas = (proyectoId) => {
+        setExpandidos(prev => ({ ...prev, [proyectoId]: !prev[proyectoId] }));
     };
 
     // Revela las cards con un fade + desplazamiento a medida que entran en el viewport
@@ -34,9 +44,10 @@ const Proyectos = () => {
         }, { threshold: 0.15 });
 
         cards.forEach((card) => observer.observe(card));
+        contenedor.scrollTo({ left: 0, behavior: 'smooth' });
 
         return () => observer.disconnect();
-    }, [proyectosActuales]);
+    }, [filtroActivo, language]);
 
     return (
         <section className="proyectos-seccion" id="proyectos">
@@ -47,16 +58,46 @@ const Proyectos = () => {
                         <p>{textoNota}</p>
                     </div>
                 </div>
-                <div className="grid-proyectos" ref={gridRef}>
-                    {proyectosActuales.map((proyecto, index) => {
+                <div className="filtros-proyectos" role="group" aria-label={language === 'es' ? 'Filtrar proyectos' : 'Filter projects'}>
+                    {filtros.map((filtro) => (
+                        <button
+                            key={filtro.id}
+                            type="button"
+                            className={`filtro-proyecto ${filtroActivo === filtro.id ? 'activo' : ''}`}
+                            aria-pressed={filtroActivo === filtro.id}
+                            onClick={() => setFiltroActivo(filtro.id)}
+                        >
+                            {language === 'es' ? filtro.es : filtro.en}
+                            <span className="filtro-contador">
+                                {filtro.id === 'todos'
+                                    ? proyectosActuales.length
+                                    : proyectosActuales.filter((proyecto) => proyecto.tipo === filtro.id).length}
+                            </span>
+                        </button>
+                    ))}
+                </div>
+                {proyectosFiltrados.length > 1 && (
+                    <div className="carousel-hint" role="status">
+                        <span>{language === 'es' ? 'Desliza para explorar los proyectos' : 'Swipe to explore the projects'}</span>
+                        <span className="carousel-hint-icon" aria-hidden="true">→</span>
+                    </div>
+                )}
+                <div
+                    className={`grid-proyectos ${proyectosFiltrados.length === 1 ? 'solo-proyecto' : ''}`}
+                    ref={gridRef}
+                    role="region"
+                    aria-label={language === 'es' ? 'Carrusel de proyectos' : 'Projects carousel'}
+                    tabIndex="0"
+                >
+                    {proyectosFiltrados.map((proyecto) => {
                         const limiteCaracteres = 180; // Aprox. 4 a 5 líneas de texto
                         const esTextoLargo = proyecto.descripcion.length > limiteCaracteres;
-                        const mostrarTodo = expandidos[index];
+                        const mostrarTodo = expandidos[proyecto.titulo];
 
                         return (
                         <div 
                             className="card-proyecto" 
-                            key={index} 
+                            key={proyecto.titulo}
                         >
                             <div className="proyecto-imagen-wrapper">
                                 <img
@@ -80,7 +121,7 @@ const Proyectos = () => {
                                             : proyecto.descripcion
                                         }
                                         {esTextoLargo && (
-                                            <button className="btn-leer-mas" onClick={() => toggleLeerMas(index)}>
+                                            <button className="btn-leer-mas" onClick={() => toggleLeerMas(proyecto.titulo)}>
                                                 {mostrarTodo 
                                                     ? (language === 'es' ? "Ver menos" : "See less") 
                                                     : (language === 'es' ? "Ver más" : "See more")}
@@ -187,10 +228,6 @@ const Proyectos = () => {
                         </div>
                     );
                     })}
-                </div>
-                <div className="carousel-hint" aria-hidden="true">
-                    <span>{language === 'es' ? 'Desliza para ver más proyectos' : 'Swipe to see more projects'}</span>
-                    <span className="carousel-hint-icon">👉</span>
                 </div>
             </div>
         </section>

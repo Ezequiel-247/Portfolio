@@ -4,7 +4,7 @@
 
 .habilidades-seccion {
   width: 100%;
-  padding: 80px 0; /* Padding vertical */
+  padding: 56px 0;
   /* Fondo con gradiente sutil para diferenciar la sección */
   background: linear-gradient(180deg, transparent, rgba(8,13,20,0.4) 30%, rgba(8,13,20,0.4) 70%, transparent);
   position: relative;
@@ -39,16 +39,20 @@ body.light-mode .habilidades-seccion {
   width: 40px;
   height: 2px;
   background: var(--accent-color);
-  margin: 12px auto 48px;
+  margin: 10px auto 28px;
   box-shadow: 0 0 8px var(--accent-glow-md);
+}
+
+.filtros-stack {
+  display: none;
 }
 
 /* ── GRID DE CATEGORÍAS ────────────────────────────────────── */
 .tech-stack-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px; /* Espacio entre grupos de categorías */
-  margin-top: 48px;
+  gap: 24px;
+  margin-top: 28px;
   padding: 0;
   list-style: none;
 }
@@ -63,7 +67,7 @@ body.light-mode .habilidades-seccion {
 .tech-category-group {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Espacio entre el encabezado de categoría y las tarjetas */
+  gap: 10px;
   position: relative;
 }
 
@@ -88,7 +92,7 @@ body.light-mode .habilidades-seccion {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 8px; /* Espacio debajo del encabezado */
+  margin-bottom: 2px;
 }
 
 .tech-category-icon {
@@ -100,7 +104,7 @@ body.light-mode .habilidades-seccion {
 
 .tech-category-title {
   font-family: 'Syne', sans-serif;
-  font-size: 1.6rem; /* Tamaño de fuente para el título de categoría */
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-color);
   text-transform: uppercase;
@@ -111,9 +115,30 @@ body.light-mode .habilidades-seccion {
 .tech-cards-container {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Espacio entre tarjetas individuales */
+  gap: 10px;
   padding: 0;
   list-style: none;
+}
+
+.toggle-skills-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 4px;
+  padding: 5px 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent-color);
+  cursor: pointer;
+  font-size: 0.76rem;
+  font-weight: 700;
+  transition: color 0.25s, transform 0.25s;
+}
+
+.toggle-skills-btn:hover {
+  color: var(--text-color);
+  transform: translateX(3px);
 }
 
 /* ── TARJETA DE TECNOLOGÍA INDIVIDUAL ──────────────────────── */
@@ -122,11 +147,11 @@ body.light-mode .habilidades-seccion {
      por card satura la GPU en mobile y provoca cuadros en blanco al scrollear. */
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 16px;
-  padding: 24px;
+  border-radius: 12px;
+  padding: 13px 14px;
   display: flex;
   align-items: center; /* Alineación centrada y compacta */
-  gap: 16px;
+  gap: 12px;
   box-shadow: 0 4px 16px var(--card-shadow);
   transition: all 0.3s ease;
 }
@@ -139,8 +164,8 @@ body.light-mode .habilidades-seccion {
 
 /* Nueva imagen de Logo en tarjeta */
 .tech-card-logo {
-  width: 44px; /* Tamaño del icono */
-  height: 44px;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
   transition: transform 0.3s ease;
   object-fit: contain;
@@ -161,7 +186,7 @@ body.light-mode .tech-card-logo[src*="jinja"] {
 
 /* Icono dentro de la tarjeta */
 .tech-card-icon {
-  font-size: 2.5rem; /* Tamaño del ícono de Material Symbols */
+  font-size: 1.8rem;
   flex-shrink: 0; /* Evita que el ícono se encoja */
   transition: transform 0.3s ease;
   color: var(--accent-color); /* Color por defecto, se sobrescribe por colorClass */
@@ -182,7 +207,7 @@ body.light-mode .tech-card-logo[src*="jinja"] {
 
 .tech-card-name {
   font-family: 'Syne', sans-serif;
-  font-size: 1.2rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-color);
   margin-bottom: 4px;
@@ -197,12 +222,12 @@ body.light-mode .tech-card-logo[src*="jinja"] {
 
 .tech-tag-pill {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   font-weight: 700;
   color: var(--text-muted);
   background: var(--bg-secondary);
   border: 1px solid var(--card-border);
-  padding: 3px 10px;
+  padding: 2px 8px;
   border-radius: 9999px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -240,4 +265,80 @@ body.light-mode .tech-tag-pill {
 .tech-card.lg-col-span-2 {
   /* En pantallas grandes, ocupa 2 columnas */
   grid-column: span 2; 
+}
+
+/* En móvil, dos columnas reducen la altura del stack sin ocultar tecnologías. */
+@media (max-width: 767px) {
+  .filtros-stack {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px;
+    margin: -10px 0 26px;
+  }
+
+  .filtro-stack {
+    min-height: 34px;
+    padding: 7px 12px;
+    border: 1px solid var(--card-border);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 700;
+    transition: color 0.25s, background 0.25s, border-color 0.25s;
+  }
+
+  .filtro-stack.activo,
+  .filtro-stack:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-glow);
+    color: var(--accent-color);
+  }
+
+  .tech-stack-grid {
+    gap: 28px;
+  }
+
+  .tech-category-title {
+    font-size: 1rem;
+  }
+
+  .tech-cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .tech-card {
+    min-width: 0;
+    padding: 11px 10px;
+    gap: 8px;
+    border-radius: 10px;
+  }
+
+  .tech-card-logo {
+    width: 26px;
+    height: 26px;
+  }
+
+  .tech-card-icon {
+    font-size: 1.45rem;
+  }
+
+  .tech-card-name {
+    font-size: 0.8rem;
+    line-height: 1.15;
+  }
+
+  .tech-card-tags {
+    gap: 3px;
+  }
+
+  .tech-tag-pill {
+    font-size: 0.48rem;
+    padding: 2px 5px;
+    letter-spacing: 0.03em;
+  }
 }

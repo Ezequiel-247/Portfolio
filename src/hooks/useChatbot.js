@@ -49,15 +49,17 @@ export const useChatbot = () => {
         },
         {   
             text: '¿Cuál es su experiencia laboral?', 
-            reply: 'Ezequiel trabajó como Desarrollador en INTA (Instituto Nacional de Tecnología Agropecuaria).\n\n' + 
-                   'Donde pudo desempeñarse como desarrollador fullstack con rol mas enfocado en el backend.\n\n' +
-                   'Sus logros incluyen:\n\n' +
-                   '• Arquitectura de Datos con Python y Flask.\n' +
-                   '• Gestión de datos NoSQL en MongoDB.\n' +
-                   '• Implementación de estructuras de datos eficientes para optimizar consultas y almacenamiento.\n' +
-                   '• Automatización de hardware con Raspberry Pi 4.\n' +
-                   '• Herramientas de análisis y exportación (PDF/Excel).\n' +
-                   '• Interfaz interactiva en tiempo real con JavaScript, Jinja2 y Css.' 
+             reply: 'Ezequiel trabajó como Desarrollador en el INTA (Instituto Nacional de Tecnología Agropecuaria), desempeñándose como desarrollador full stack con foco principal en backend.\n\n' +
+                 'Sus principales logros incluyen:\n\n' +
+                 '• Diseño de arquitectura de datos con Python y Flask.\n' +
+                 '• Gestión de datos NoSQL con MongoDB.\n' +
+                 '• Implementación de estructuras de datos eficientes para optimizar consultas y almacenamiento.\n' +
+                 '• Automatización de hardware mediante Raspberry Pi 4.\n' +
+                 '• Desarrollo de herramientas de análisis y exportación en PDF y Excel.\n' +
+                 '• Interfaz interactiva en tiempo real con JavaScript, Jinja2 y CSS.\n\n' +
+                 'También puedes ver un video explicativo del proyecto:',
+             actionUrl: 'https://www.youtube.com/watch?v=bGe9rUW3NF0',
+             actionText: 'Ver video explicativo'
         },
         {
             text: '¿Qué proyectos hizo?',
@@ -99,15 +101,17 @@ export const useChatbot = () => {
         },
         { 
             text: 'What is his work experience?', 
-            reply: 'Ezequiel worked as a Back-end Developer at INTA (National Institute of Agricultural Technology).\n\n' +
-                   'Where he was able to work as a fullstack developer with a focus on backend.\n\n' +
-                   'His achievements include:\n\n' +
-                   '• Data Architecture using Python and Flask.\n' +
-                   '• NoSQL data management with MongoDB.\n' +
-                   '• Implementation of efficient data structures to optimize queries and storage.\n' +
-                   '• Hardware Automation with Raspberry Pi 4.\n' +
-                   '• Analysis and export tools (PDF/Excel).\n' +
-                   '• Real-time interactive interface with JavaScript, Jinja2 and Css.' 
+             reply: 'Ezequiel worked as a Developer at INTA (National Institute of Agricultural Technology), working as a full stack developer with a primary focus on backend development.\n\n' +
+                 'His main achievements include:\n\n' +
+                 '• Designing a data architecture with Python and Flask.\n' +
+                 '• Managing NoSQL data with MongoDB.\n' +
+                 '• Implementing efficient data structures to optimize queries and storage.\n' +
+                 '• Automating hardware with Raspberry Pi 4.\n' +
+                 '• Developing analysis and export tools for PDF and Excel.\n' +
+                 '• Building a real-time interactive interface with JavaScript, Jinja2, and CSS.\n\n' +
+                 'You can also watch an explanatory video about the project:',
+             actionUrl: 'https://www.youtube.com/watch?v=bGe9rUW3NF0',
+             actionText: 'Watch explanatory video'
         },
         {
             text: 'What projects has he worked on?',

@@ -101,6 +101,14 @@ const Contactame = () =>{
                         <a href="https://github.com/Ezequiel-247" target="_blank" rel="noopener noreferrer">
                             <img className='icono' src={githubIcon} alt="GitHub" title={language === 'es' ? 'Mi GitHub' : 'My GitHub'}/>
                         </a>
+                        <a
+                            className="correo-contacto"
+                            href="mailto:ezeortiz267@gmail.com"
+                            title={language === 'es' ? 'Enviar un correo' : 'Send an email'}
+                        >
+                            <span className="material-symbols-outlined" aria-hidden="true">mail</span>
+                            <span>ezeortiz267@gmail.com</span>
+                        </a>
                     </div>
                     <div className="contacto-cv">
                         <DescargarCV />

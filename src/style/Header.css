@@ -31,6 +31,15 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2), 0 0 20px var(--accent-glow);
 }
 
+/* El overlay vive dentro del header; este estado aplica el foco al contenido del sitio completo. */
+body.menu-open #root > main,
+body.menu-open #root > .habilidades-seccion,
+body.menu-open #root > .proyectos-seccion,
+body.menu-open #root > .contacto-seccion {
+  filter: blur(7px) saturate(0.72);
+  transition: filter 0.3s ease;
+}
+
 /* ── NAV LINKS ─────────────────────────────────────────────── */
 .nav {
   display: flex;
@@ -231,19 +240,23 @@ body.light-mode .nav a:hover {
     display: block;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(2, 4, 7, 0.48);
     z-index: 1000;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(12px) saturate(0.72);
+    -webkit-backdrop-filter: blur(12px) saturate(0.72);
+    animation: scrimIn 0.3s ease both;
   }
 
   body.light-mode .overlay {
-    background: rgba(51, 77, 56, 0.4); /* El color más oscuro de la paleta para oscurecer el fondo */
+    background: rgba(51, 77, 56, 0.28);
   }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
+@keyframes scrimIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0) saturate(1);
+    -webkit-backdrop-filter: blur(0) saturate(1);
+  }
   to   { opacity: 1; }
 }

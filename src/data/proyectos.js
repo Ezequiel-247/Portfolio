@@ -29,6 +29,7 @@ import tailwindcssIcon from '../img/icons/tailwindcss.svg';
 import trelloIcon from '../img/icons/trello.svg';
 import mysqlIcon from '../img/icons/mysql.svg';
 import bootstrapIcon from '../img/icons/bootstrap.svg';
+import swaggerIcon from '../img/icons/swagger.svg';
 
 // Diccionario de íconos
 export const iconos = {
@@ -50,6 +51,7 @@ export const iconos = {
     "GitHub": githubIcon,
     "Postman": postmanIcon,
     "Mongoose": mongooseIcon,
+    "SQLite": sqliteIcon,
     "Tailwind CSS": tailwindcssIcon,
     "Trello": trelloIcon,
     "MySQL": mysqlIcon,
@@ -57,13 +59,20 @@ export const iconos = {
     "bolt": "bolt", // For Query Optimization
     "cloud_sync": "cloud_sync", // Para DevOps
     "hub": "hub", // Para GraphQL
-    "security": "security" // For Data Integrity
+    "security": "security", // For Data Integrity
+    "IA & Prompting": "auto_awesome",
+    "Render": "cloud",
+    "Vercel": "deployed_code",
+    "Supabase / Neon": "database",
+    "Swagger": swaggerIcon
 };
 
 // Claves de "iconos" que en realidad son nombres de Material Symbols, no imágenes.
 // Se usa para decidir <img> vs <span class="material-symbols-outlined"> sin depender
 // de que el valor "empiece con http" (ya no aplica: los logos ahora son imports locales).
-export const iconosMaterialSymbols = new Set(["bolt", "cloud_sync", "hub", "security", "code"]);
+export const iconosMaterialSymbols = new Set([
+    "bolt", "cloud_sync", "hub", "security", "code", "auto_awesome", "cloud", "deployed_code", "database", "description"
+]);
 
 export const habilidadesNiveles = {
     es: {
@@ -91,6 +100,10 @@ export const habilidadesNiveles = {
             { nombre: "GitHub", etiqueta: "Colaboración y repositorios" },
             { nombre: "Postman", etiqueta: "Testing de APIs" },
             { nombre: "Trello", etiqueta: "Gestión ágil (Kanban)" },
+            { nombre: "IA & Prompting", etiqueta: "Productividad y asistencia de código" },
+            { nombre: "Render", etiqueta: "Despliegue de aplicaciones" },
+            { nombre: "Supabase / Neon", etiqueta: "Backend y base de datos" },
+            { nombre: "Swagger", etiqueta: "Documentación de APIs" },
         ]
     },
     en: {
@@ -118,7 +131,10 @@ export const habilidadesNiveles = {
             { nombre: "GitHub", etiqueta: "Collaboration & repositories" },
             { nombre: "Postman", etiqueta: "API Testing" },
             { nombre: "Trello", etiqueta: "Agile management (Kanban)" },
-            { nombre: "IA & Prompting", etiqueta: "Productivity (Copilot/GPT)" } 
+            { nombre: "IA & Prompting", etiqueta: "Productivity (Copilot/GPT)" },
+            { nombre: "Render", etiqueta: "Application deployment" },
+            { nombre: "Supabase / Neon", etiqueta: "Backend and database" },
+            { nombre: "Swagger", etiqueta: "API documentation" }
         ]
     }
 };
@@ -140,12 +156,12 @@ export const allSkills = [
     },
     {
         name: "JavaScript",
-        description: "Core language for interactive web experiences.",
-        description_es: "Lenguaje principal para experiencias web interactivas.",
-        etiqueta_en: "Frontend and backend",
-        etiqueta_es: "Frontend y backend",
-        category: "Frontend",
-        subTags: ["ES6+", "DOM", "Async"],
+        description: "Core language for backend services, APIs, and asynchronous application logic with Node.js.",
+        description_es: "Lenguaje base para servicios backend, APIs y lógica asíncrona de aplicaciones con Node.js.",
+        etiqueta_en: "Backend development",
+        etiqueta_es: "Desarrollo backend",
+        category: "Backend",
+        subTags: ["Node.js", "Express", "Async"],
         colorClass: "tech-card-orange"
     },
     {
@@ -273,6 +289,26 @@ export const allSkills = [
         colorClass: "tech-card-purple"
     },
     {
+        name: "Sequelize",
+        description: "Object-relational mapping for building Node.js applications with relational databases.",
+        description_es: "Mapeo objeto-relacional para construir aplicaciones Node.js con bases de datos relacionales.",
+        etiqueta_en: "ORM for Node.js",
+        etiqueta_es: "ORM para Node.js",
+        category: "Backend",
+        subTags: ["ORM", "Models", "Migrations"],
+        colorClass: "tech-card-orange"
+    },
+    {
+        name: "SQLite",
+        description: "Lightweight relational database used for local and self-contained application persistence.",
+        description_es: "Base de datos relacional liviana para persistencia local y aplicaciones autocontenidas.",
+        etiqueta_en: "Relational database",
+        etiqueta_es: "Base de datos relacional",
+        category: "Backend",
+        subTags: ["SQL", "Local", "Embedded"],
+        colorClass: "tech-card-blue"
+    },
+    {
         name: "MySQL",
         description: "Open-source relational database management system.",
         description_es: "Sistema de gestión de bases de datos relacional de código abierto.",
@@ -334,6 +370,46 @@ export const allSkills = [
         category: "Tools",
         subTags: ["Kanban", "Scrum", "Agile"],
         colorClass: "tech-card-blue"
+    },
+    {
+        name: "IA & Prompting",
+        description: "AI-assisted workflows for research, ideation, documentation, and development productivity.",
+        description_es: "Flujos de trabajo asistidos por IA para investigación, ideación, documentación y productividad en desarrollo.",
+        etiqueta_en: "Productivity (Copilot/GPT)",
+        etiqueta_es: "Productividad (Copilot/GPT)",
+        category: "Tools",
+        subTags: ["Copilot", "GPT", "Workflows"],
+        colorClass: "tech-card-cyan"
+    },
+    {
+        name: "Render",
+        description: "Cloud platform used to deploy and publish full stack applications.",
+        description_es: "Plataforma cloud utilizada para desplegar y publicar aplicaciones full stack.",
+        etiqueta_en: "Application deployment",
+        etiqueta_es: "Despliegue de aplicaciones",
+        category: "Tools",
+        subTags: ["Deploy", "Web Services", "Cloud"],
+        colorClass: "tech-card-green"
+    },
+    {
+        name: "Supabase / Neon",
+        description: "Backend platform providing hosted PostgreSQL databases and application services.",
+        description_es: "Plataforma backend con bases de datos PostgreSQL alojadas y servicios para aplicaciones.",
+        etiqueta_en: "Backend and database",
+        etiqueta_es: "Backend y base de datos",
+        category: "Tools",
+        subTags: ["PostgreSQL", "Auth", "Storage"],
+        colorClass: "tech-card-green"
+    },
+    {
+        name: "Swagger",
+        description: "API documentation and testing workflow based on the OpenAPI specification.",
+        description_es: "Flujo de documentación y prueba de APIs basado en la especificación OpenAPI.",
+        etiqueta_en: "API documentation",
+        etiqueta_es: "Documentación de APIs",
+        category: "Tools",
+        subTags: ["OpenAPI", "Endpoints", "Testing"],
+        colorClass: "tech-card-blue"
     }
 ];
 
@@ -369,6 +445,7 @@ export const listaProyectos = {
     },
     {
         titulo: "Sistema de Acompañamiento de Alumnos Universitarios",
+        tipo: "personal",
         imagen: desarrolloAppImg,
         descripcion:
             "Proyecto integrador final para la materia Desarrollo de Aplicaciones en la UNAHUR. " +
@@ -380,13 +457,14 @@ export const listaProyectos = {
         tecnologias: {
             frontend: ["React", "TypeScript", "CSS", "Tailwind CSS"],
             backend: ["JavaScript","Node.js", "PostgreSQL", "Docker", "Git"],
-            herramientas: ["Trello", "Postman"]
+            herramientas: ["Trello", "Postman", "Supabase / Neon", "Swagger", "Render"]
         },
         repo: "https://github.com/Ezequiel-247/DessApp",
         demo: "https://desapp-frontend.onrender.com/"
     },
     {
         titulo: "Plataforma de streaming — Full Stack",
+        tipo: "personal",
         imagen: homeNetflixImg,
         descripcion:
             "Este proyecto es una simulación de la experiencia de usuario de Netflix, " +
@@ -396,13 +474,15 @@ export const listaProyectos = {
             "para reproducir los tráilers reales al interactuar con las series y películas.",
         tecnologias: {
             frontend: ["React", "CSS"],
-            backend: ["JavaScript","Node.js", "Sequelize", "Sqlite"]
+            backend: ["JavaScript","Node.js", "Sequelize", "Sqlite"],
+            herramientas: ["Render"]
         },
         repo: "https://github.com/Ezequiel-247/App-de-Series-estilo-NETFLIX",
         demo: "https://app-de-series-estilo-netflix-front.onrender.com"
     },
     {
         titulo: "UnaHur - Anti Social",
+        tipo: "personal",
         imagen: unaHurImg,
         descripcion:
             "Plataforma interactiva desarrollada para la UNAHUR que permite a los usuarios " +
@@ -412,7 +492,8 @@ export const listaProyectos = {
             "automáticamente, simulando actividad real en la red social.",
         tecnologias: {
             frontend: ["React", "CSS"],
-            backend: ["JavaScript","Node.js", "Sequelize", "PostgreSQL"]
+            backend: ["JavaScript","Node.js", "Sequelize", "PostgreSQL"],
+            herramientas: ["Render"]
         },
         repo: "https://github.com/Ezequiel-247/Red-Anti-Social-Unahur",
         demo: "https://red-anti-social-front.onrender.com/"
@@ -444,6 +525,7 @@ export const listaProyectos = {
         },
         {
             titulo: "University Student Support System",
+            tipo: "personal",
             imagen: desarrolloAppImg,
             descripcion:
                 "Final integrative project for the Application Development subject at UNAHUR. " +
@@ -455,13 +537,14 @@ export const listaProyectos = {
             tecnologias: {
                 frontend: ["React", "TypeScript", "CSS", "Tailwind CSS"],
                 backend: ["Node.js", "PostgreSQL", "Docker", "Git"],
-                herramientas: ["Trello", "Postman"]
+                herramientas: ["Trello", "Postman", "Supabase / Neon", "Swagger", "Render"]
             },
             repo: "https://github.com/Ezequiel-247/DessApp",
             demo: "https://desapp-frontend.onrender.com/"
         },
         {
             titulo: "Streaming Platform — Full Stack",
+            tipo: "personal",
             imagen: homeNetflixImg,
             descripcion:
                 "This project is a simulation of the Netflix user experience, " +
@@ -471,13 +554,15 @@ export const listaProyectos = {
                 "to play real trailers when interacting with series and movies.",
             tecnologias: {
                 frontend: ["React", "CSS"],
-                backend: ["JavaScript","Node.js", "Sequelize", "Sqlite"]
+                backend: ["JavaScript","Node.js", "Sequelize", "Sqlite"],
+                herramientas: ["Render"]
             },
             repo: "https://github.com/Ezequiel-247/App-de-Series-estilo-NETFLIX",
             demo: "https://app-de-series-estilo-netflix-front.onrender.com"
         },
         {
             titulo: "UnaHur - Anti Social",
+            tipo: "personal",
             imagen: unaHurImg,
             descripcion:
                 "Interactive platform developed for UNAHUR that allows users " +
@@ -487,7 +572,8 @@ export const listaProyectos = {
                 "makes a post, simulating real activity on the social network.",
             tecnologias: {
                 frontend: ["React", "CSS"],
-                backend: ["JavaScript","Node.js", "Sequelize", "PostgreSQL"]
+                backend: ["JavaScript","Node.js", "Sequelize", "PostgreSQL"],
+                herramientas: ["Render"]
             },
             repo: "https://github.com/Ezequiel-247/Red-Anti-Social-Unahur",
             demo: "https://red-anti-social-front.onrender.com/"
