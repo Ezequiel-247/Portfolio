@@ -3,6 +3,7 @@ import homeNetflixImg from '../img/home_netflix.webp';
 import unaHurImg from '../img/Anti-Social.webp';
 import intaImg from '../img/INTA.webp';
 import desarrolloAppImg from '../img/Desarrollo_App.webp';
+import pintorMarioImg from '../img/Landing-Mario.png';
 
 // Íconos de tecnologías: antes se pedían a una CDN externa (jsdelivr/simpleicons) en cada
 // carga de página. Ahora viven en src/img/icons y Vite los empaqueta con el resto del sitio,
@@ -420,84 +421,105 @@ export const notaTecnica = {
 
 export const listaProyectos = {
     es: [
-    {
-       titulo: "Sistema de gestión hídrica — INTA",
-        tipo: "laboral",
-        imagen: intaImg,
-        esFoto: true,
-        descripcion:
-            "Durante mi experiencia en INTA, desarrollé un producto de software Backend diseñado para la " +
-            "gestión, procesamiento y visualización de datos provenientes de freatígrafos y limnígrafos.\n\n" +
-            "• Stack a pedido del cliente: Flask, Python, JavaScript y Jinja2, con MongoDB como base no relacional para organizar grandes volúmenes de datos de medidores de aguas subterráneas.\n" +
-            "• Módulos de exportación (PDF/Excel) y herramientas de graficación para optimizar el análisis técnico de los ingenieros del Instituto de Clima y Agua.\n" +
-            "• Interfaz de consulta con tabla dinámica para visualizar y descargar registros en tiempo real.\n\n" +
-            "Por términos de contrato y confidencialidad no puedo compartir el código, pero puedo discutir la arquitectura en una entrevista técnica.",
-        referencia:{
-            Nombre: "Sofía Havrylenko",
-            Puesto: "Ingeniera en INTA",
-            Contacto: "+5491169528278"
+        {
+            titulo: "Sistema de gestión hídrica — INTA",
+            tipo: "laboral",
+            imagen: intaImg,
+            esFoto: true,
+            descripcion:
+                "Durante mi experiencia en INTA, desarrollé un producto de software Backend diseñado para la " +
+                "gestión, procesamiento y visualización de datos provenientes de freatígrafos y limnígrafos.\n\n" +
+                "• Stack a pedido del cliente: Flask, Python, JavaScript y Jinja2, con MongoDB como base no relacional para organizar grandes volúmenes de datos de medidores de aguas subterráneas.\n" +
+                "• Módulos de exportación (PDF/Excel) y herramientas de graficación para optimizar el análisis técnico de los ingenieros del Instituto de Clima y Agua.\n" +
+                "• Interfaz de consulta con tabla dinámica para visualizar y descargar registros en tiempo real.\n\n" +
+                "Por términos de contrato y confidencialidad no puedo compartir el código, pero puedo discutir la arquitectura en una entrevista técnica.",
+            referencia: {
+                Nombre: "Sofía Havrylenko",
+                Puesto: "Ingeniera en INTA",
+                Contacto: "+5491169528278"
+            },
+            video: "https://www.youtube.com/watch?v=bGe9rUW3NF0",
+            tecnologias: {
+                frontend: ["Jinja", "CSS"],
+                backend: ["JavaScript", "Node.js", "Python", "Flask", "MongoDB"]
+            },
         },
-        video: "https://www.youtube.com/watch?v=bGe9rUW3NF0",
-        tecnologias: {
-            frontend: ["Jinja", "CSS"],
-            backend: ["JavaScript","Node.js", "Python", "Flask", "MongoDB"]
+        {
+            titulo: "Landing Page Comercial — Maestro Pintor",
+            tipo: "laboral",
+            imagen: pintorMarioImg,
+            esLogo: true,
+            descripcion:
+                "Diseño y desarrollo integral de una plataforma web comercial de alta conversión para servicios de pintura y remodelación.\n\n" +
+                "• Arquitectura modular en React (Vite) con CSS desacoplado por componentes y diseño 'mobile-first'.\n" +
+                "• Galería interactiva multimedia con reproductores de video antes/después y lightbox para proyectos fotográficos.\n" +
+                "• Modal de captación de leads conectado a WhatsApp con filtros de seguridad: validación de datos, trampa Honeypot, time-trap y rate limiting por sesión.",
+            referencia: {
+                Nombre: "Eduardo Mario Ortiz",
+                Puesto: "Maestro Pintor Profesional",
+                Contacto: "+5491140264917"
+            },
+            tecnologias: {
+                frontend: ["React", "JavaScript", "CSS", "HTML5"],
+                herramientas: ["Git", "GitHub", "Render"]
+            },
+            demo: "https://pintor-mario.onrender.com"
         },
-    },
-    {
-        titulo: "Sistema de Acompañamiento de Alumnos Universitarios",
-        tipo: "personal",
-        imagen: desarrolloAppImg,
-        descripcion:
-            "Proyecto integrador final para la materia Desarrollo de Aplicaciones en la UNAHUR. " +
-            "Consiste en el diseño e implementación de una solución web Full Stack escalable, " +
-            "aplicando metodologías ágiles (Scrum) con gestión de tareas en Trello, control de " +
-            "versiones colaborativo en GitHub y buenas prácticas de arquitectura de software, " +
-            "con foco en un backend robusto y una interfaz intuitiva.\n\n" +
-            "Podés probar la demo con el usuario: student7@example.com / contraseña: password",
-        tecnologias: {
-            frontend: ["React", "TypeScript", "CSS", "Tailwind CSS"],
-            backend: ["JavaScript","Node.js", "PostgreSQL", "Docker", "Git"],
-            herramientas: ["Trello", "Postman", "Supabase / Neon", "Swagger", "Render"]
+        {
+            titulo: "Sistema de Acompañamiento de Alumnos Universitarios",
+            tipo: "personal",
+            imagen: desarrolloAppImg,
+            descripcion:
+                "Proyecto integrador final para la materia Desarrollo de Aplicaciones en la UNAHUR. " +
+                "Consiste en el diseño e implementación de una solución web Full Stack escalable, " +
+                "aplicando metodologías ágiles (Scrum) con gestión de tareas en Trello, control de " +
+                "versiones colaborativo en GitHub y buenas prácticas de arquitectura de software, " +
+                "con foco en un backend robusto y una interfaz intuitiva.\n\n" +
+                "Podés probar la demo con el usuario: student7@example.com / contraseña: password",
+            tecnologias: {
+                frontend: ["React", "TypeScript", "CSS", "Tailwind CSS"],
+                backend: ["JavaScript", "Node.js", "PostgreSQL", "Docker", "Git"],
+                herramientas: ["Trello", "Postman", "Supabase / Neon", "Swagger", "Render"]
+            },
+            repo: "https://github.com/Ezequiel-247/DessApp",
+            demo: "https://desapp-frontend.onrender.com/"
         },
-        repo: "https://github.com/Ezequiel-247/DessApp",
-        demo: "https://desapp-frontend.onrender.com/"
-    },
-    {
-        titulo: "Plataforma de streaming — Full Stack",
-        tipo: "personal",
-        imagen: homeNetflixImg,
-        descripcion:
-            "Este proyecto es una simulación de la experiencia de usuario de Netflix, " +
-            "desarrollada como una aplicación Full Stack. La plataforma permite el registro " +
-            "de usuarios, la gestión de múltiples perfiles (hasta 3) y la exploración de un " +
-            "catálogo dinámico precargado con 50 títulos. Además, integra la API de YouTube " +
-            "para reproducir los tráilers reales al interactuar con las series y películas.",
-        tecnologias: {
-            frontend: ["React", "CSS"],
-            backend: ["JavaScript","Node.js", "Sequelize", "Sqlite"],
-            herramientas: ["Render"]
+        {
+            titulo: "Plataforma de streaming — Full Stack",
+            tipo: "personal",
+            imagen: homeNetflixImg,
+            descripcion:
+                "Este proyecto es una simulación de la experiencia de usuario de Netflix, " +
+                "desarrollada como una aplicación Full Stack. La plataforma permite el registro " +
+                "de usuarios, la gestión de múltiples perfiles (hasta 3) y la exploración de un " +
+                "catálogo dinámico precargado con 50 títulos. Además, integra la API de YouTube " +
+                "para reproducir los tráilers reales al interactuar con las series y películas.",
+            tecnologias: {
+                frontend: ["React", "CSS"],
+                backend: ["JavaScript", "Node.js", "Sequelize", "Sqlite"],
+                herramientas: ["Render"]
+            },
+            repo: "https://github.com/Ezequiel-247/App-de-Series-estilo-NETFLIX",
+            demo: "https://app-de-series-estilo-netflix-front.onrender.com"
         },
-        repo: "https://github.com/Ezequiel-247/App-de-Series-estilo-NETFLIX",
-        demo: "https://app-de-series-estilo-netflix-front.onrender.com"
-    },
-    {
-        titulo: "UnaHur - Anti Social",
-        tipo: "personal",
-        imagen: unaHurImg,
-        descripcion:
-            "Plataforma interactiva desarrollada para la UNAHUR que permite a los usuarios " +
-            "compartir contenido, comentar y reaccionar. Implementa una arquitectura robusta " +
-            "con validaciones de seguridad y persistencia de datos.\n\n" +
-            "Se crearon avatares con bots que, al publicar un usuario, reaccionan y comentan " +
-            "automáticamente, simulando actividad real en la red social.",
-        tecnologias: {
-            frontend: ["React", "CSS"],
-            backend: ["JavaScript","Node.js", "Sequelize", "PostgreSQL"],
-            herramientas: ["Render"]
-        },
-        repo: "https://github.com/Ezequiel-247/Red-Anti-Social-Unahur",
-        demo: "https://red-anti-social-front.onrender.com/"
-    }
+        {
+            titulo: "UnaHur - Anti Social",
+            tipo: "personal",
+            imagen: unaHurImg,
+            descripcion:
+                "Plataforma interactiva desarrollada para la UNAHUR que permite a los usuarios " +
+                "compartir contenido, comentar y reaccionar. Implementa una arquitectura robusta " +
+                "con validaciones de seguridad y persistencia de datos.\n\n" +
+                "Se crearon avatares con bots que, al publicar un usuario, reaccionan y comentan " +
+                "automáticamente, simulando actividad real en la red social.",
+            tecnologias: {
+                frontend: ["React", "CSS"],
+                backend: ["JavaScript", "Node.js", "Sequelize", "PostgreSQL"],
+                herramientas: ["Render"]
+            },
+            repo: "https://github.com/Ezequiel-247/Red-Anti-Social-Unahur",
+            demo: "https://red-anti-social-front.onrender.com/"
+        }
     ],
     en: [
         {
@@ -512,7 +534,7 @@ export const listaProyectos = {
                 "• Export modules (PDF/Excel) and graphing tools to optimize the technical analysis done by the Institute of Climate and Water engineers.\n" +
                 "• Query interface with a dynamic table to view and download records in real time.\n\n" +
                 "Due to contract terms and confidentiality, I can't share the code, but I'm happy to discuss the architecture in a technical interview.",
-            referencia:{
+            referencia: {
                 Nombre: "Sofía Havrylenko",
                 Puesto: "Engineer at INTA",
                 Contacto: "+5491169528278"
@@ -520,8 +542,29 @@ export const listaProyectos = {
             video: "https://www.youtube.com/watch?v=bGe9rUW3NF0",
             tecnologias: {
                 frontend: ["Jinja", "CSS"],
-                backend: ["JavaScript","Node.js", "Python", "Flask", "MongoDB"]
+                backend: ["JavaScript", "Node.js", "Python", "Flask", "MongoDB"]
             },
+        },
+        {
+            titulo: "Commercial Landing Page — Professional Painter",
+            tipo: "laboral",
+            imagen: pintorMarioImg,
+            esLogo: true,
+            descripcion:
+                "End-to-end design and development of a high-conversion commercial web platform for professional painting and remodeling services.\n\n" +
+                "• Modular architecture built with React (Vite), featuring component-scoped CSS and mobile-first responsive design.\n" +
+                "• Interactive multimedia showcase with custom before/after video players and photo lightbox gallery.\n" +
+                "• Lead generation modal integrated with WhatsApp, featuring anti-spam security layers: data sanitization, Honeypot trap, time-trap, and session-based rate limiting.",
+            referencia: {
+                Nombre: "Eduardo Mario Ortiz",
+                Puesto: "Professional Painter",
+                Contacto: "+5491140264917"
+            },
+            tecnologias: {
+                frontend: ["React", "JavaScript", "CSS", "HTML5"],
+                herramientas: ["Git", "GitHub", "Render"]
+            },
+            demo: "https://pintor-mario.onrender.com"
         },
         {
             titulo: "University Student Support System",
@@ -554,7 +597,7 @@ export const listaProyectos = {
                 "to play real trailers when interacting with series and movies.",
             tecnologias: {
                 frontend: ["React", "CSS"],
-                backend: ["JavaScript","Node.js", "Sequelize", "Sqlite"],
+                backend: ["JavaScript", "Node.js", "Sequelize", "Sqlite"],
                 herramientas: ["Render"]
             },
             repo: "https://github.com/Ezequiel-247/App-de-Series-estilo-NETFLIX",
@@ -572,7 +615,7 @@ export const listaProyectos = {
                 "makes a post, simulating real activity on the social network.",
             tecnologias: {
                 frontend: ["React", "CSS"],
-                backend: ["JavaScript","Node.js", "Sequelize", "PostgreSQL"],
+                backend: ["JavaScript", "Node.js", "Sequelize", "PostgreSQL"],
                 herramientas: ["Render"]
             },
             repo: "https://github.com/Ezequiel-247/Red-Anti-Social-Unahur",
