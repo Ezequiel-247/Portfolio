@@ -199,11 +199,12 @@ body.light-mode .nota-tecnica {
   min-height: 280px;
 }
 
+/* Dos columnas amplias para que títulos, descripciones y tecnologías respiren. */
 .grid-secundaria-tres-columnas {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  align-items: stretch;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
 }
 
 .card-grid-compacta {
@@ -212,7 +213,7 @@ body.light-mode .nota-tecnica {
 }
 
 .card-grid-compacta .proyecto-imagen-wrapper {
-  height: 200px;
+  height: 220px;
 }
 
 /* ── IMÁGENES ─────────────────────────────────────────────── */
@@ -272,7 +273,7 @@ body.light-mode .nota-tecnica {
 
 /* ── CONTENIDO ─────────────────────────────────────────────── */
 .card-content {
-  padding: 24px;
+  padding: 26px 24px 24px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -286,6 +287,7 @@ body.light-mode .nota-tecnica {
 .card-proyecto h3 {
   font-family: 'Syne', sans-serif;
   font-size: 1.3rem;
+  line-height: 1.15;
   font-weight: 700;
   color: var(--text-color);
   margin: 0;
@@ -476,8 +478,14 @@ body.light-mode .btn-repo {
   50% { transform: translateX(6px); opacity: 1; }
 }
 
+/* ── DOTS DE NAVEGACIÓN DEL CARRUSEL (solo mobile) ──────────── */
+.carousel-dots {
+  display: none;
+}
+
 /* ── RESPONSIVE & MOBILE (CARRUSEL 1 CARD COMPLETA) ────────── */
 @media (max-width: 1024px) {
+  /* Dos columnas en tablets y pantallas intermedias. */
   .grid-secundaria-tres-columnas {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -546,6 +554,35 @@ body.light-mode .btn-repo {
   .contenedor-mobile-carrusel .proyecto-imagen-wrapper {
     height: 200px !important;
     min-height: 200px !important;
+  }
+
+  .carousel-dots {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 12px 0 0;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.18);
+    cursor: pointer;
+    transition: background 0.25s, width 0.25s, box-shadow 0.25s;
+  }
+
+  .carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.35);
+  }
+
+  .carousel-dot.activo {
+    width: 22px;
+    background: var(--accent-color);
+    box-shadow: 0 0 8px var(--accent-glow);
   }
 }
 

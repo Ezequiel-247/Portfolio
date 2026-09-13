@@ -8,8 +8,11 @@ import { useLanguage } from '../context/LanguageContext';
 const Proyectos = () => {
     const [expandidos, setExpandidos] = useState({});
     const [filtroActivo, setFiltroActivo] = useState('todos');
+    const [activeSlide, setActiveSlide] = useState(0);
     const { language } = useLanguage();
     const sectionRef = useRef(null);
+    const carruselRef = useRef(null);
+    const cardRefsMobile = useRef([]);
 
     const proyectosActuales = listaProyectos[language];
     const textoNota = notaTecnica[language];
@@ -30,6 +33,14 @@ const Proyectos = () => {
         setExpandidos(prev => ({ ...prev, [proyectoId]: !prev[proyectoId] }));
     };
 
+    // Lleva el carrusel mobile hasta la card del índice indicado (usado por los dots)
+    const irASlide = (index) => {
+        const card = cardRefsMobile.current[index];
+        if (card) {
+            card.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+        }
+    };
+
     useEffect(() => {
         const contenedor = sectionRef.current;
         if (!contenedor) return;
@@ -47,6 +58,39 @@ const Proyectos = () => {
         cards.forEach((card) => observer.observe(card));
 
         return () => observer.disconnect();
+    }, [filtroActivo, language]);
+
+    // Detecta qué card está visible en el carrusel mobile para resaltar el dot activo
+    useEffect(() => {
+        const contenedor = carruselRef.current;
+        const cards = cardRefsMobile.current.filter(Boolean);
+        if (!contenedor || cards.length === 0) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                let maxRatio = 0;
+                let maxIndex = null;
+                entries.forEach((entry) => {
+                    if (entry.intersectionRatio > maxRatio) {
+                        maxRatio = entry.intersectionRatio;
+                        maxIndex = Number(entry.target.dataset.index);
+                    }
+                });
+                if (maxIndex !== null) setActiveSlide(maxIndex);
+            },
+            { root: contenedor, threshold: [0.5, 0.75, 1] }
+        );
+
+        cards.forEach((card) => observer.observe(card));
+        return () => observer.disconnect();
+    }, [filtroActivo, language]);
+
+    // Reinicia el carrusel al cambiar de filtro o idioma
+    useEffect(() => {
+        setActiveSlide(0);
+        if (carruselRef.current) {
+            carruselRef.current.scrollTo({ left: 0, behavior: 'auto' });
+        }
     }, [filtroActivo, language]);
 
     const renderTechTags = (proyecto) => {
@@ -76,7 +120,7 @@ const Proyectos = () => {
         );
     };
 
-    const renderCard = (proyecto, isFeatured = false) => {
+    const renderCard = (proyecto, isFeatured = false, extraProps = {}) => {
         const limiteCaracteres = isFeatured ? 220 : 120;
         const esTextoLargo = proyecto.descripcion.length > limiteCaracteres;
         const mostrarTodo = expandidos[proyecto.titulo];
@@ -85,6 +129,7 @@ const Proyectos = () => {
             <div 
                 className={`card-proyecto ${isFeatured ? 'card-destacada-horizontal' : 'card-grid-compacta'}`} 
                 key={proyecto.titulo}
+                {...extraProps}
             >
                 <div className="proyecto-imagen-wrapper">
                     <img
@@ -158,6 +203,9 @@ const Proyectos = () => {
         );
     };
 
+    // Resetea el array de refs antes de repoblarlo en cada render del carrusel mobile
+    cardRefsMobile.current = [];
+
     return (
         <section className="proyectos-seccion" id="proyectos" ref={sectionRef}>
             <div className="proyectos-container">
@@ -223,9 +271,34 @@ const Proyectos = () => {
                 </div>
 
                 {/* ── 2. VISTA MOBILE (Un único carrusel continuo gobernado por el filtro) ── */}
-                <div className="contenedor-mobile-carrusel">
-                    {proyectosFiltrados.map(p => renderCard(p, p.tipo === 'laboral'))}
+                <div className="contenedor-mobile-carrusel" ref={carruselRef}>
+                    {proyectosFiltrados.map((p, i) =>
+                        renderCard(p, p.tipo === 'laboral', {
+                            ref: (el) => (cardRefsMobile.current[i] = el),
+                            'data-index': i,
+                        })
+                    )}
                 </div>
+
+                {proyectosFiltrados.length > 1 && (
+                    <div
+                        className="carousel-dots"
+                        role="tablist"
+                        aria-label={language === 'es' ? 'Navegación del carrusel de proyectos' : 'Project carousel navigation'}
+                    >
+                        {proyectosFiltrados.map((_, i) => (
+                            <button
+                                key={i}
+                                type="button"
+                                role="tab"
+                                aria-selected={activeSlide === i}
+                                aria-label={`${language === 'es' ? 'Ir al proyecto' : 'Go to project'} ${i + 1}`}
+                                className={`carousel-dot ${activeSlide === i ? 'activo' : ''}`}
+                                onClick={() => irASlide(i)}
+                            />
+                        ))}
+                    </div>
+                )}
 
             </div>
         </section>

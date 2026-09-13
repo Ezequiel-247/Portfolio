@@ -4,6 +4,7 @@ import unaHurImg from '../img/Anti-Social.webp';
 import intaImg from '../img/INTA.webp';
 import desarrolloAppImg from '../img/Desarrollo_App.webp';
 import pintorMarioImg from '../img/Landing-Mario.png';
+import scrapingAnalyticsImg from '../img/Resumen.png';
 
 // Íconos de tecnologías: antes se pedían a una CDN externa (jsdelivr/simpleicons) en cada
 // carga de página. Ahora viven en src/img/icons y Vite los empaqueta con el resto del sitio,
@@ -65,14 +66,16 @@ export const iconos = {
     "Render": "cloud",
     "Vercel": "deployed_code",
     "Supabase / Neon": "database",
-    "Swagger": swaggerIcon
+    "Swagger": swaggerIcon,
+    "Axios": "http",
+    "Cheerio": "data_object"
 };
 
 // Claves de "iconos" que en realidad son nombres de Material Symbols, no imágenes.
 // Se usa para decidir <img> vs <span class="material-symbols-outlined"> sin depender
 // de que el valor "empiece con http" (ya no aplica: los logos ahora son imports locales).
 export const iconosMaterialSymbols = new Set([
-    "bolt", "cloud_sync", "hub", "security", "code", "auto_awesome", "cloud", "deployed_code", "database", "description"
+    "bolt", "cloud_sync", "hub", "security", "code", "auto_awesome", "cloud", "deployed_code", "database", "description", "http", "data_object"
 ]);
 
 export const habilidadesNiveles = {
@@ -466,6 +469,25 @@ export const listaProyectos = {
             demo: "https://pintor-mario.onrender.com"
         },
         {
+            titulo: "BebidasData — Scraping Analytics & Pipeline",
+            tipo: "personal",
+            imagen: scrapingAnalyticsImg,
+            descripcion:
+                "Plataforma Full Stack que scrapea un catálogo de bebidas online y expone los datos " +
+                "mediante una API propia, con un dashboard en React para visualizar productos, " +
+                "estadísticas y el estado del pipeline de scraping.\n\n" +
+                "• Scraper en Node.js con Axios y Cheerio para extraer y normalizar datos de productos.\n" +
+                "• Backend en Express con SQLite como capa de persistencia, protegido con Helmet, CORS restringido por origen y rate limiting.\n" +
+                "• Frontend en React con vistas de Dashboard, Productos y Pipeline, y filtros combinados por marca y stock en tiempo real.",
+            tecnologias: {
+                frontend: ["React", "CSS"],
+                backend: ["JavaScript", "Node.js", "SQLite"],
+                herramientas: ["Axios", "Cheerio", "Git", "GitHub", "Render"]
+            },
+            repo: "https://github.com/Ezequiel-247/-Scraping-analytics",
+            demo: "https://scraping-analytics-1.onrender.com"
+        },
+        {
             titulo: "Sistema de Acompañamiento de Alumnos Universitarios",
             tipo: "personal",
             imagen: desarrolloAppImg,
@@ -565,6 +587,25 @@ export const listaProyectos = {
                 herramientas: ["Git", "GitHub", "Render"]
             },
             demo: "https://pintor-mario.onrender.com"
+        },
+        {
+            titulo: "BebidasData — Scraping Analytics & Pipeline",
+            tipo: "personal",
+            imagen: scrapingAnalyticsImg,
+            descripcion:
+                "Full Stack platform that scrapes an online beverage catalog and exposes the data " +
+                "through a custom API, with a React dashboard to visualize products, statistics, " +
+                "and the scraping pipeline status.\n\n" +
+                "• Node.js scraper using Axios and Cheerio to extract and normalize product data.\n" +
+                "• Express backend with SQLite as the persistence layer, hardened with Helmet, origin-restricted CORS, and rate limiting.\n" +
+                "• React frontend with Dashboard, Products, and Pipeline views, with combined real-time brand and stock filters.",
+            tecnologias: {
+                frontend: ["React", "CSS"],
+                backend: ["JavaScript", "Node.js", "SQLite"],
+                herramientas: ["Axios", "Cheerio", "Git", "GitHub", "Render"]
+            },
+            repo: "https://github.com/Ezequiel-247/-Scraping-analytics",
+            demo: "https://scraping-analytics-1.onrender.com"
         },
         {
             titulo: "University Student Support System",
