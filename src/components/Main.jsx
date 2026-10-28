@@ -4,6 +4,7 @@ import githubIcon from '../img/github.svg';
 import '../style/Main.css';
 import { textoSobreMi } from '../data/sobreMi';
 import { estudios } from '../data/estudios';
+import { certificados } from '../data/certificados';
 import { useLanguage } from '../context/LanguageContext';
 import '../style/Educacion.css';
 import DescargarCV from './DescargarCV';
@@ -13,6 +14,7 @@ const Main = () =>{
     
     const textosActuales = textoSobreMi[language];
     const estudiosActuales = estudios[language] || estudios;
+    const certificadosActuales = certificados[language] || certificados;
 
     return (
         <main className="main-container" id="inicio">
@@ -80,6 +82,46 @@ const Main = () =>{
                                 <p className="education-card-description">{estudio.descripcion}</p>
                             </div>
                         ))}
+                    </div>
+                    <div className="certificates-section">
+                        <h3 className="certificates-title">
+                            {language === 'es' ? 'Certificaciones' : 'Certifications'}
+                        </h3>
+                        <div className="certificate-grid">
+                            {certificadosActuales.map((certificado) => (
+                                <article className="certificate-card" key={certificado.titulo}>
+                                    <div className="certificate-details">
+                                        <h4>{certificado.titulo}</h4>
+                                        <p className="certificate-institution">{certificado.institucion}</p>
+                                        <div className="education-card-badges">
+                                            <span className="estado">{certificado.duracion}</span>
+                                            <span className="estado">{certificado.fecha}</span>
+                                        </div>
+                                        <a
+                                            className="certificate-link"
+                                            href={certificado.imagen}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            {language === 'es' ? 'Ver certificado' : 'View certificate'}
+                                        </a>
+                                    </div>
+                                    <a
+                                        className="certificate-preview"
+                                        href={certificado.imagen}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={language === 'es' ? 'Abrir certificado completo en una nueva pestaña' : 'Open full certificate in a new tab'}
+                                    >
+                                        <img
+                                            src={certificado.imagen}
+                                            alt={language === 'es' ? `Certificado: ${certificado.titulo}` : `Certificate: ${certificado.titulo}`}
+                                            loading="lazy"
+                                        />
+                                    </a>
+                                </article>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>

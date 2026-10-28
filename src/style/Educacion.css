@@ -161,3 +161,107 @@ body.light-mode .badge-en-curso {
   flex-grow: 1;
   font-weight: 600;
 }
+
+.certificates-section {
+  margin-top: 64px;
+}
+
+.certificates-title {
+  color: var(--text-color);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.certificates-title::after {
+  background: var(--accent-color);
+  box-shadow: 0 0 8px var(--accent-glow-md);
+  content: '';
+  display: block;
+  height: 2px;
+  margin: 12px auto 0;
+  width: 32px;
+}
+
+.certificate-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+.certificate-card {
+  align-items: center;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px var(--card-shadow);
+  display: grid;
+  gap: 28px;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  padding: 28px;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.certificate-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 32px var(--card-shadow), 0 0 20px var(--accent-glow);
+  transform: translateY(-4px);
+}
+
+.certificate-details h4 {
+  color: var(--text-color);
+  font-family: 'Syne', sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.certificate-institution {
+  color: var(--accent-color);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+.certificate-link {
+  border: 1px solid var(--accent-color);
+  border-radius: 9999px;
+  color: var(--accent-color);
+  display: inline-flex;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 9px 16px;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.certificate-link:hover,
+.certificate-link:focus-visible {
+  background: var(--accent-color);
+  color: var(--bg-color);
+}
+
+body.light-mode .certificate-link:hover,
+body.light-mode .certificate-link:focus-visible {
+  color: #ffffff;
+}
+
+.certificate-preview {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+
+.certificate-preview img {
+  height: auto;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .certificate-card {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 22px;
+  }
+}
